@@ -1,0 +1,1651 @@
+<DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Background Verification Insights & Industry Updates | Verifitech</title>
+    <meta name="description" content="Expert insights on background verification, compliance updates, industry trends, and workforce screening best practices. Stay informed with Verifitech's knowledge hub.">
+    
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/<!css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #1ac2c1;
+            --primary-dark: #16a8a7;
+            --primary-light: #e0f7f7;
+            --dark: #0f172a;
+            --navy: #1e293b;
+            --gray: #64748b;
+            --light-gray: #f8fafc;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        .navbar {
+            padding: 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            height: 80px;
+            z-index: 1030;
+        }
+        
+        .navbar.scrolled {
+            box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+        }
+        
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: var(--dark);
+            letter-spacing: -0.5px;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+        
+        .navbar-brand span {
+            color: var(--primary);
+        }
+        
+        .brand-tagline {
+            font-size: 0.65rem;
+            font-weight: 500;
+            color: var(--gray);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+        
+        .nav-link {
+            font-weight: 600;
+            color: var(--navy);
+            margin: 0 0.6rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            padding: 2rem 0.5rem !important;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary);
+        }
+        
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-top: 0.5rem;
+            min-width: 280px;
+            border-top: 3px solid var(--primary);
+        }
+        
+        .dropdown-item {
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--navy);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .dropdown-item:hover {
+            background: var(--primary-light);
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+        
+        .btn-sales {
+            background: var(--primary);
+            color: white !important;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            margin-left: 1rem;
+            box-shadow: 0 4px 15px rgba(26, 194, 193, 0.3);
+            text-decoration: none;
+        }
+        
+        .btn-sales:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 25px rgba(26, 194, 193, 0.4);
+        }
+        
+        /* Blog Hero */
+        .blog-hero {
+            padding: 140px 0 80px;
+            background: linear-gradient(135deg, #f0fdfa 0%, #ffffff 50%, #ccfbf1 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .blog-hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(26, 194, 193, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .blog-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.6rem 1.2rem;
+            background: rgba(26, 194, 193, 0.1);
+            color: var(--primary-dark);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(26, 194, 193, 0.2);
+        }
+        
+        .blog-hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            letter-spacing: -1px;
+        }
+        
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .blog-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+        
+        .blog-meta-item i {
+            color: var(--primary);
+        }
+        
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        /* Blog Content Layout */
+        .blog-content-section {
+            padding: 60px 0;
+            background: white;
+            position: relative;
+        }
+        
+        .blog-layout {
+            display: flex;
+            gap: 3rem;
+            position: relative;
+        }
+        
+        /* Left Sidebar - Sticky TOC */
+        .blog-left-sidebar {
+            width: 300px;
+            flex-shrink: 0;
+            position: relative;
+        }
+        
+        .toc-sticky-wrapper {
+            position: sticky;
+            top: 100px;
+            max-height: calc(100vh - 120px);
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        
+        .toc-sticky-wrapper::-webkit-scrollbar {
+            width: 4px;
+        }
+        
+        .toc-sticky-wrapper::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 2px;
+        }
+        
+        .toc-sticky-wrapper::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .toc-container {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .toc-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--dark);
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-light);
+        }
+        
+        .toc-title i {
+            color: var(--primary);
+        }
+        
+        .toc-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .toc-item {
+            margin-bottom: 0.5rem;
+        }
+        
+        .toc-link {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.6rem 0.75rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+            line-height: 1.5;
+        }
+        
+        .toc-link:hover {
+            background: var(--light-gray);
+            color: var(--navy);
+            border-left-color: var(--primary-light);
+        }
+        
+        .toc-link.active {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            border-left-color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .toc-link i {
+            font-size: 0.7rem;
+            margin-top: 0.4rem;
+            transition: transform 0.3s;
+        }
+        
+        .toc-link.active i {
+            transform: rotate(90deg);
+        }
+        
+        .toc-progress {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid var(--primary-light);
+        }
+        
+        .progress-label {
+            font-size: 0.8rem;
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .progress-bar-custom {
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            border-radius: 3px;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+        
+        /* Main Content */
+        .blog-main-content {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .blog-article {
+            max-width: 800px;
+        }
+        
+        .blog-article h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 3rem 0 1.5rem;
+            color: var(--dark);
+            letter-spacing: -0.5px;
+            scroll-margin-top: 100px;
+            position: relative;
+            padding-left: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .blog-article h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 2.5rem 0 1rem;
+            color: var(--navy);
+            scroll-margin-top: 100px;
+        }
+        
+        .blog-article p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+        
+        .blog-article ul, .blog-article ol {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        
+        .blog-article li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .blog-article strong {
+            color: var(--dark);
+            font-weight: 600;
+        }
+        
+        .blog-article blockquote {
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem 1.5rem 1.5rem 2rem;
+            margin: 2.5rem 0;
+            font-style: italic;
+            color: var(--navy);
+            font-size: 1.2rem;
+            background: var(--light-gray);
+            border-radius: 0 16px 16px 0;
+            position: relative;
+        }
+        
+        .blog-article blockquote::before {
+            content: '"';
+            position: absolute;
+            top: 0.5rem;
+            left: 0.75rem;
+            font-size: 3rem;
+            color: var(--primary);
+            opacity: 0.3;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        
+        .blog-article img {
+            width: 100%;
+            border-radius: 16px;
+            margin: 2.5rem 0;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, var(--primary-light), white);
+            border: 2px solid rgba(26, 194, 193, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2.5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--primary);
+        }
+        
+        .highlight-box h4 {
+            color: var(--primary-dark);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .section-anchor {
+            display: block;
+            position: relative;
+            top: -100px;
+            visibility: hidden;
+        }
+        
+        /* Right Sidebar */
+        .blog-right-sidebar {
+            width: 350px;
+            flex-shrink: 0;
+        }
+        
+        .right-sidebar-sticky {
+            position: sticky;
+            top: 100px;
+        }
+        
+        .sidebar-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            border: 2px solid #e2e8f0;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .sidebar-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(26, 194, 193, 0.1);
+        }
+        
+        .sidebar-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .sidebar-title i {
+            color: var(--primary);
+        }
+        
+        /* Subscribe Form */
+        .subscribe-form .form-control {
+            padding: 0.875rem;
+            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+            margin-bottom: 0.875rem;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+        
+        .subscribe-form .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(26, 194, 193, 0.1);
+        }
+        
+        .btn-subscribe {
+            background: var(--primary) !important;
+            color: white !important;
+            border: none;
+            padding: 0.875rem;
+            border-radius: 12px;
+            font-weight: 700;
+            width: 100%;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(26, 194, 193, 0.3);
+            font-size: 0.95rem;
+        }
+        
+        .btn-subscribe:hover {
+            background: var(--primary-dark) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(26, 194, 193, 0.4);
+        }
+        
+        .subscribe-benefits {
+            margin-top: 1.25rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+        
+        .benefit-item i {
+            color: var(--primary);
+            font-size: 1rem;
+        }
+        
+        /* Events */
+        .event-item {
+            display: flex;
+            gap: 0.875rem;
+            padding: 1rem;
+            background: var(--light-gray);
+            border-radius: 12px;
+            margin-bottom: 0.875rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .event-item:hover {
+            background: white;
+            border-color: var(--primary);
+            transform: translateX(5px);
+        }
+        
+        .event-date {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 10px;
+            font-weight: 700;
+        }
+        
+        .event-date .day {
+            font-size: 1.25rem;
+            line-height: 1;
+        }
+        
+        .event-date .month {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .event-details h6 {
+            font-weight: 700;
+            margin: 0 0 0.25rem;
+            color: var(--dark);
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        .event-details span {
+            font-size: 0.8rem;
+            color: var(--gray);
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        
+        .btn-view-all {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .btn-view-all:hover {
+            color: var(--primary-dark);
+            gap: 0.75rem;
+        }
+        
+        /* Categories */
+        .category-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.4rem 0.875rem;
+            background: var(--light-gray);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+            margin-right: 0.4rem;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .category-tag:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Recent Posts Section */
+        .recent-posts-section {
+            padding: 100px 0;
+            background: var(--light-gray);
+        }
+        
+        .section-subtitle {
+            color: var(--primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(26, 194, 193, 0.1);
+            border-radius: 50px;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 3rem;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+        
+        .blog-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            height: 100%;
+            border: 1px solid #e2e8f0;
+            transition: all 0.4s;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+        }
+        
+        .blog-card-image {
+            height: 220px;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .blog-card-content {
+            padding: 1.5rem;
+        }
+        
+        .blog-card-category {
+            display: inline-block;
+            padding: 0.35rem 0.75rem;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.75rem;
+        }
+        
+        .blog-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--dark);
+            line-height: 1.4;
+        }
+        
+        .blog-card p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .blog-card-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+        
+        /* Share Buttons */
+        .share-buttons {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #e2e8f0;
+        }
+        
+        .share-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .share-btn.linkedin { background: #0077b5; }
+        .share-btn.twitter { background: #1da1f2; }
+        .share-btn.facebook { background: #4267B2; }
+        .share-btn.email { background: var(--gray); }
+        
+        .share-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            color: white;
+        }
+        
+        /* Reading Time Badge */
+        .reading-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--dark);
+            color: white;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--dark) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(26, 194, 193, 0.1) 0%, transparent 60%);
+            border-radius: 50%;
+        }
+        
+        .contact-section h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .contact-section .lead {
+            color: rgba(255,255,255,0.8);
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 80px 0 40px;
+        }
+        
+        footer h4 {
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+        
+        footer h4 span {
+            color: var(--primary);
+        }
+        
+        footer h6 {
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        
+        footer a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: block;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+        
+        footer a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+        
+        footer hr {
+            border-color: rgba(255,255,255,0.1);
+            margin: 3rem 0 2rem;
+        }
+        
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive */
+        @media (max-width: 1199px) {
+            .blog-layout {
+                flex-direction: column;
+            }
+            
+            .blog-left-sidebar {
+                width: 100%;
+                order: 2;
+            }
+            
+            .toc-sticky-wrapper {
+                position: relative;
+                top: 0;
+                max-height: none;
+            }
+            
+            .toc-container {
+                margin-bottom: 2rem;
+            }
+            
+            .blog-right-sidebar {
+                width: 100%;
+                order: 3;
+            }
+            
+            .right-sidebar-sticky {
+                position: relative;
+                top: 0;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .blog-main-content {
+                order: 1;
+            }
+        }
+        
+        @media (max-width: 991px) {
+            .blog-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .blog-article h2 {
+                font-size: 1.75rem;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .blog-hero {
+                padding: 120px 0 60px;
+            }
+            
+            .blog-hero h1 {
+                font-size: 1.75rem;
+            }
+            
+            .blog-meta {
+                gap: 1rem;
+            }
+            
+            .right-sidebar-sticky {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#toc-nav" data-bs-offset="120">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                Verifi<span>tech</span>
+                <span class="brand-tagline">Trust Simplified</span>
+            </a>
+            
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Industries</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#"><i class="bi bi-gear-wide-connected"></i> Manufacturing</a>
+                            <a class="dropdown-item" href="#"><i class="bi bi-broadcast"></i> Telecom</a>
+                            <a class="dropdown-item" href="#"><i class="bi bi-box-seam"></i> FMCG</a>
+                            <a class="dropdown-item" href="#"><i class="bi bi-globe2"></i> Global Database</a>
+                            <a class="dropdown-item" href="#"><i class="bi bi-airplane"></i> Travel & Hospitality</a>
+                            <a class="dropdown-item" href="#"><i class="bi bi-people"></i> Staffing</a>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#solutions">Solutions</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#" style="color: var(--primary);">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+                
+                <div class="d-flex align-items-center">
+                    <a href="#contact" class="btn btn-sales">Talk to Sales</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blog Hero -->
+    <section class="blog-hero">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="blog-badge">
+                        <i class="bi bi-shield-check"></i>
+                        Compliance Insights
+                    </div>
+                    <h1>The Complete Guide to Global Background Verification: Navigating Cross-Border Compliance in 2026</h1>
+                    <div class="blog-meta">
+                        <div class="blog-meta-item">
+                            <i class="bi bi-calendar3"></i>
+                            February 11, 2026
+                        </div>
+                        <div class="blog-meta-item">
+                            <i class="bi bi-clock"></i>
+                            12 min read
+                        </div>
+                        <div class="blog-meta-item">
+                            <i class="bi bi-eye"></i>
+                            2,847 views
+                        </div>
+                    </div>
+                    <div class="author-info">
+                        <div class="author-avatar">SK</div>
+                        <div class="author-details">
+                            <h5>Sarah Kumar</h5>
+                            <span>Global Compliance Director, Verifitech</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Content Section -->
+    <section class="blog-content-section">
+        <div class="container">
+            <div class="blog-layout">
+                <!-- Left Sidebar - Sticky TOC -->
+                <aside class="blog-left-sidebar">
+                    <div class="toc-sticky-wrapper" id="toc-nav">
+                        <div class="toc-container">
+                            <h4 class="toc-title">
+                                <i class="bi bi-list-nested"></i>
+                                Contents
+                            </h4>
+                            <nav>
+                                <ul class="toc-list">
+                                    <li class="toc-item">
+                                        <a href="#introduction" class="toc-link active">
+                                            <i class="bi bi-chevron-right"></i>
+                                            <span>Introduction</span>
+                                        </a>
+                                    </li>
+                                    <li class="toc-item">
+                                        <a href="#ecosystem" class="toc-link">
+                                            <i class="bi bi-chevron-right"></i>
+                                            <span>Global Verification Ecosystem</span>
+                                        </a>
+                                    </li>
+                                    <li class="toc-item">
+                                        <a href="#privacy" class="toc-link">
+                                            <i class="bi bi-chevron-right"></i>
+                                            <span>Data Privacy Regulations</span>
+                                        </a>
+                                    </li>
+                                    <li class="toc-item">
+                                        <a href="#sanctions" class="toc-link">
+                                            <i class="bi bi-chevron-right"></i>
+                                            <span>Sanctions & PEP Screening</span>
+                                        </a>
+                                    </li>
+                                    <li class="toc-item">
+                                        <a href="#technology" class="toc-link">
+                                            <i class="bi bi-chevron-right"></i>
+                                            <span>Technology & Automation</span>
+                                        </a>
+                                    </li>
+                                    <li class="toc-item">
+                                        <a href="#best-practices" class="toc-link">
+                                            <i class="bi bi-chevron-right"></i>
+                                            <span>Implementation Best Practices</span>
+                                        </a>
+                                    </li>
+                                    <li class="toc-item">
+                                        <a href="#future" class="toc-link">
+                                            <i class="bi bi-chevron-right"></i>
+                                            <span>Future of Verification</span>
+                                        </a>
+                                    </li>
+                                    <li class="toc-item">
+                                        <a href="#conclusion" class="toc-link">
+                                            <i class="bi bi-chevron-right"></i>
+                                            <span>Conclusion</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <div class="toc-progress">
+                                <div class="progress-label">
+                                    <span>Reading Progress</span>
+                                    <span id="progress-percent">0%</span>
+                                </div>
+                                <div class="progress-bar-custom">
+                                    <div class="progress-fill" id="progress-bar"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+                
+                <!-- Main Content -->
+                <main class="blog-main-content">
+                    <article class="blog-article" id="article-content">
+                        <div class="reading-badge">
+                            <i class="bi bi-book-open"></i>
+                            <span id="reading-time">12 min read</span>
+                        </div>
+                        
+                        <section id="introduction" class="content-section">
+                            <p>In an increasingly interconnected world, organizations are no longer confined by geographical boundaries when it comes to talent acquisition. The rise of remote work, global expansion, and distributed teams has made international background verification not just a necessity, but a critical component of risk management strategy. However, navigating the complex web of cross-border compliance requirements presents unique challenges that demand specialized expertise and robust technological infrastructure.</p>
+                            
+                            <p>As we move through 2026, the landscape of global background screening continues to evolve rapidly. New data privacy regulations, emerging sanctions lists, and sophisticated fraud techniques require organizations to adopt more comprehensive and agile verification processes. This guide explores the essential elements of global background verification and provides actionable insights for maintaining compliance across multiple jurisdictions.</p>
+                            
+                            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&h=600&fit=crop" alt="Global Network" class="img-fluid">
+                        </section>
+                        
+                        <section id="ecosystem" class="content-section">
+                            <h2>Understanding the Global Verification Ecosystem</h2>
+                            <p>The global background verification ecosystem is a complex network of data sources, regulatory frameworks, and technological solutions that vary significantly across regions. Unlike domestic screening, which operates within a single legal framework, international verification requires navigating multiple jurisdictions, each with its own data privacy laws, criminal record systems, and cultural nuances.</p>
+                            
+                            <p>Key components of this ecosystem include:</p>
+                            <ul>
+                                <li><strong>Government Databases:</strong> Official criminal records, court systems, and registries maintained by national and local authorities</li>
+                                <li><strong>Commercial Data Providers:</strong> Aggregated databases that compile information from multiple sources for comprehensive screening</li>
+                                <li><strong>International Watchlists:</strong> Sanctions lists, PEP databases, and adverse media sources that track high-risk individuals and entities</li>
+                                <li><strong>Educational Institutions:</strong> Direct verification channels with universities and professional bodies worldwide</li>
+                                <li><strong>Employer Networks:</strong> Former employer verification through international HR networks and direct contact</li>
+                            </ul>
+                            
+                            <div class="highlight-box">
+                                <h4><i class="bi bi-lightbulb"></i> Key Insight</h4>
+                                <p>Organizations that rely solely on automated database checks for international screening miss approximately 30% of relevant information. Human intelligence and local expertise remain crucial for accurate verification in many jurisdictions.</p>
+                            </div>
+                        </section>
+                        
+                        <section id="privacy" class="content-section">
+                            <h2>Navigating Data Privacy Regulations</h2>
+                            <p>Data privacy has become the cornerstone of international background verification. The regulatory landscape is dominated by several major frameworks, each with distinct requirements for data collection, processing, storage, and retention.</p>
+                            
+                            <h3>GDPR and European Compliance</h3>
+                            <p>The General Data Protection Regulation (GDPR) remains the gold standard for data protection, influencing legislation worldwide. For background verification, GDPR requires:</p>
+                            <ul>
+                                <li>Explicit consent from candidates before processing personal data</li>
+                                <li>Clear articulation of lawful basis for processing (typically legitimate interest or consent)</li>
+                                <li>Data minimization principles—collecting only information necessary for the specific role</li>
+                                <li>Retention limits that specify how long data can be stored</li>
+                                <li>Candidate rights including access, rectification, and erasure</li>
+                                <li>Cross-border transfer mechanisms for data moving outside the EU</li>
+                            </ul>
+                            
+                            <h3>APAC Privacy Frameworks</h3>
+                            <p>The Asia-Pacific region presents a patchwork of privacy regulations:</p>
+                            <ul>
+                                <li><strong>Singapore PDPA:</strong> Emphasizes consent and purpose limitation with recent updates strengthening individual rights</li>
+                                <li><strong>India DPDP Act:</strong> New comprehensive framework with significant penalties for non-compliance</li>
+                                <li><strong>China PIPL:</strong> Strict data localization requirements and cross-border transfer restrictions</li>
+                                <li><strong>Australia Privacy Act:</strong> Focus on APP entities and mandatory data breach notifications</li>
+                                <li><strong>Japan APPI:</strong> Recent amendments align more closely with GDPR standards</li>
+                            </ul>
+                            
+                            <blockquote>
+                                The most successful global screening programs treat compliance not as a checkbox exercise, but as a fundamental design principle that shapes every aspect of the verification process.
+                            </blockquote>
+                        </section>
+                        
+                        <section id="sanctions" class="content-section">
+                            <h2>Sanctions and PEP Screening</h2>
+                            <p>Beyond criminal background checks, modern verification must address financial crime risks through comprehensive sanctions and Politically Exposed Persons (PEP) screening.</p>
+                            
+                            <h3>Dynamic Sanctions Landscape</h3>
+                            <p>2026 has seen unprecedented activity in sanctions enforcement, with new designations occurring daily across multiple jurisdictions. Effective screening requires:</p>
+                            <ul>
+                                <li>Real-time monitoring of OFAC, EU, UN, HMT, and other major sanctions lists</li>
+                                <li>AI-powered fuzzy matching to identify name variations and transliterations</li>
+                                <li>Adverse media screening to detect emerging risks before official designation</li>
+                                <li>Automated alerts for status changes and new matches</li>
+                                <li>Audit trails demonstrating compliance efforts to regulators</li>
+                            </ul>
+                            
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=600&fit=crop" alt="Data Analytics" class="img-fluid">
+                        </section>
+                        
+                        <section id="technology" class="content-section">
+                            <h2>Technology and Automation</h2>
+                            <p>Technology has transformed global verification from a manual, time-consuming process to an efficient, scalable operation. However, the human element remains irreplaceable for complex cases and quality assurance.</p>
+                            
+                            <h3>API-First Architecture</h3>
+                            <p>Modern verification platforms leverage API-first architectures that enable:</p>
+                            <ul>
+                                <li>Real-time integration with HRIS and ATS systems</li>
+                                <li>Instant verification for certain data types and jurisdictions</li>
+                                <li>Automated workflow orchestration across multiple checks</li>
+                                <li>Standardized data formats for consistent reporting</li>
+                                <li>Scalable infrastructure that handles volume fluctuations</li>
+                            </ul>
+                            
+                            <h3>Blockchain and Credential Verification</h3>
+                            <p>Emerging technologies are addressing long-standing challenges in credential verification:</p>
+                            <ul>
+                                <li>Blockchain-based academic credentials that prevent fraud</li>
+                                <li>Digital identity frameworks that streamline verification</li>
+                                <li>Smart contracts for automated compliance checking</li>
+                                <li>Decentralized storage giving candidates control over their data</li>
+                            </ul>
+                            
+                            <div class="highlight-box">
+                                <h4><i class="bi bi-graph-up"></i> Trend Alert</h4>
+                                <p>By 2027, an estimated 40% of multinational corporations will adopt continuous monitoring programs that provide ongoing screening rather than point-in-time checks, fundamentally changing the verification landscape.</p>
+                            </div>
+                        </section>
+                        
+                        <section id="best-practices" class="content-section">
+                            <h2>Best Practices for Implementation</h2>
+                            <p>Implementing a global background verification program requires strategic planning and ongoing optimization. Based on our experience with Fortune 500 companies and rapidly scaling startups, we recommend the following framework:</p>
+                            
+                            <h3>1. Risk-Based Approach</h3>
+                            <p>Not all positions require the same level of scrutiny. Develop a risk matrix that considers:</p>
+                            <ul>
+                                <li>Role sensitivity (financial access, data handling, executive level)</li>
+                                <li>Regulatory requirements for specific industries</li>
+                                <li>Geographic risk factors and local compliance standards</li>
+                                <li>Client contractual obligations</li>
+                            </ul>
+                            
+                            <h3>2. Local Partnership Network</h3>
+                            <p>Establish relationships with verified local partners who understand:</p>
+                            <ul>
+                                <li>Regional data privacy requirements and cultural norms</li>
+                                <li>Official channels for criminal and civil record access</li>
+                                <li>Language capabilities for accurate verification</li>
+                                <li>Legal frameworks governing employment screening</li>
+                            </ul>
+                            
+                            <h3>3. Candidate Experience</h3>
+                            <p>Global talent markets are competitive. Streamline the verification process by:</p>
+                            <ul>
+                                <li>Providing clear communication in local languages</li>
+                                <li>Offering mobile-friendly consent and data entry</li>
+                                <li>Setting realistic expectations for turnaround times</li>
+                                <li>Enabling candidate access to their verification status</li>
+                            </ul>
+                        </section>
+                        
+                        <section id="future" class="content-section">
+                            <h2>Looking Ahead: The Future of Global Verification</h2>
+                            <p>As we look toward the remainder of 2026 and beyond, several trends will shape the global verification industry:</p>
+                            
+                            <p><strong>AI and Machine Learning:</strong> Advanced algorithms will improve match accuracy, reduce false positives, and identify complex fraud patterns across jurisdictions. However, human oversight will remain essential for final decisions and complex cases.</p>
+                            
+                            <p><strong>Interoperability Standards:</strong> Industry initiatives are developing common standards for data exchange that will simplify cross-border verification while maintaining security and privacy protections.</p>
+                            
+                            <p><strong>Candidate-Centric Models:</strong> Portable, candidate-owned verification records will empower individuals to share verified credentials across multiple employers, reducing redundancy and improving privacy control.</p>
+                            
+                            <p><strong>Regulatory Convergence:</strong> While perfect harmonization remains unlikely, we're seeing increasing alignment in core privacy principles across major jurisdictions, simplifying compliance for global organizations.</p>
+                        </section>
+                        
+                        <section id="conclusion" class="content-section">
+                            <h2>Conclusion</h2>
+                            <p>Global background verification is no longer optional for organizations operating across borders—it's a fundamental requirement for risk management, regulatory compliance, and maintaining stakeholder trust. Success requires a strategic approach that balances technological efficiency with human expertise, automation with compliance rigor, and speed with accuracy.</p>
+                            
+                            <p>Organizations that invest in robust global verification capabilities today will be better positioned to navigate the evolving regulatory landscape, protect their operations from emerging risks, and build high-trust global teams that drive business success.</p>
+                            
+                            <div class="share-buttons">
+                                <span class="me-3" style="font-weight: 600; color: var(--dark);">Share this article:</span>
+                                <a href="#" class="share-btn linkedin"><i class="bi bi-linkedin"></i></a>
+                                <a href="#" class="share-btn twitter"><i class="bi bi-twitter"></i></a>
+                                <a href="#" class="share-btn facebook"><i class="bi bi-facebook"></i></a>
+                                <a href="#" class="share-btn email"><i class="bi bi-envelope"></i></a>
+                            </div>
+                        </section>
+                    </article>
+                </main>
+                
+                <!-- Right Sidebar -->
+                <aside class="blog-right-sidebar">
+                    <div class="right-sidebar-sticky">
+                        <!-- Subscribe -->
+                        <div class="sidebar-card">
+                            <h4 class="sidebar-title">
+                                <i class="bi bi-envelope-paper"></i>
+                                Subscribe
+                            </h4>
+                            <p style="color: var(--gray); font-size: 0.9rem; margin-bottom: 1rem;">Get compliance insights delivered to your inbox.</p>
+                            <form class="subscribe-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+                                <input type="email" class="form-control" placeholder="Your email address" required>
+                                <button type="submit" class="btn btn-subscribe">
+                                    Subscribe <i class="bi bi-arrow-right"></i>
+                                </button>
+                            </form>
+                            <div class="subscribe-benefits">
+                                <div class="benefit-item">
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    <span>Weekly updates</span>
+                                </div>
+                                <div class="benefit-item">
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    <span>Exclusive reports</span>
+                                </div>
+                                <div class="benefit-item">
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    <span>No spam</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Events -->
+                        <div class="sidebar-card">
+                            <h4 class="sidebar-title">
+                                <i class="bi bi-calendar-event"></i>
+                                Upcoming Events
+                            </h4>
+                            
+                            <div class="event-item">
+                                <div class="event-date">
+                                    <span class="day">25</span>
+                                    <span class="month">Feb</span>
+                                </div>
+                                <div class="event-details">
+                                    <h6>Global Compliance Summit</h6>
+                                    <span><i class="bi bi-geo-alt"></i> Singapore</span>
+                                </div>
+                            </div>
+                            
+                            <div class="event-item">
+                                <div class="event-date">
+                                    <span class="day">12</span>
+                                    <span class="month">Mar</span>
+                                </div>
+                                <div class="event-details">
+                                    <h6>HR Tech Europe</h6>
+                                    <span><i class="bi bi-geo-alt"></i> Amsterdam</span>
+                                </div>
+                            </div>
+                            
+                            <div class="event-item">
+                                <div class="event-date">
+                                    <span class="day">08</span>
+                                    <span class="month">Apr</span>
+                                </div>
+                                <div class="event-details">
+                                    <h6>Privacy & Security Webinar</h6>
+                                    <span><i class="bi bi-camera-video"></i> Virtual</span>
+                                </div>
+                            </div>
+                            
+                            <a href="#" class="btn-view-all">
+                                View All <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                        
+                        <!-- Categories -->
+                        <div class="sidebar-card">
+                            <h4 class="sidebar-title">
+                                <i class="bi bi-tags"></i>
+                                Categories
+                            </h4>
+                            <div>
+                                <a href="#" class="category-tag">Compliance</a>
+                                <a href="#" class="category-tag">Global Screening</a>
+                                <a href="#" class="category-tag">Technology</a>
+                                <a href="#" class="category-tag">Data Privacy</a>
+                                <a href="#" class="category-tag">Best Practices</a>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Posts Section -->
+    <section class="recent-posts-section">
+        <div class="container">
+            <div class="text-center mb-5 reveal">
+                <div class="section-subtitle justify-content-center">
+                    <i class="bi bi-journal-text"></i> More Insights
+                </div>
+                <h2 class="section-title">Recent Articles</h2>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4 reveal">
+                    <div class="blog-card">
+                        <div class="blog-card-image">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <div class="blog-card-content">
+                            <span class="blog-card-category">Compliance</span>
+                            <h3>GDPR 2026: New Amendments Affecting Background Checks</h3>
+                            <p>Understanding the latest regulatory changes and their impact on international screening processes...</p>
+                            <div class="blog-card-meta">
+                                <span><i class="bi bi-calendar3"></i> Feb 8, 2026</span>
+                                <span><i class="bi bi-clock"></i> 8 min</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 reveal">
+                    <div class="blog-card">
+                        <div class="blog-card-image">
+                            <i class="bi bi-cpu"></i>
+                        </div>
+                        <div class="blog-card-content">
+                            <span class="blog-card-category">Technology</span>
+                            <h3>AI in Background Verification: Opportunities and Risks</h3>
+                            <p>Exploring how machine learning is transforming screening accuracy while addressing bias concerns...</p>
+                            <div class="blog-card-meta">
+                                <span><i class="bi bi-calendar3"></i> Feb 5, 2026</span>
+                                <span><i class="bi bi-clock"></i> 10 min</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 reveal">
+                    <div class="blog-card">
+                        <div class="blog-card-image">
+                            <i class="bi bi-globe"></i>
+                        </div>
+                        <div class="blog-card-content">
+                            <span class="blog-card-category">Global</span>
+                            <h3>APAC Hiring Trends: What Employers Need to Know</h3>
+                            <p>Key insights into background verification requirements across Asia-Pacific markets...</p>
+                            <div class="blog-card-meta">
+                                <span><i class="bi bi-calendar3"></i> Feb 1, 2026</span>
+                                <span><i class="bi bi-clock"></i> 6 min</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container position-relative">
+            <div class="row align-items-center">
+                <div class="col-lg-6 reveal">
+                    <h2>Stay Compliant Globally</h2>
+                    <p class="lead">Get expert guidance on international background verification and cross-border compliance.</p>
+                    <a href="#" class="btn btn-light btn-lg rounded-pill px-5 fw-bold" style="color: var(--dark);">
+                        Contact Our Team <i class="bi bi-arrow-right ms-2"></i>
+                    </a>
+                </div>
+                <div class="col-lg-6 reveal">
+                    <div class="row g-4 text-center">
+                        <div class="col-6">
+                            <div class="p-4 bg-white bg-opacity-10 rounded-4">
+                                <i class="bi bi-globe2 text-primary fs-1 mb-2"></i>
+                                <div class="fw-bold fs-4">200+</div>
+                                <small class="text-white-50">Countries</small>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="p-4 bg-white bg-opacity-10 rounded-4">
+                                <i class="bi bi-shield-check text-primary fs-1 mb-2"></i>
+                                <div class="fw-bold fs-4">99.9%</div>
+                                <small class="text-white-50">Accuracy</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h4>Verifi<span>tech</span></h4>
+                    <p class="text-white-50 mb-4">Trust Simplified</p>
+                    <p class="text-white-50 small">Comprehensive background verification solutions for the modern workforce. Global coverage, local expertise.</p>
+                </div>
+                <div class="col-lg-2 col-6">
+                    <h6>Solutions</h6>
+                    <a href="#">Criminal Checks</a>
+                    <a href="#">Employment Verify</a>
+                    <a href="#">Education Check</a>
+                    <a href="#">Global Database</a>
+                </div>
+                <div class="col-lg-2 col-6">
+                    <h6>Industries</h6>
+                    <a href="#">Manufacturing</a>
+                    <a href="#">Technology</a>
+                    <a href="#">Healthcare</a>
+                    <a href="#">Financial Services</a>
+                </div>
+                <div class="col-lg-2 col-6">
+                    <h6>Resources</h6>
+                    <a href="#">Blog</a>
+                    <a href="#">Case Studies</a>
+                    <a href="#">Compliance Guides</a>
+                    <a href="#">API Docs</a>
+                </div>
+                <div class="col-lg-2 col-6">
+                    <h6>Company</h6>
+                    <a href="#">About Us</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+            <hr>
+            <div class="row align-items-center">
+                <div class="col-md-6 small text-white-50">
+                    &copy; 2026 Verifitech Solutions. All rights reserved.
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="d-flex gap-3 justify-content-md-end">
+                        <a href="#" class="text-white"><i class="bi bi-linkedin fs-5"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-twitter fs-5"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-youtube fs-5"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Table of Contents Active State & Smooth Scroll
+        const tocLinks = document.querySelectorAll('.toc-link');
+        const sections = document.querySelectorAll('.content-section');
+        const progressBar = document.getElementById('progress-bar');
+        const progressPercent = document.getElementById('progress-percent');
+
+        // Smooth scroll for TOC links
+        tocLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    const offsetTop = targetSection.offsetTop - 100;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Scroll spy and progress
+        function updateActiveSection() {
+            const scrollPosition = window.scrollY + 150;
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            
+            // Update progress bar
+            const scrollPercent = (window.scrollY / (documentHeight - windowHeight)) * 100;
+            progressBar.style.width = Math.min(scrollPercent, 100) + '%';
+            progressPercent.textContent = Math.round(Math.min(scrollPercent, 100)) + '%';
+            
+            // Update active TOC link
+            sections.forEach((section, index) => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    tocLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === '#' + sectionId) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveSection);
+        window.addEventListener('load', updateActiveSection);
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Calculate reading time dynamically
+        function calculateReadingTime() {
+            const article = document.getElementById('article-content');
+            const text = article.innerText;
+            const wordCount = text.split(/\s+/).length;
+            const readingTime = Math.ceil(wordCount / 200);
+            document.getElementById('reading-time').textContent = readingTime + ' min read';
+        }
+
+        calculateReadingTime();
+    </script>
+</body>
+</html>
