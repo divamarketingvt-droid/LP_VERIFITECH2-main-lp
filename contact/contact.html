@@ -1,2233 +1,2069 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Schedule a Demo | Verifitech</title>
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Talk to Sales | Contact Our Team | Verifitech</title>
+    <meta
+      name="description"
+      content="Connect with Verifitech sales team for background verification solutions. Schedule a demo, discuss pricing, or get support. Offices in India, UAE, and USA."
+    />
+
     <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Flatpickr -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <style>
-        :root {
-            --primary: #1ac2c1;
-            --primary-dark: #16a8a7;
-            --primary-light: #e0f7f7;
-            --primary-lighter: #f0fdfa;
-            --dark: #0f172a;
-            --navy: #1e293b;
-            --gray: #64748b;
-            --light-gray: #f8fafc;
-            --white: #ffffff;
-            --border-gray: #e2e8f0;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --purple: #8b5cf6;
-            --orange: #f97316;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html, body {
-            font-family: 'Inter', sans-serif;
-            color: var(--dark);
-            line-height: 1.6;
-            background: linear-gradient(135deg, #f0fdfa 0%, #ffffff 50%, #eff6ff 100%);
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-        
-        /* ================= MODAL BASE STYLES ================= */
-        .demo-modal {
-            padding: 0 !important;
-        }
-        
-        .demo-modal .modal-dialog {
-            max-width: 1000px;
-            margin: 20px auto;
-            height: calc(100vh - 40px);
-            max-height: 800px;
-        }
-        
-        @media (max-width: 1024px) {
-            .demo-modal .modal-dialog {
-                max-width: 95vw;
-                margin: 10px auto;
-                height: calc(100vh - 20px);
-                max-height: none;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .demo-modal .modal-dialog {
-                max-width: 100vw;
-                margin: 0;
-                height: 100vh;
-                max-height: none;
-                border-radius: 0;
-            }
-        }
-        
-        .demo-modal .modal-content {
-            border: none;
-            border-radius: 24px;
-            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.15);
-            overflow: hidden;
-            height: 100%;
-        }
-        
-        @media (max-width: 768px) {
-            .demo-modal .modal-content {
-                border-radius: 0;
-            }
-        }
-        
-        .demo-modal .modal-body {
-            padding: 0;
-            height: 100%;
-            overflow: hidden;
-        }
-        
-        .demo-container {
-            display: flex;
-            height: 100%;
-        }
-        
-        @media (max-width: 991px) {
-            .demo-container {
-                flex-direction: column;
-            }
-        }
-        
-        /* ================= LEFT SIDE PANEL ================= */
-        .demo-content {
-            flex: 0 0 38%;
-            padding: 48px 40px;
-            background: linear-gradient(160deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        @media (max-width: 1024px) {
-            .demo-content {
-                padding: 32px 24px;
-            }
-        }
-        
-        @media (max-width: 991px) {
-            .demo-content {
-                flex: none;
-                padding: 24px 20px;
-                min-height: auto;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .demo-content {
-                padding: 20px 16px;
-            }
-        }
-        
-        .demo-content::before {
-            content: '';
-            position: absolute;
-            top: -20%;
-            right: -40%;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(26, 194, 193, 0.25) 0%, transparent 60%);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        .demo-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background: rgba(26, 194, 193, 0.15);
-            color: var(--primary);
-            border-radius: 50px;
-            font-size: 11px;
-            font-weight: 700;
-            margin-bottom: 24px;
-            border: 1px solid rgba(26, 194, 193, 0.3);
-            width: fit-content;
-            position: relative;
-            z-index: 1;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            backdrop-filter: blur(10px);
-        }
-        
-        .demo-content h2 {
-            font-size: 32px;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 32px;
-            color: white;
-            letter-spacing: -0.5px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        @media (max-width: 1024px) {
-            .demo-content h2 {
-                font-size: 26px;
-                margin-bottom: 24px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .demo-content h2 {
-                font-size: 22px;
-                margin-bottom: 16px;
-            }
-        }
-        
-        .demo-content h2 span {
-            background: linear-gradient(135deg, var(--primary) 0%, #60a5fa 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .benefits-list {
-            position: relative;
-            z-index: 1;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        @media (max-width: 991px) {
-            .benefits-list {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .benefits-list {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        .benefits-list li {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 20px;
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.9);
-        }
-        
-        @media (max-width: 1024px) {
-            .benefits-list li {
-                margin-bottom: 16px;
-                font-size: 13px;
-            }
-        }
-        
-        @media (max-width: 991px) {
-            .benefits-list li {
-                margin-bottom: 0;
-            }
-        }
-        
-        .benefit-icon {
-            width: 36px;
-            height: 36px;
-            background: rgba(26, 194, 193, 0.15);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-size: 16px;
-            flex-shrink: 0;
-            border: 1px solid rgba(26, 194, 193, 0.2);
-        }
-        
-        .benefit-text {
-            font-weight: 500;
-        }
-        
-        /* ================= RIGHT SIDE FORM AREA ================= */
-        .demo-form-section {
-            flex: 1;
-            padding: 32px 40px;
-            background: white;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            overflow: hidden;
-            min-width: 0;
-        }
-        
-        @media (max-width: 1024px) {
-            .demo-form-section {
-                padding: 24px 28px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .demo-form-section {
-                padding: 20px 16px;
-            }
-        }
-        
-        /* ================= PROGRESS STEPS ================= */
-        .progress-steps {
-            display: flex;
-            align-items: center;
-            margin-bottom: 24px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid var(--border-gray);
-            flex-shrink: 0;
-        }
-        
-        @media (max-width: 576px) {
-            .progress-steps {
-                margin-bottom: 16px;
-                padding-bottom: 12px;
-            }
-        }
-        
-        .step {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--gray);
-            white-space: nowrap;
-        }
-        
-        @media (max-width: 576px) {
-            .step span:not(.step-number) {
-                display: none;
-            }
-        }
-        
-        .step.active {
-            color: var(--primary);
-        }
-        
-        .step.completed {
-            color: var(--success);
-        }
-        
-        .step-number {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background: var(--light-gray);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: 700;
-            border: 2px solid var(--border-gray);
-            flex-shrink: 0;
-        }
-        
-        .step.active .step-number {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-        
-        .step.completed .step-number {
-            background: var(--success);
-            color: white;
-            border-color: var(--success);
-        }
-        
-        .step-line {
-            flex: 1;
-            height: 2px;
-            background: var(--border-gray);
-            margin: 0 12px;
-            max-width: 60px;
-        }
-        
-        @media (max-width: 576px) {
-            .step-line {
-                margin: 0 8px;
-            }
-        }
-        
-        .step-line.completed {
-            background: var(--success);
-        }
-        
-        /* ================= FORM STEPS ================= */
-        .form-steps-wrapper {
-            flex: 1;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .form-step {
-            display: none;
-            flex-direction: column;
-            height: 100%;
-            animation: slideIn 0.3s ease;
-            overflow: hidden;
-        }
-        
-        .form-step.active {
-            display: flex;
-        }
-        
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(20px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        
-        .form-header {
-            margin-bottom: 20px;
-            flex-shrink: 0;
-        }
-        
-        @media (max-width: 576px) {
-            .form-header {
-                margin-bottom: 16px;
-            }
-        }
-        
-        .form-header h3 {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 4px;
-        }
-        
-        @media (max-width: 768px) {
-            .form-header h3 {
-                font-size: 18px;
-            }
-        }
-        
-        .form-header p {
-            font-size: 14px;
-            color: var(--gray);
-            margin: 0;
-        }
-        
-        @media (max-width: 768px) {
-            .form-header p {
-                font-size: 13px;
-            }
-        }
-        
-        /* ================= FORM CONTENT SCROLLABLE AREA ================= */
-        .form-content {
-            flex: 1;
-            overflow-y: auto;
-            overflow-x: hidden;
-            padding-right: 8px;
-            margin-right: -8px;
-        }
-        
-        .form-content::-webkit-scrollbar {
-            width: 6px;
-        }
-        
-        .form-content::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        
-        .form-content::-webkit-scrollbar-thumb {
-            background: var(--border-gray);
-            border-radius: 3px;
-        }
-        
-        .demo-form .form-group {
-            margin-bottom: 20px;
-        }
-        
-        @media (max-width: 576px) {
-            .demo-form .form-group {
-                margin-bottom: 16px;
-            }
-        }
-        
-        .demo-form label {
-            display: block;
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .demo-form .form-control {
-            border: 1.5px solid var(--border-gray);
-            border-radius: 10px;
-            padding: 12px 16px;
-            font-size: 14px;
-            font-weight: 400;
-            color: var(--dark);
-            background: white;
-            transition: all 0.2s ease;
-            height: 48px;
-        }
-        
-        @media (max-width: 576px) {
-            .demo-form .form-control {
-                height: 44px;
-                font-size: 16px;
-            }
-        }
-        
-        .demo-form .form-control:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(26, 194, 193, 0.1);
-            outline: none;
-        }
-        
-        /* ================= WORKABLE SERVICE SELECTION (3 CARDS) ================= */
-        .services-selection {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-        
-        @media (max-width: 1024px) {
-            .services-selection {
-                gap: 12px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .services-selection {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-        }
-        
-        .service-card {
-            position: relative;
-            cursor: pointer;
-        }
-        
-        /* Hide radio but keep it functional */
-        .service-card input[type="radio"] {
-            position: absolute;
-            opacity: 0;
-            width: 0;
-            height: 0;
-            margin: 0;
-            padding: 0;
-            pointer-events: none;
-        }
-        
-        .service-card-inner {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 24px 16px;
-            border: 2px solid var(--border-gray);
-            border-radius: 16px;
-            background: white;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            text-align: center;
-            height: 100%;
-            position: relative;
-        }
-        
-        @media (max-width: 1024px) {
-            .service-card-inner {
-                padding: 20px 12px;
-            }
-        }
-        
-        /* Hover state */
-        .service-card:hover .service-card-inner {
-            border-color: var(--primary);
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-        }
-        
-        /* Selected state - works with checked radio */
-        .service-card input[type="radio"]:checked + .service-card-inner {
-            border-color: var(--primary);
-            background: linear-gradient(135deg, var(--primary-lighter) 0%, white 100%);
-            box-shadow: 0 8px 32px rgba(26, 194, 193, 0.15);
-        }
-        
-        .service-card-icon {
-            width: 64px;
-            height: 64px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 16px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        @media (max-width: 1024px) {
-            .service-card-icon {
-                width: 56px;
-                height: 56px;
-                margin-bottom: 12px;
-            }
-        }
-        
-        .service-card-icon::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 16px;
-            opacity: 0.1;
-            transition: all 0.3s ease;
-        }
-        
-        /* Card specific colors */
-        .bgv-card .service-card-icon { 
-            background: #fef3c7; 
-            color: #f59e0b; 
-        }
-        .bgv-card .service-card-icon::before { 
-            background: #f59e0b; 
-        }
-        
-        .exit-card .service-card-icon { 
-            background: #ede9fe; 
-            color: #8b5cf6; 
-        }
-        .exit-card .service-card-icon::before { 
-            background: #8b5cf6; 
-        }
-        
-        .psycho-card .service-card-icon { 
-            background: #dbeafe; 
-            color: #3b82f6; 
-        }
-        .psycho-card .service-card-icon::before { 
-            background: #3b82f6; 
-        }
-        
-        .service-card:hover .service-card-icon::before,
-        .service-card input[type="radio"]:checked + .service-card-inner .service-card-icon::before {
-            opacity: 0.2;
-            transform: scale(1.1);
-        }
-        
-        .service-card input[type="radio"]:checked + .service-card-inner .service-card-icon {
-            transform: scale(1.05);
-        }
-        
-        .service-card-icon i {
-            font-size: 28px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        @media (max-width: 1024px) {
-            .service-card-icon i {
-                font-size: 24px;
-            }
-        }
-        
-        .service-card h4 {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--dark);
-            margin: 0 0 8px 0;
-        }
-        
-        @media (max-width: 1024px) {
-            .service-card h4 {
-                font-size: 14px;
-            }
-        }
-        
-        .service-card p {
-            font-size: 13px;
-            color: var(--gray);
-            margin: 0;
-            line-height: 1.4;
-        }
-        
-        @media (max-width: 1024px) {
-            .service-card p {
-                font-size: 12px;
-            }
-        }
-        
-        .service-check {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            width: 24px;
-            height: 24px;
-            background: var(--border-gray);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 12px;
-            opacity: 0;
-            transform: scale(0);
-            transition: all 0.3s ease;
-        }
-        
-        .service-card input[type="radio"]:checked + .service-card-inner .service-check {
-            opacity: 1;
-            transform: scale(1);
-            background: var(--primary);
-        }
-        
-        /* ================= CANDIDATES INPUT ================= */
-        .candidates-wrapper {
-            background: linear-gradient(135deg, var(--light-gray) 0%, white 100%);
-            border-radius: 16px;
-            padding: 20px;
-            border: 2px solid var(--border-gray);
-        }
-        
-        .candidates-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 12px;
-        }
-        
-        .candidates-label {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--dark);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin: 0;
-        }
-        
-        .candidates-badge {
-            padding: 4px 10px;
-            background: var(--primary-light);
-            color: var(--primary-dark);
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 700;
-        }
-        
-        .candidates-input-box {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 12px;
-        }
-        
-        @media (max-width: 576px) {
-            .candidates-input-box {
-                flex-direction: column;
-            }
-        }
-        
-        .candidates-field {
-            flex: 1;
-            position: relative;
-        }
-        
-        .candidates-field i {
-            position: absolute;
-            left: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--gray);
-            font-size: 18px;
-        }
-        
-        .candidates-field input {
-            width: 100%;
-            border: 1.5px solid var(--border-gray);
-            border-radius: 12px;
-            padding: 14px 16px 14px 48px;
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--dark);
-            background: white;
-            transition: all 0.2s ease;
-        }
-        
-        .candidates-field input:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(26, 194, 193, 0.1);
-            outline: none;
-        }
-        
-        .candidates-presets {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-        
-        .preset-btn {
-            padding: 8px 16px;
-            background: white;
-            border: 1.5px solid var(--border-gray);
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--gray);
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        
-        .preset-btn:hover, .preset-btn.active {
-            border-color: var(--primary);
-            background: var(--primary);
-            color: white;
-        }
-        
-        /* ================= CALENDAR SECTION ================= */
-        .calendar-section {
-            display: flex;
-            gap: 24px;
-            margin-bottom: 20px;
-        }
-        
-        @media (max-width: 1024px) {
-            .calendar-section {
-                flex-direction: column;
-                gap: 16px;
-            }
-        }
-        
-        .calendar-left {
-            flex: 0 0 300px;
-        }
-        
-        @media (max-width: 1024px) {
-            .calendar-left {
-                flex: none;
-                width: 100%;
-            }
-        }
-        
-        .flatpickr-calendar {
-            box-shadow: none;
-            border: 1.5px solid var(--border-gray);
-            border-radius: 16px;
-            width: 100% !important;
-            padding: 16px;
-        }
-        
-        .flatpickr-month {
-            height: 40px;
-            margin-bottom: 8px;
-        }
-        
-        .flatpickr-current-month {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--dark);
-        }
-        
-        .flatpickr-weekdays {
-            margin-bottom: 8px;
-        }
-        
-        .flatpickr-weekday {
-            font-size: 11px;
-            font-weight: 700;
-            color: var(--gray);
-        }
-        
-        .flatpickr-day {
-            font-size: 13px;
-            height: 36px;
-            line-height: 36px;
-            border-radius: 8px;
-            margin: 2px;
-            font-weight: 600;
-        }
-        
-        .flatpickr-day.selected {
-            background: var(--primary);
-            border-color: var(--primary);
-            color: white;
-            box-shadow: 0 4px 12px rgba(26, 194, 193, 0.3);
-        }
-        
-        .flatpickr-day.today {
-            border-color: var(--primary);
-            color: var(--primary);
-            background: var(--primary-light);
-        }
-        
-        /* Time Slots */
-        .time-slots-section {
-            flex: 1;
-            min-height: 0;
-        }
-        
-        .time-slots-header {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .slots-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 8px;
-        }
-        
-        @media (max-width: 576px) {
-            .slots-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        .time-slot {
-            padding: 12px;
-            border: 1.5px solid var(--border-gray);
-            border-radius: 10px;
-            text-align: center;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--dark);
-            cursor: pointer;
-            transition: all 0.2s ease;
-            background: white;
-        }
-        
-        .time-slot:hover:not(.disabled) {
-            border-color: var(--primary);
-            color: var(--primary);
-            background: var(--primary-light);
-        }
-        
-        .time-slot.selected {
-            border-color: var(--primary);
-            background: var(--primary);
-            color: white;
-        }
-        
-        .time-slot.disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-            background: var(--light-gray);
-            text-decoration: line-through;
-        }
-        
-        /* Meeting Platforms */
-        .meeting-platforms {
-            margin-top: 16px;
-        }
-        
-        .platforms-title {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .platform-options {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-        }
-        
-        @media (max-width: 576px) {
-            .platform-options {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        .platform-radio {
-            position: relative;
-        }
-        
-        .platform-radio input {
-            position: absolute;
-            opacity: 0;
-        }
-        
-        .platform-radio label {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 16px;
-            border: 2px solid var(--border-gray);
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            background: white;
-            margin: 0;
-        }
-        
-        @media (max-width: 576px) {
-            .platform-radio label {
-                padding: 12px;
-            }
-        }
-        
-        .platform-radio label:hover {
-            border-color: var(--primary);
-        }
-        
-        .platform-radio input:checked + label {
-            border-color: var(--primary);
-            background: var(--primary-lighter);
-        }
-        
-        .platform-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            flex-shrink: 0;
-        }
-        
-        .zoho .platform-icon { background: #fef3c7; color: #f59e0b; }
-        .teams .platform-icon { background: #e0e7ff; color: #4f46e5; }
-        .google .platform-icon { background: #fce7f3; color: #db2777; }
-        
-        .platform-radio input:checked + label .platform-icon {
-            background: var(--primary);
-            color: white;
-        }
-        
-        .platform-info h5 {
-            font-size: 14px;
-            font-weight: 700;
-            margin: 0 0 2px 0;
-            color: var(--dark);
-        }
-        
-        .platform-info p {
-            font-size: 12px;
-            color: var(--gray);
-            margin: 0;
-        }
-        
-        /* Selected Info */
-        .selected-info {
-            background: var(--primary-lighter);
-            border: 1.5px solid var(--primary-light);
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 14px;
-            color: var(--dark);
-            font-weight: 600;
-        }
-        
-        .selected-info i {
-            color: var(--primary);
-            font-size: 20px;
-        }
-        
-        /* ================= BUTTONS ================= */
-        .form-actions {
-            display: flex;
-            gap: 12px;
-            margin-top: auto;
-            padding-top: 20px;
-            flex-shrink: 0;
-        }
-        
-        @media (max-width: 576px) {
-            .form-actions {
-                flex-direction: column;
-                padding-top: 16px;
-            }
-        }
-        
-        .btn-primary-custom {
-            flex: 1;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
-            border: none;
-            padding: 14px 24px;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 15px;
-            transition: all 0.25s ease;
-            box-shadow: 0 4px 15px rgba(26, 194, 193, 0.3);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            height: 52px;
-        }
-        
-        @media (max-width: 576px) {
-            .btn-primary-custom {
-                height: 48px;
-                font-size: 14px;
-            }
-        }
-        
-        .btn-primary-custom:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(26, 194, 193, 0.4);
-        }
-        
-        .btn-primary-custom:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-        }
-        
-        .btn-secondary-custom {
-            padding: 14px 24px;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 15px;
-            border: 1.5px solid var(--border-gray);
-            background: white;
-            color: var(--gray);
-            transition: all 0.2s ease;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            height: 52px;
-        }
-        
-        @media (max-width: 576px) {
-            .btn-secondary-custom {
-                height: 48px;
-                font-size: 14px;
-            }
-        }
-        
-        .btn-secondary-custom:hover {
-            border-color: var(--dark);
-            color: var(--dark);
-        }
-        
-        /* ================= SUCCESS STATE ================= */
-        .success-container {
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            height: 100%;
-            text-align: center;
-            padding: 20px 0;
-            animation: fadeIn 0.4s ease;
-            overflow-y: auto;
-        }
-        
-        .success-container.active {
-            display: flex;
-        }
-        
-        .success-header {
-            margin-bottom: 24px;
-            flex-shrink: 0;
-        }
-        
-        .success-animation {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-lighter) 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 16px;
-            position: relative;
-            border: 3px solid var(--primary-light);
-        }
-        
-        .success-pulse {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: var(--primary);
-            opacity: 0.2;
-            animation: pulse-ring 2s ease-out infinite;
-        }
-        
-        @keyframes pulse-ring {
-            0% { transform: scale(1); opacity: 0.3; }
-            100% { transform: scale(1.5); opacity: 0; }
-        }
-        
-        .success-animation i {
-            font-size: 40px;
-            color: var(--primary);
-            position: relative;
-            z-index: 1;
-        }
-        
-        .success-header h3 {
-            font-size: 24px;
-            font-weight: 800;
-            color: var(--dark);
-            margin: 0 0 8px 0;
-        }
-        
-        .success-header p {
-            color: var(--gray);
-            margin: 0;
-            font-size: 14px;
-        }
-        
-        /* Booking Summary */
-        .booking-summary {
-            background: white;
-            border: 2px solid var(--border-gray);
-            border-radius: 16px;
-            padding: 20px;
-            width: 100%;
-            max-width: 420px;
-            margin-bottom: 20px;
-            text-align: left;
-        }
-        
-        .summary-title {
-            font-size: 12px;
-            font-weight: 800;
-            color: var(--gray);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 16px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid var(--border-gray);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .summary-title i {
-            color: var(--primary);
-        }
-        
-        .summary-row {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-        
-        .summary-row:last-child {
-            margin-bottom: 0;
-        }
-        
-        .summary-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--light-gray);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-size: 18px;
-            flex-shrink: 0;
-        }
-        
-        .summary-text h4 {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--dark);
-            margin: 0 0 2px 0;
-        }
-        
-        .summary-text p {
-            font-size: 13px;
-            color: var(--gray);
-            margin: 0;
-        }
-        
-        /* Calendar Actions */
-        .calendar-actions-title {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--gray);
-            margin-bottom: 12px;
-        }
-        
-        .calendar-actions {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-        
-        .btn-calendar {
-            padding: 10px 16px;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 13px;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.2s ease;
-            border: none;
-        }
-        
-        .btn-calendar.google { background: #4285f4; color: white; }
-        .btn-calendar.outlook { background: #0078d4; color: white; }
-        .btn-calendar.ical { background: var(--dark); color: white; }
-        
-        .btn-calendar:hover {
-            transform: translateY(-2px);
-            opacity: 0.9;
-        }
-        
-        /* Close Button */
-        .btn-close-custom {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            z-index: 100;
-            color: white;
-            font-size: 20px;
-        }
-        
-        .btn-close-custom:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: rotate(90deg);
-        }
-        
-        @media (max-width: 768px) {
-            .btn-close-custom {
-                top: 16px;
-                right: 16px;
-                width: 36px;
-                height: 36px;
-                font-size: 18px;
-            }
-        }
-        
-        /* Form Footer */
-        .form-footer {
-            text-align: center;
-            font-size: 12px;
-            color: var(--gray);
-            margin-top: auto;
-            padding-top: 16px;
-            flex-shrink: 0;
-        }
-        
-        .form-footer a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-        }
-        
-        /* Loading State */
-        .btn-loading {
-            position: relative;
-            color: transparent !important;
-        }
-        
-        .btn-loading::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            top: 50%;
-            left: 50%;
-            margin-left: -10px;
-            margin-top: -10px;
-            border: 2px solid #ffffff;
-            border-radius: 50%;
-            border-top-color: transparent;
-            animation: spinner 0.8s linear infinite;
-        }
-        
-        @keyframes spinner {
-            to { transform: rotate(360deg); }
-        }
-        
-        /* ================= PAGE DEMO ================= */
-        .page-demo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            flex-direction: column;
-            gap: 20px;
-            padding: 20px;
-        }
-        
-        .page-demo h1 {
-            font-weight: 800;
-            color: var(--dark);
-            text-align: center;
-            font-size: clamp(28px, 5vw, 48px);
-            line-height: 1.2;
-        }
-        
-        .btn-schedule-demo {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white !important;
-            border: none;
-            padding: 18px 36px;
-            border-radius: 14px;
-            font-weight: 700;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(26, 194, 193, 0.3);
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-        
-        @media (max-width: 576px) {
-            .btn-schedule-demo {
-                padding: 16px 28px;
-                font-size: 15px;
-                width: 100%;
-                justify-content: center;
-            }
-        }
-        
-        .btn-schedule-demo:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(26, 194, 193, 0.4);
-        }
-        
-        /* Hide scrollbar for success container */
-        .success-container::-webkit-scrollbar {
-            width: 4px;
-        }
-        
-        .success-container::-webkit-scrollbar-thumb {
-            background: var(--border-gray);
-            border-radius: 2px;
-        }
-        
-        /* Error Message */
-        .error-message {
-            background: #fee2e2;
-            border: 1px solid #fecaca;
-            color: #dc2626;
-            padding: 12px 16px;
-            border-radius: 8px;
-            margin-bottom: 16px;
-            font-size: 14px;
-            display: none;
-        }
-        
-        .error-message.show {
-            display: block;
-        }
+      :root {
+        --primary: #1ac2c1;
+        --primary-dark: #16a8a7;
+        --primary-light: #e0f7f7;
+        --dark: #0f172a;
+        --navy: #1e293b;
+        --gray: #64748b;
+        --light-gray: #f8fafc;
+        --white: #ffffff;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        color: var(--dark);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+   
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ============================================
+   Z-INDEX FIXES - KEEP THESE AT TOP
+   ============================================ */
+
+/* Ensure navbar has proper z-index */
+.navbar {
+  z-index: 1050;
+}
+
+/* Fix dropdown z-index to appear above hero content */
+.dropdown-menu {
+  z-index: 1060;
+  position: absolute;
+}
+
+/* Ensure dropdown items are clickable and visible */
+.dropdown-item {
+  position: relative;
+  z-index: 1061;
+}
+
+/* Fix for hero section overlapping */
+.industry-hero {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================
+   NAVBAR & NAVIGATION STYLES
+   ============================================ */
+
+.navbar {
+  padding: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  height: 80px;
+}
+
+.navbar.scrolled {
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Mobile navbar collapse background */
+.navbar-collapse {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+@media (min-width: 992px) {
+  .navbar-collapse {
+    background: transparent;
+    backdrop-filter: none;
+    padding: 0;
+    margin-top: 0;
+    box-shadow: none;
+  }
+}
+
+.navbar-brand {
+  font-weight: 800;
+  font-size: 1.8rem;
+  color: var(--dark);
+  letter-spacing: -0.5px;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+  transition: color 0.3s;
+}
+
+.navbar-brand img {
+  height: 80px;
+  width: 200px;
+  object-fit: contain;
+  display: block;
+}
+
+.navbar-brand span {
+  color: var(--primary);
+}
+
+.brand-tagline {
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: var(--gray);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.nav-link {
+  font-weight: 600;
+  color: var(--navy);
+  margin: 0 0.6rem;
+  position: relative;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  padding: 2rem 0.5rem !important;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-link:hover {
+  color: var(--primary);
+}
+
+/* ============================================
+   DROPDOWN MENU STYLES
+   ============================================ */
+
+.dropdown-menu {
+  border: none;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  min-width: 280px;
+  border-top: 3px solid var(--primary);
+  transition: all 0.3s ease;
+}
+
+.dropdown-menu.mega-menu {
+  min-width: 600px;
+  padding: 1.5rem;
+}
+
+.dropdown-item {
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--navy);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dropdown-item:hover {
+  background: var(--primary-light);
+  color: var(--primary);
+  transform: translateX(5px);
+}
+
+.dropdown-item i {
+  font-size: 1.1rem;
+  color: var(--primary);
+  transition: color 0.3s;
+}
+
+.dropdown-header {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 1rem;
+}
+
+.dropdown-divider {
+  margin: 0.8rem 0;
+  opacity: 0.1;
+}
+
+/* ============================================
+   BUTTON STYLES
+   ============================================ */
+
+/* CTA Button - Talk to Sales */
+.btn-sales {
+  background: var(--primary);
+  color: white !important;
+  border: none;
+  padding: 0.6rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  margin-left: 1rem;
+  box-shadow: 0 4px 15px rgba(26, 194, 193, 0.3);
+}
+
+.btn-sales:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(26, 194, 193, 0.4);
+}
+
+/* Login Button */
+.btn-login {
+  background-color: #ffffff !important;
+  color: #00bfa5 !important;
+  border: 1px solid #00bfa5 !important;
+  box-shadow: 0 2px 8px rgba(0, 191, 165, 0.3) !important;
+  padding: 8px 24px;
+  border-radius: 6px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin: 12px;
+}
+
+.btn-login:hover {
+  background-color: #00bfa5 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(0, 191, 165, 0.4) !important;
+  transform: translateY(-1px);
+}
+
+/* ============================================
+   COUNTRY SELECTOR - WHITE ARROW REMOVED
+   ============================================ */
+
+.country-selector {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--navy);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: 1rem;
+}
+
+.country-selector:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* Remove Bootstrap's default white arrow from country selector */
+.country-selector.dropdown-toggle::after {
+  display: none !important;
+  content: none !important;
+  border: none !important;
+}
+
+/* Style the custom chevron icon */
+.country-selector i.bi-chevron-down {
+  font-size: 0.7rem;
+  color: var(--navy);
+  transition: transform 0.3s ease;
+}
+
+.country-selector:hover i.bi-chevron-down {
+  color: var(--primary);
+}
+
+/* Rotate chevron when dropdown is open */
+.country-selector[aria-expanded="true"] i.bi-chevron-down {
+  transform: rotate(180deg);
+}
+
+.country-flag {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+      /* Hero Section */
+      .sales-hero {
+        padding: 140px 0 80px;
+        background: linear-gradient(
+          135deg,
+          #f0fdfa 0%,
+          #ffffff 50%,
+          #ccfbf1 100%
+        );
+        position: relative;
+        overflow: hidden;
+      }
+
+      .sales-hero::before {
+        content: "";
+        position: absolute;
+        top: -20%;
+        right: -10%;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(26, 194, 193, 0.1) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+      }
+
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0.6rem 1.2rem;
+        background: rgba(26, 194, 193, 0.1);
+        color: var(--primary-dark);
+        border-radius: 50px;
+        font-size: 0.95rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        border: 1px solid rgba(26, 194, 193, 0.2);
+      }
+
+      .sales-hero h1 {
+        font-size: 3.8rem;
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+        color: var(--dark);
+        letter-spacing: -1.5px;
+      }
+
+      .sales-hero .lead {
+        font-size: 1.35rem;
+        color: var(--gray);
+        max-width: 600px;
+        margin-bottom: 2.5rem;
+        line-height: 1.6;
+      }
+
+      /* Contact Cards */
+      .contact-info-section {
+        padding: 60px 0;
+        background: white;
+      }
+
+      .contact-card-large {
+        background: white;
+        border-radius: 20px;
+        padding: 2.5rem;
+        text-align: center;
+        border: 1px solid #e2e8f0;
+        transition: all 0.4s ease;
+        height: 100%;
+      }
+
+      .contact-card-large:hover {
+        border-color: var(--primary);
+        transform: translateY(-5px);
+        box-shadow: 0 25px 50px rgba(26, 194, 193, 0.12);
+      }
+
+      .contact-icon-xl {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, var(--primary-light), white);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary);
+        font-size: 2rem;
+        margin: 0 auto 1.5rem;
+        border: 2px solid rgba(26, 194, 193, 0.2);
+      }
+
+      .contact-card-large h3 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+
+      .contact-card-large .detail {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--primary);
+        text-decoration: none;
+        display: block;
+        margin-bottom: 0.5rem;
+        transition: color 0.3s;
+      }
+
+      .contact-card-large .detail:hover {
+        color: var(--primary-dark);
+      }
+
+      .contact-card-large .label {
+        color: var(--gray);
+        font-size: 0.9rem;
+      }
+
+      /* Form Section */
+      .form-section {
+        padding: 80px 0;
+        background: var(--light-gray);
+      }
+
+      .section-header {
+        margin-bottom: 3rem;
+      }
+
+      .section-subtitle {
+        color: var(--primary);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        background: rgba(26, 194, 193, 0.1);
+        border-radius: 50px;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--dark);
+        margin-bottom: 1rem;
+        line-height: 1.2;
+        letter-spacing: -1px;
+      }
+
+      .section-desc {
+        color: var(--gray);
+        font-size: 1.15rem;
+        max-width: 700px;
+        line-height: 1.7;
+      }
+
+      /* Form Styling */
+      .demo-form {
+        background: white;
+        border-radius: 24px;
+        padding: 3rem;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+      }
+
+      .form-label {
+        font-weight: 600;
+        color: var(--dark);
+        margin-bottom: 0.5rem;
+        font-size: 0.95rem;
+      }
+
+      .form-control,
+      .form-select {
+        padding: 1rem 1.2rem;
+        border-radius: 12px;
+        border: 1px solid #e2e8f0;
+        background: white;
+        color: var(--dark);
+        font-size: 1rem;
+        transition: all 0.3s;
+        margin-bottom: 0.5rem;
+      }
+
+      .form-control:focus,
+      .form-select:focus {
+        background: white;
+        border-color: var(--primary);
+        color: var(--dark);
+        box-shadow: 0 0 0 4px rgba(26, 194, 193, 0.1);
+      }
+
+      .form-control::placeholder {
+        color: #94a3b8;
+      }
+
+      .form-check {
+        margin-top: 1rem;
+      }
+
+      .form-check-input {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        border-color: #e2e8f0;
+        cursor: pointer;
+      }
+
+      .form-check-input:checked {
+        background-color: var(--primary);
+        border-color: var(--primary);
+      }
+
+      .form-check-label {
+        color: var(--gray);
+        font-size: 0.95rem;
+        cursor: pointer;
+      }
+
+      .form-check-label a {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .btn-submit {
+        background: var(--primary) !important;
+        color: white !important;
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 12px;
+        font-weight: 700;
+        font-size: 1.1rem;
+        width: 100%;
+        margin-top: 1.5rem;
+        transition: all 0.3s;
+        box-shadow: 0 4px 15px rgba(26, 194, 193, 0.35);
+      }
+
+      .btn-submit:hover {
+        background: var(--primary-dark) !important;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(26, 194, 193, 0.45);
+      }
+
+      /* Radio Button Group */
+      .user-type-group {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .user-type-option {
+        flex: 1;
+        position: relative;
+      }
+
+      .user-type-option input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+      }
+
+      .user-type-label {
+        display: block;
+        padding: 1rem;
+        background: white;
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-weight: 600;
+        color: var(--gray);
+      }
+
+      .user-type-option input:checked + .user-type-label {
+        border-color: var(--primary);
+        background: var(--primary-light);
+        color: var(--primary-dark);
+      }
+
+      .user-type-label i {
+        display: block;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      /* Benefits List */
+      .benefits-list {
+        list-style: none;
+        padding: 0;
+        margin: 2rem 0 0 0;
+      }
+
+      .benefits-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        color: var(--gray);
+      }
+
+      .benefit-icon {
+        width: 40px;
+        height: 40px;
+        background: var(--primary-light);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary);
+        font-size: 1.2rem;
+        flex-shrink: 0;
+      }
+
+      /* Support Section */
+      .support-section {
+        padding: 80px 0;
+        background: white;
+      }
+
+      .support-card {
+        background: white;
+        border-radius: 20px;
+        padding: 2rem;
+        border: 1px solid #e2e8f0;
+        transition: all 0.4s ease;
+        height: 100%;
+      }
+
+      .support-card:hover {
+        border-color: var(--primary);
+        transform: translateY(-5px);
+        box-shadow: 0 25px 50px rgba(26, 194, 193, 0.12);
+      }
+
+      .support-icon {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, var(--primary-light), white);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary);
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        border: 2px solid rgba(26, 194, 193, 0.2);
+      }
+
+      .support-card h4 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+
+      .support-detail {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--gray);
+        margin-bottom: 0.5rem;
+        font-size: 0.95rem;
+      }
+
+      .support-detail i {
+        color: var(--primary);
+      }
+
+      .support-detail a {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      /* Locations Section */
+      .locations-section {
+        padding: 80px 0;
+        background: linear-gradient(135deg, var(--navy) 0%, var(--dark) 100%);
+        color: white;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .locations-section::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(26, 194, 193, 0.1) 0%,
+          transparent 60%
+        );
+        border-radius: 50%;
+      }
+
+      .location-card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        padding: 2rem;
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+
+      .location-card:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-5px);
+      }
+
+      .location-icon {
+        width: 60px;
+        height: 60px;
+        background: rgba(26, 194, 193, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary);
+        font-size: 1.8rem;
+        margin: 0 auto 1rem;
+        border: 1px solid rgba(26, 194, 193, 0.3);
+      }
+
+      .location-card h4 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+
+      .location-card p {
+        color: rgba(255, 255, 255, 0.7);
+        margin: 0;
+        font-size: 0.95rem;
+      }
+
+      /* Animations */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease-out;
+      }
+
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Form field transitions */
+      .form-field-wrapper {
+        transition: all 0.3s ease;
+        overflow: hidden;
+      }
+
+      .form-field-wrapper.hidden {
+        opacity: 0;
+        height: 0;
+        margin: 0;
+        padding: 0;
+        pointer-events: none;
+      }
+
+      /* Responsive */
+      @media (max-width: 991px) {
+        .sales-hero h1 {
+          font-size: 2.8rem;
+        }
+
+        .section-title {
+          font-size: 2.2rem;
+        }
+
+        .demo-form {
+          padding: 2rem;
+        }
+
+        .user-type-group {
+          flex-direction: column;
+        }
+      }
+
+      @media (max-width: 767px) {
+        .sales-hero {
+          padding: 120px 0 60px;
+          text-align: center;
+        }
+
+        .sales-hero h1 {
+          font-size: 2.2rem;
+        }
+
+        .contact-card-large {
+          padding: 1.5rem;
+        }
+
+        .demo-form {
+          padding: 1.5rem;
+        }
+      }
     </style>
-</head>
-<body>
-    <!-- Page Demo Trigger -->
-    <div class="page-demo">
-        <div class="text-center">
-            <h1 class="mb-4">Verifitech USA<br>Background Checks</h1>
-            <button type="button" class="btn-schedule-demo" data-bs-toggle="modal" data-bs-target="#demoModal">
-                <i class="bi bi-calendar-check"></i> Schedule a Demo
-            </button>
-        </div>
-    </div>
-    <!-- Demo Modal -->
-    <div class="modal fade demo-modal" id="demoModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <button type="button" class="btn-close-custom" data-bs-dismiss="modal" aria-label="Close">
-                        <i class="bi bi-x-lg"></i>
-                    </button>
-                    
-                    <div class="demo-container">
-                        <!-- Left Side: Gradient Info Panel -->
-                        <div class="demo-content">
-                            <div class="demo-badge">
-                                <i class="bi bi-shield-check"></i>
-                                FCRA Compliant
-                            </div>
-                            
-                            <h2>Get your <span>personalized demo</span> in 30 minutes</h2>
-                            
-                            <ul class="benefits-list">
-                                <li>
-                                    <div class="benefit-icon"><i class="bi bi-check-lg"></i></div>
-                                    <span class="benefit-text">FCRA compliant workflows across all 50 states</span>
-                                </li>
-                                <li>
-                                    <div class="benefit-icon"><i class="bi bi-lightning"></i></div>
-                                    <span class="benefit-text">Reduce screening time by up to 60%</span>
-                                </li>
-                                <li>
-                                    <div class="benefit-icon"><i class="bi bi-shield-lock"></i></div>
-                                    <span class="benefit-text">Automated compliance & E-Verify integration</span>
-                                </li>
-                                <li>
-                                    <div class="benefit-icon"><i class="bi bi-graph-up"></i></div>
-                                    <span class="benefit-text">Volume pricing tailored to your needs</span>
-                                </li>
-                            </ul>
-                        </div>
-                        
-                        <!-- Right Side: Form Area -->
-                        <div class="demo-form-section">
-                            
-                            <!-- Progress Steps -->
-                            <div class="progress-steps">
-                                <div class="step active" data-step="1">
-                                    <span class="step-number">1</span>
-                                    <span>Details</span>
-                                </div>
-                                <div class="step-line" id="line1"></div>
-                                <div class="step" data-step="2">
-                                    <span class="step-number">2</span>
-                                    <span>Schedule</span>
-                                </div>
-                                <div class="step-line" id="line2"></div>
-                                <div class="step" data-step="3">
-                                    <span class="step-number">3</span>
-                                    <span>Confirm</span>
-                                </div>
-                            </div>
-                            
-                            <div class="form-steps-wrapper">
-                                <!-- Step 1: Contact & Requirements -->
-                                <div class="form-step active" id="step1">
-                                    <div class="form-header">
-                                        <h3>Tell us about your needs</h3>
-                                        <p>Help us prepare a customized demo for your requirements.</p>
-                                    </div>
-                                    
-                                    <div class="form-content">
-                                        <form class="demo-form" id="detailsForm">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="name">Full Name *</label>
-                                                        <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="email">Work Email *</label>
-                                                        <input type="email" class="form-control" id="email" placeholder="you@company.com" required>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="phone">Phone Number *</label>
-                                                        <input type="tel" class="form-control" id="phone" placeholder="+1 (555) 000-0000" required>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="company">Company Name *</label>
-                                                        <input type="text" class="form-control" id="company" placeholder="Enter company name" required>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
-                                            <!-- WORKABLE 3-Card Service Selection -->
-                                            <div class="form-group">
-                                                <label>Select Service *</label>
-                                                <div class="services-selection">
-                                                    <!-- BGV Card -->
-                                                    <div class="service-card bgv-card" onclick="selectService('svc-bgv')">
-                                                        <input type="radio" name="service" id="svc-bgv" value="Background Verification" required>
-                                                        <div class="service-card-inner">
-                                                            <div class="service-check"><i class="bi bi-check-lg"></i></div>
-                                                            <div class="service-card-icon">
-                                                                <i class="bi bi-shield-check"></i>
-                                                            </div>
-                                                            <h4>BGV</h4>
-                                                            <p>Background Verification checks for employment screening</p>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    <!-- Exit Interview Card -->
-                                                    <div class="service-card exit-card" onclick="selectService('svc-exit')">
-                                                        <input type="radio" name="service" id="svc-exit" value="Exit Interview">
-                                                        <div class="service-card-inner">
-                                                            <div class="service-check"><i class="bi bi-check-lg"></i></div>
-                                                            <div class="service-card-icon">
-                                                                <i class="bi bi-door-open"></i>
-                                                            </div>
-                                                            <h4>Exit Interview</h4>
-                                                            <p>Automated exit interview process & feedback collection</p>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    <!-- Psychometric Card -->
-                                                    <div class="service-card psycho-card" onclick="selectService('svc-psycho')">
-                                                        <input type="radio" name="service" id="svc-psycho" value="Psychometric Test">
-                                                        <div class="service-card-inner">
-                                                            <div class="service-check"><i class="bi bi-check-lg"></i></div>
-                                                            <div class="service-card-icon">
-                                                                <i class="bi bi-brain"></i>
-                                                            </div>
-                                                            <h4>Psychometric</h4>
-                                                            <p>Cognitive & behavioral assessment tests for candidates</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
-                                            <!-- Candidates Input -->
-                                            <div class="form-group">
-                                                <div class="candidates-wrapper">
-                                                    <div class="candidates-header">
-                                                        <label class="candidates-label">
-                                                            <i class="bi bi-people-fill" style="color: var(--primary);"></i>
-                                                            Monthly Candidate Volume *
-                                                        </label>
-                                                        <span class="candidates-badge">Estimates OK</span>
-                                                    </div>
-                                                    
-                                                    <div class="candidates-input-box">
-                                                        <div class="candidates-field">
-                                                            <i class="bi bi-hash"></i>
-                                                            <input type="number" id="candidates" placeholder="e.g. 150" min="1" required oninput="validateStep1()">
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    <div class="candidates-presets">
-                                                        <button type="button" class="preset-btn" data-value="10" onclick="setCandidates(10)">10/month</button>
-                                                        <button type="button" class="preset-btn" data-value="50" onclick="setCandidates(50)">50/month</button>
-                                                        <button type="button" class="preset-btn" data-value="100" onclick="setCandidates(100)">100/month</button>
-                                                        <button type="button" class="preset-btn" data-value="500" onclick="setCandidates(500)">500/month</button>
-                                                        <button type="button" class="preset-btn" data-value="1000" onclick="setCandidates(1000)">1000/month</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    
-                                    <div class="form-actions">
-                                        <button type="button" class="btn-primary-custom" id="continueToStep2" disabled>
-                                            Continue to Scheduling <i class="bi bi-arrow-right"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                
-                                <!-- Step 2: Calendar & Platform -->
-                                <div class="form-step" id="step2">
-                                    <div class="form-header">
-                                        <h3>Schedule your demo</h3>
-                                        <p>Select your preferred date, time, and meeting platform.</p>
-                                    </div>
-                                    
-                                    <div class="form-content">
-                                        <!-- Error Message Container -->
-                                        <div class="error-message" id="emailError"></div>
-                                        
-                                        <div class="calendar-section">
-                                            <div class="calendar-left">
-                                                <div id="calendar"></div>
-                                            </div>
-                                            
-                                            <div class="time-slots-section" id="timeSlotsSection" style="display: none;">
-                                                <div class="time-slots-header">
-                                                    <i class="bi bi-clock"></i>
-                                                    Available Time Slots
-                                                </div>
-                                                <div class="slots-grid" id="slotsGrid">
-                                                    <!-- Generated by JS -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="selected-info" id="selectedInfo" style="display: none;">
-                                            <i class="bi bi-calendar-check-fill"></i>
-                                            <span id="selectedDateTimeText"></span>
-                                        </div>
-                                        
-                                        <div class="meeting-platforms" id="meetingPlatforms" style="display: none;">
-                                            <div class="platforms-title">
-                                                <i class="bi bi-camera-video"></i>
-                                                Select Meeting Platform
-                                            </div>
-                                            <div class="platform-options">
-                                                <div class="platform-radio zoho">
-                                                    <input type="radio" name="platform" id="platform-zoho" value="Zoho Meeting" onchange="selectPlatform(this)">
-                                                    <label for="platform-zoho">
-                                                        <div class="platform-icon">
-                                                            <i class="bi bi-camera-video-fill"></i>
-                                                        </div>
-                                                        <div class="platform-info">
-                                                            <h5>Zoho Meeting</h5>
-                                                            <p>Video Conference</p>
-                                                        </div>
-                                                    </label>
-                                                </div>
-                                                <div class="platform-radio teams">
-                                                    <input type="radio" name="platform" id="platform-teams" value="Microsoft Teams" onchange="selectPlatform(this)">
-                                                    <label for="platform-teams">
-                                                        <div class="platform-icon">
-                                                            <i class="bi bi-microsoft-teams"></i>
-                                                        </div>
-                                                        <div class="platform-info">
-                                                            <h5>Microsoft Teams</h5>
-                                                            <p>Business Meeting</p>
-                                                        </div>
-                                                    </label>
-                                                </div>
-                                                <div class="platform-radio google">
-                                                    <input type="radio" name="platform" id="platform-google" value="Google Meet" onchange="selectPlatform(this)">
-                                                    <label for="platform-google">
-                                                        <div class="platform-icon">
-                                                            <i class="bi bi-google"></i>
-                                                        </div>
-                                                        <div class="platform-info">
-                                                            <h5>Google Meet</h5>
-                                                            <p>Video Call</p>
-                                                        </div>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-actions">
-                                        <button type="button" class="btn-secondary-custom" id="backToStep1">
-                                            <i class="bi bi-arrow-left"></i> Back
-                                        </button>
-                                        <button type="button" class="btn-primary-custom" id="confirmBooking" disabled>
-                                            Confirm Booking <i class="bi bi-check-lg"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                
-                                <!-- Step 3: Success -->
-                                <div class="success-container" id="step3">
-                                    <div class="success-header">
-                                        <div class="success-animation">
-                                            <div class="success-pulse"></div>
-                                            <i class="bi bi-check-lg"></i>
-                                        </div>
-                                        <h3>Demo Scheduled!</h3>
-                                        <p>We've sent a confirmation to your email with all the details.</p>
-                                    </div>
-                                    
-                                    <div class="booking-summary">
-                                        <div class="summary-title">
-                                            <i class="bi bi-calendar-check"></i>
-                                            Booking Details
-                                        </div>
-                                        
-                                        <div class="summary-row">
-                                            <div class="summary-icon">
-                                                <i class="bi bi-calendar-event"></i>
-                                            </div>
-                                            <div class="summary-text">
-                                                <h4 id="summaryDate">Monday, January 15, 2024</h4>
-                                                <p id="summaryTime">10:00 AM - 10:30 AM EST</p>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="summary-row">
-                                            <div class="summary-icon" id="platformSummaryIcon">
-                                                <i class="bi bi-camera-video"></i>
-                                            </div>
-                                            <div class="summary-text">
-                                                <h4 id="summaryPlatform">Zoho Meeting</h4>
-                                                <p>Meeting link will be sent via email</p>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="summary-row">
-                                            <div class="summary-icon">
-                                                <i class="bi bi-envelope"></i>
-                                            </div>
-                                            <div class="summary-text">
-                                                <h4>Confirmation sent to</h4>
-                                                <p id="summaryEmail">user@company.com</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="calendar-actions-title">Add to your calendar:</div>
-                                    <div class="calendar-actions">
-                                        <a href="#" class="btn-calendar google" id="googleCalLink" target="_blank">
-                                            <i class="bi bi-google"></i> Google Calendar
-                                        </a>
-                                        <a href="#" class="btn-calendar outlook" id="outlookLink" target="_blank">
-                                            <i class="bi bi-microsoft"></i> Outlook
-                                        </a>
-                                        <a href="#" class="btn-calendar ical" id="icalLink" download>
-                                            <i class="bi bi-calendar"></i> iCal
-                                        </a>
-                                    </div>
-                                    
-                                    <button type="button" class="btn-primary-custom" data-bs-dismiss="modal" style="min-width: 200px;">
-                                        <i class="bi bi-check-circle"></i> Done
-                                    </button>
-                                </div>
-                            </div>
-                            
-                            <div class="form-footer" id="formFooter">
-                                By scheduling a demo, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
-                            </div>
-                        </div>
-                    </div>
+  </head>
+  <body>
+    <!-- Navigation -->
+       <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="../index.html">
+          <img
+            src="https://www.verifitech.com/wp-content/uploads/2022/05/verifitech-logo.svg "
+            alt="Verifitech"
+            width="200 px"
+            height="60%"
+          />
+        </a>
+
+        <button
+          class="navbar-toggler border-0 shadow-none"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <!-- 1. SOLUTIONS Dropdown -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Solutions</a
+              >
+              <div class="dropdown-menu mega-menu">
+                <div class="row">
+                  <div class="col-md-6">
+                    <h6 class="dropdown-header">Verification Services</h6>
+                    <a href="../checks/lp-id verification.html" class="dropdown-item"
+                      ><i class="bi bi-person-badge"></i> ID Verification</a
+                    >
+                    <a
+                      href="../checks/lp-ADRESS VERIFICATION.html"
+                      class="dropdown-item"
+                      ><i class="bi bi-geo-alt"></i> Address Verification</a
+                    >
+                    <a href="../checks/lp-employment.html" class="dropdown-item"
+                      ><i class="bi bi-briefcase"></i> Employment
+                      Verification</a
+                    >
+                    <a
+                      href="../checks/lp-education check.html"
+                      class="dropdown-item"
+                      ><i class="bi bi-mortarboard"></i> Education
+                      Verification</a
+                    >
+                    <a
+                      href="../checks/LP-court verification.html"
+                      class="dropdown-item"
+                      ><i class="bi bi-shield-exclamation"></i> Court Record
+                      Verification</a
+                    >
+                    <a href="../checks/lp-refernce.html" class="dropdown-item"
+                      ><i class="bi bi-people"></i> Reference Check</a
+                    >
+                  </div>
+                  <div class="col-md-6">
+                    <h6 class="dropdown-header">Specialized Checks</h6>
+                    <a href="../checks/lp-global database.html" class="dropdown-item"
+                      ><i class="bi bi-globe"></i> Global Database
+                      Verification</a
+                    >
+                    <a href="../checks/lp-credit check.html" class="dropdown-item"
+                      ><i class="bi bi-credit-card"></i> Credit Check</a
+                    >
+                    <a
+                      href="../checks/lp-gap verification.html"
+                      class="dropdown-item"
+                      ><i class="bi bi-calendar-x"></i> Gap Check</a
+                    >
+                    <a
+                      href="../checks/lp-socialmeidaverification.html"
+                      class="dropdown-item"
+                      ><i class="bi bi-share"></i> Social Media Verification</a
+                    >
+                    <a href="../checks/lp-police clearnce.html" class="dropdown-item"
+                      ><i class="bi bi-shield-check"></i> Police Clearance</a
+                    >
+                    <a href="../checks/lp-drug test.html" class="dropdown-item"
+                      ><i class="bi bi-capsule"></i> Drug Test Screening</a
+                    >
+                    <a class="dropdown-item" href="../checks/vendor.html"
+                      ><i class="fa-solid fa-magnifying-glass-chart"></i> Vendor
+                      Digillencs</a
+                    >
+                  </div>
                 </div>
+              </div>
+            </li>
+
+            <!-- Products Dropdown -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Products</a
+              >
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="../industries/lp-banks.html"
+                    ><i class="fa-solid fa-right-from-bracket"></i> Exit
+                    interviews</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                    ><i class="fa-solid fa-chart-line"></i> psychometric</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <!-- 2. INDUSTRY Dropdown -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Industry</a
+              >
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="../industries/lp-banks.html"
+                    ><i class="bi bi-bank"></i> Banking & Financial Services</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../industries/lpi-healthcare.html"
+                    ><i class="bi bi-heart-pulse"></i> Healthcare and Pharma</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../industries/lpi-education.html"
+                    ><i class="bi bi-book"></i> Education</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../industries/lpi-Manfacturing.html"
+                    ><i class="bi bi-building-gear"></i> Manufacturing</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="../industries/lpi-IT-ITES.html"
+                    ><i class="bi bi-laptop"></i> IT/ITeS</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="../industries/lp-banks.html"
+                    ><i class="bi bi-shield-plus"></i> Insurance</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="../industries/lpi-travel industries.html"
+                    ><i class="bi bi-airplane"></i> Travel and Hospitality</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="../industries/lpi-staffing.html"
+                    ><i class="bi bi-person-workspace"></i> Staffing and
+                    Recruitment</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="../industries/lpi-telecom.html"
+                    ><i class="bi bi-broadcast"></i> Telecom</a
+                  >
+                </li>
+                <!--<li>
+                  <a class="dropdown-item" href="#"
+                    ><i class="bi bi-cart"></i> E-commerce and Retail</a
+                  >
+                </li>-->
+                <li>
+                  <a class="dropdown-item" href="../industries/LP-FMCG.html"
+                    ><i class="bi bi-box-seam"></i> FMCG/FMCD</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <!-- 3. RESOURCES Dropdown -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Resources</a
+              >
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="../resources/blog.html"
+                    ><i class="bi bi-journal-text"></i> Blogs</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="../resources/whitepapers.html"
+                    ><i class="bi bi-file-earmark-text"></i> Whitepapers</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="../resources/casestudy.html"
+                    ><i class="bi bi-star"></i> Case Study</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="../resources/webinar.html"
+                    ><i class="bi bi-camera-video"></i> Webinar</a
+                  >
+                </li>
+                
+                <li>
+                
+                  <a class="dropdown-item" href="../resources/webinar.html">
+  <i class="bi bi-plug"></i> API
+</a>
+
+                </li>
+              </ul>
+            </li>
+
+            <!-- 4. COMPANY Dropdown -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Company</a
+              >
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="../company/aboutus.html"
+                    ><i class="far fa-handshake"></i> Partnership</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="../company/aboutus.html"
+                    ><i class="bi bi-info-circle"></i> About Us</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="../company/careers.html"
+                    ><i class="bi bi-briefcase"></i> Careers</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <!-- 5. HELP CENTER Dropdown -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Help Center</a
+              >
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><i class="bi bi-person"></i> For Candidates</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="../helpcenter/customer.html"
+                    ><i class="bi bi-building"></i> For Customers</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="../helpcenter/partner.html"
+                    ><i class="bi bi-people"></i> For Partners</a
+                  >
+                  
+                <li>
+                  <a class="dropdown-item" href="../resources/webinar.html"
+                    ><i class="bi bi-link-45deg"></i> Affiliate Marketing
+
+                  </a
+                  >
+                  
+                </li>
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+          <div class="d-flex align-items-center">
+            <a href="https://web.verifitech.com/" targer="blank" class="btn btn-login">Login</a>
+          </div>
+
+          <div class="d-flex align-items-center">
+            <a href="../contact/contact.html" class="btn btn-sales"
+              >Talk to Sales</a
+            >
+
+            <div class="dropdown">
+              <div
+                class="country-selector dropdown-toggle"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <span class="country-flag" id="current-flag">🇮🇳</span>
+                <span id="current-country">India</span>
+                <i
+                  class="bi bi-chevron-down ms-1"
+                  style="font-size: 0.7rem"
+                ></i>
+              </div>
+              <ul
+                class="dropdown-menu dropdown-menu-end"
+                style="min-width: 180px"
+              >
+                <li>
+                  <a
+                    href="../countries/usa.html"
+                    class="dropdown-item country-option"
+                    data-country="USA"
+                    data-flag="🇺🇸"
+                  >
+                    <span class="country-flag">🇺🇸</span> USA
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item country-option"
+                    href="../countries/UAE.html"
+                    data-country="UAE"
+                    data-flag="🇦🇪"
+                  >
+                    <span class="country-flag">🇦🇪</span> UAE
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item country-option"
+                    href="../countries/aus.html"
+                    data-country="Australia"
+                    data-flag="🇦🇺"
+                  >
+                    <span class="country-flag">🇦🇺</span> Australia
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item country-option"
+                    href="../countries/uk.html"
+                    data-country="UK"
+                    data-flag="🇬🇧"
+                  >
+                    <span class="country-flag">🇬🇧</span> UK
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item country-option"
+                    href="../countries/sigapore.html"
+                    data-country="Singapore"
+                    data-flag="🇸🇬"
+                  >
+                    <span class="country-flag">🇸🇬</span> Singapore
+                  </a>
+                </li>
+                <!--<li>
+                  <a
+                    class="dropdown-item country-option"
+                    href="./countries/india.html"
+                    data-country="India"
+                    data-flag="🇮🇳"
+                  >
+                    <span class="country-flag">🇮🇳</span> India
+                  </a>-->
+                </li>
+              </ul>
             </div>
+          </div>
         </div>
-    </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="sales-hero">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 reveal">
+            <div class="hero-badge">
+              <i class="bi bi-headset"></i>
+              Sales & Support
+            </div>
+            <h1>Talk to Sales</h1>
+            <p class="lead">
+              Ready to streamline your verification process? Let's discuss how
+              Verifitech can help your business with automated background
+              checks, compliance solutions, and risk management.
+            </p>
+
+            <div class="d-flex gap-3 flex-wrap">
+              <a
+                href="#form"
+                class="btn btn-primary-custom btn-lg"
+                style="
+                  background: var(--primary);
+                  color: white;
+                  padding: 1rem 2.5rem;
+                  border-radius: 50px;
+                  font-weight: 700;
+                  text-decoration: none;
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 10px;
+                  box-shadow: 0 4px 15px rgba(26, 194, 193, 0.35);
+                "
+              >
+                Schedule Demo <i class="bi bi-arrow-right"></i>
+              </a>
+              <a
+                href="tel:+918506804541"
+                class="btn btn-outline-dark btn-lg"
+                style="
+                  padding: 1rem 2rem;
+                  border-radius: 50px;
+                  font-weight: 600;
+                  border-width: 2px;
+                "
+              >
+                <i class="bi bi-telephone me-2"></i>Call Now
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-6 reveal">
+            <div class="row g-3">
+              <div class="col-6">
+                <div class="bg-white p-4 rounded-4 shadow-sm text-center">
+                  <div class="display-4 fw-bold text-primary mb-2">25+</div>
+                  <div class="text-muted small fw-semibold">
+                    Countries Served
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="bg-white p-4 rounded-4 shadow-sm text-center">
+                  <div class="display-4 fw-bold text-primary mb-2">2K+</div>
+                  <div class="text-muted small fw-semibold">
+                    Enterprise Clients
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="bg-white p-4 rounded-4 shadow-sm text-center">
+                  <div class="display-4 fw-bold text-primary mb-2">100M+</div>
+                  <div class="text-muted small fw-semibold">Verifications</div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="bg-white p-4 rounded-4 shadow-sm text-center">
+                  <div class="display-4 fw-bold text-primary mb-2">99.9%</div>
+                  <div class="text-muted small fw-semibold">Uptime SLA</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Info Section -->
+    <section class="contact-info-section">
+      <div class="container">
+        <div class="row g-4 justify-content-center">
+          <div class="col-md-6 col-lg-4 reveal">
+            <div class="contact-card-large">
+              <div class="contact-icon-xl">
+                <i class="bi bi-telephone-fill"></i>
+              </div>
+              <h3>Sales Phone</h3>
+              <a href="tel:+918506804541" class="detail">+91 850 680 4541</a>
+              <div class="label">Mon-Fri, 9:00 AM - 6:00 PM IST</div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4 reveal">
+            <div class="contact-card-large">
+              <div class="contact-icon-xl">
+                <i class="bi bi-envelope-fill"></i>
+              </div>
+              <h3>Sales Email</h3>
+              <a href="mailto:sales@verifitech.com" class="detail"
+                >sales@verifitech.com</a
+              >
+              <div class="label">We respond within 24 hours</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Form Section -->
+    <section class="form-section" id="form">
+      <div class="container">
+        <div class="row g-5">
+          <div class="col-lg-5 reveal">
+            <div class="section-header">
+              <div class="section-subtitle">
+                <i class="bi bi-calendar-check"></i> Schedule Your Demo
+              </div>
+              <h2 class="section-title">Get Started Today</h2>
+              <p class="section-desc">
+                Fill out the form to schedule a personalized demo. Our team will
+                assess your needs, showcase product features, and discuss
+                pricing options tailored to your business.
+              </p>
+            </div>
+
+            <ul class="benefits-list">
+              <li>
+                <div class="benefit-icon">
+                  <i class="bi bi-check-lg"></i>
+                </div>
+                <div>
+                  <strong>Assess Your Needs</strong><br />
+                  <span class="text-muted"
+                    >Customized solutions for your industry</span
+                  >
+                </div>
+              </li>
+              <li>
+                <div class="benefit-icon">
+                  <i class="bi bi-layers"></i>
+                </div>
+                <div>
+                  <strong>Product Features</strong><br />
+                  <span class="text-muted">See our platform in action</span>
+                </div>
+              </li>
+              <li>
+                <div class="benefit-icon">
+                  <i class="bi bi-currency-dollar"></i>
+                </div>
+                <div>
+                  <strong>Pricing Options</strong><br />
+                  <span class="text-muted">Flexible plans for every scale</span>
+                </div>
+              </li>
+              <li>
+                <div class="benefit-icon">
+                  <i class="bi bi-shield-check"></i>
+                </div>
+                <div>
+                  <strong>Compliance Guidance</strong><br />
+                  <span class="text-muted">Expert advice on regulations</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-lg-7 reveal">
+            <form
+              class="demo-form"
+              id="contactForm"
+              onsubmit="event.preventDefault(); alert('Thank you for your interest! Our team will contact you within 24 hours to schedule your demo.');"
+            >
+              <h3 class="h4 fw-bold mb-4">Request a Demo</h3>
+
+              <!-- User Type Selection -->
+              <label class="form-label">I am a *</label>
+              <div class="user-type-group">
+                <div class="user-type-option">
+                  <input
+                    type="radio"
+                    name="userType"
+                    id="business"
+                    value="business"
+                    checked
+                    required
+                  />
+                  <label for="business" class="user-type-label">
+                    <i class="bi bi-building"></i>
+                    Business
+                  </label>
+                </div>
+                <div class="user-type-option">
+                  <input
+                    type="radio"
+                    name="userType"
+                    id="candidate"
+                    value="candidate"
+                    required
+                  />
+                  <label for="candidate" class="user-type-label">
+                    <i class="bi bi-person"></i>
+                    Candidate
+                  </label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label class="form-label" id="nameLabel">Full Name *</label>
+                  <input
+                    type="text"
+                    id="fullName"
+                    class="form-control"
+                    placeholder="John Doe"
+                    required
+                  />
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label class="form-label" id="emailLabel">Work Email *</label>
+                  <input
+                    type="email"
+                    id="email"
+                    class="form-control"
+                    placeholder="john@company.com"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label class="form-label">Phone Number *</label>
+                  <input
+                    type="tel"
+                    class="form-control"
+                    placeholder="+91 98765 43210"
+                    required
+                  />
+                </div>
+                <div class="col-md-6 mb-3 form-field-wrapper" id="companyField">
+                  <label class="form-label">Company Name *</label>
+                  <input
+                    type="text"
+                    id="companyName"
+                    class="form-control"
+                    placeholder="Acme Corporation"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label" id="solutionLabel"
+                  >What are you looking for? *</label
+                >
+                <select class="form-select" id="solutionSelect" required>
+                  <option value="" disabled selected>
+                    Select a solution...
+                  </option>
+                  <option>Employee Background Verification</option>
+                  <option>Third Party Due Diligence</option>
+                  <option>KYC (Know Your Customer)</option>
+                  <option>KYB (Know Your Business)</option>
+                  <option>BFSI Solutions</option>
+                  <option>API Checks</option>
+                  <option>E-sign / Digital Contracting</option>
+                  <option>Other</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Message (Optional)</label>
+                <textarea
+                  class="form-control"
+                  rows="3"
+                  placeholder="Tell us about your requirements..."
+                ></textarea>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="marketing"
+                  name="marketing"
+                />
+                <label
+                  class="form-check-label"
+                  for="marketing"
+                  id="marketingLabel"
+                >
+                  I agree to receive marketing communications from Verifitech
+                </label>
+              </div>
+
+              <div class="form-check mb-3">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="privacy"
+                  name="privacy"
+                  required
+                />
+                <label class="form-check-label" for="privacy">
+                  I agree to the <a href="#">Privacy Policy</a> and
+                  <a href="#">Terms of Use</a> *
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn-submit" id="submitBtn">
+                Schedule Demo <i class="bi bi-arrow-right ms-2"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Support Section -->
+    <section class="support-section" id="support">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <div class="section-subtitle justify-content-center">
+            <i class="bi bi-life-preserver"></i> Support Center
+          </div>
+          <h2 class="section-title">Other Ways to Reach Us</h2>
+          <p class="section-desc mx-auto">
+            Depending on your needs, you can also contact our specialized
+            support teams
+          </p>
+        </div>
+
+        <div class="row g-4">
+          <!-- Client Support -->
+          <div class="col-md-4 reveal">
+            <div class="support-card h-100">
+              <div class="support-icon">
+                <i class="bi bi-headset"></i>
+              </div>
+              <h4>Client Support</h4>
+              <p class="text-muted mb-3">
+                Existing clients requiring technical assistance or account
+                support.
+              </p>
+
+              <div class="support-detail">
+                <i class="bi bi-telephone"></i>
+                <a href="tel:+918506804441">+91-850-680-4441</a>
+              </div>
+              <div class="support-detail">
+                <i class="bi bi-envelope"></i>
+                <a href="mailto:bgvsupport@verifitech.com"
+                  >bgvsupport@verifitech.com</a
+                >
+              </div>
+              <div class="support-detail">
+                <i class="bi bi-clock"></i>
+                <span>24/7 Support Available</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Candidate Helpline -->
+          <div class="col-md-4 reveal">
+            <div class="support-card h-100">
+              <div class="support-icon">
+                <i class="bi bi-person-check"></i>
+              </div>
+              <h4>Candidate Helpline</h4>
+              <p class="text-muted mb-3">
+                Job seekers and candidates undergoing background verification.
+              </p>
+
+              <div class="support-detail">
+                <i class="bi bi-telephone"></i>
+                <a href="tel:+919240255060">+91-924 025 5060</a>
+              </div>
+              <div class="support-detail">
+                <i class="bi bi-envelope"></i>
+                <a href="mailto:candidate.support@verifitech.com"
+                  >candidate.support@verifitech.com</a
+                >
+              </div>
+              <div class="support-detail">
+                <i class="bi bi-clock"></i>
+                <span>Mon-Sat, 9:00 AM - 6:00 PM</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Media Enquiries -->
+          <div class="col-md-4 reveal">
+            <div class="support-card h-100">
+              <div class="support-icon">
+                <i class="bi bi-megaphone"></i>
+              </div>
+              <h4>Media Enquiries</h4>
+              <p class="text-muted mb-3">
+                Press, media, and partnership opportunities.
+              </p>
+
+              <div class="support-detail">
+                <i class="bi bi-envelope"></i>
+                <a href="mailto:marketing@verifitech.com"
+                  >marketing@verifitech.com</a
+                >
+              </div>
+              <div class="support-detail">
+                <i class="bi bi-envelope"></i>
+                <a href="mailto:sales@verifitech.com">sales@verifitech.com</a>
+              </div>
+              <div class="support-detail">
+                <i class="bi bi-clock"></i>
+                <span>Mon-Fri, 9:00 AM - 6:00 PM</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Locations Section -->
+    <section class="locations-section" id="locations">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <div
+            class="section-subtitle justify-content-center"
+            style="background: rgba(26, 194, 193, 0.2); color: white"
+          >
+            <i class="bi bi-geo-alt"></i> Our Offices
+          </div>
+          <h2 class="section-title text-white">Global Presence</h2>
+          <p class="lead mx-auto" style="color: rgba(255, 255, 255, 0.8)">
+            Serving clients across India, UAE, and USA with localized support
+            and compliance expertise.
+          </p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+          <!-- India -->
+          <div class="col-lg-4 col-md-6 reveal">
+            <div class="location-card h-100">
+              <div class="location-icon">
+                <i class="bi bi-building"></i>
+              </div>
+              <h4>India</h4>
+              <p class="mb-2"><strong>Headquarters</strong></p>
+              <p class="mb-0">Chennai, Tamil Nadu</p>
+              <p class="mb-0">Bengaluru, Karnataka</p>
+              <p class="mb-0">Pune, Maharashtra</p>
+            </div>
+          </div>
+
+          <!-- UAE -->
+          <div class="col-lg-4 col-md-6 reveal">
+            <div class="location-card h-100">
+              <div class="location-icon">
+                <i class="bi bi-building"></i>
+              </div>
+              <h4>United Arab Emirates</h4>
+              <p class="mb-2"><strong>Middle East Operations</strong></p>
+              <p class="mb-0">Dubai</p>
+              <p
+                class="mb-0"
+                style="color: rgba(255, 255, 255, 0.5); font-size: 0.9rem"
+              >
+                Serving GCC region
+              </p>
+            </div>
+          </div>
+
+          <!-- USA -->
+          <div class="col-lg-4 col-md-6 reveal">
+            <div class="location-card h-100">
+              <div class="location-icon">
+                <i class="bi bi-building"></i>
+              </div>
+              <h4>United States</h4>
+              <p class="mb-2"><strong>Americas Operations</strong></p>
+              <p class="mb-0">Multiple Locations</p>
+              <p
+                class="mb-0"
+                style="color: rgba(255, 255, 255, 0.5); font-size: 0.9rem"
+              >
+                Serving North America
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <h4 class="fw-bold mb-3">
+              Verifi<span style="color: var(--primary)">tech</span>
+            </h4>
+            <p class="text-white-50 mb-2">
+              India's leading trust & authentication technology company
+            </p>
+            <p class="text-white-50 small">
+              Empowering businesses with automated background verification, KYC,
+              and compliance solutions across 25+ countries.
+            </p>
+
+            <div class="row g-2 mt-3">
+              <div class="col-6">
+                <div class="bg-white bg-opacity-10 rounded-3 p-2 text-center">
+                  <div class="fw-bold text-primary">25+</div>
+                  <small class="text-white-50">Countries</small>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="bg-white bg-opacity-10 rounded-3 p-2 text-center">
+                  <div class="fw-bold text-primary">2,000+</div>
+                  <small class="text-white-50">Clients</small>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="bg-white bg-opacity-10 rounded-3 p-2 text-center">
+                  <div class="fw-bold text-primary">100M+</div>
+                  <small class="text-white-50">Monthly Verifications</small>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="bg-white bg-opacity-10 rounded-3 p-2 text-center">
+                  <div class="fw-bold text-primary">Proprietary</div>
+                  <small class="text-white-50">Data Sources</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-6">
+            <h6 class="fw-bold mb-3">Solutions</h6>
+            <ul class="list-unstyled small">
+              <li class="mb-2">
+                <a href="#" class="text-white-50 text-decoration-none"
+                  >Background Checks</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-white-50 text-decoration-none"
+                  >KYC / KYB</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-white-50 text-decoration-none"
+                  >Due Diligence</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-white-50 text-decoration-none"
+                  >E-Sign</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-white-50 text-decoration-none"
+                  >API Integration</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-6">
+            <h6 class="fw-bold mb-3">Industries</h6>
+            <ul class="list-unstyled small">
+              <li class="mb-2">
+                <a href="#" class="text-white-50 text-decoration-none">BFSI</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-white-50 text-decoration-none"
+                  >IT & ITeS</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-white-50 text-decoration-none"
+                  >Manufacturing</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-white-50 text-decoration-none"
+                  >Retail</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-white-50 text-decoration-none"
+                  >Healthcare</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-6">
+            <h6 class="fw-bold mb-3">Company</h6>
+            <ul class="list-unstyled small">
+              <li class="mb-2">
+                <a href="#" class="text-white-50 text-decoration-none"
+                  >About Us</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-white-50 text-decoration-none"
+                  >Careers</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-white-50 text-decoration-none"
+                  >Contact</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-white-50 text-decoration-none">Press</a>
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-white-50 text-decoration-none">Blog</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-6">
+            <h6 class="fw-bold mb-3">Legal</h6>
+            <ul class="list-unstyled small">
+              <li class="mb-2">
+                <a href="#" class="text-white-50 text-decoration-none"
+                  >Privacy Policy</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-white-50 text-decoration-none"
+                  >Terms of Use</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-white-50 text-decoration-none"
+                  >Cookie Policy</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-white-50 text-decoration-none"
+                  >Disclaimer</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <hr class="my-4" style="border-color: rgba(255, 255, 255, 0.1)" />
+
+        <div class="row align-items-center">
+          <div class="col-md-6 small text-white-50">
+            &copy; 2026 Verifitech Solutions Private Limited. All rights
+            reserved.
+          </div>
+          <div class="col-md-6 text-md-end">
+            <div class="d-flex gap-3 justify-content-md-end">
+              <a href="#" class="text-white"
+                ><i class="bi bi-linkedin fs-5"></i
+              ></a>
+              <a href="#" class="text-white"
+                ><i class="bi bi-twitter fs-5"></i
+              ></a>
+              <a href="#" class="text-white"
+                ><i class="bi bi-facebook fs-5"></i
+              ></a>
+              <a href="#" class="text-white"
+                ><i class="bi bi-youtube fs-5"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <!-- EmailJS SDK -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    
     <script>
-        // ================= EMAILJS CONFIGURATION =================
-        const EMAILJS_CONFIG = {
-            PUBLIC_KEY: 'C2FPjMqY1hB1aIB0X',
-            SERVICE_ID: 'service_jkft8rg',
-            USER_TEMPLATE_ID: 'template_fsjkf3s',
-            HOST_TEMPLATE_ID: 'template_gj9o8wa',
-            HOST_EMAIL: 'kovendan16@gmail.com'
-        };
+      // Navbar scroll effect
+      window.addEventListener("scroll", () => {
+        const navbar = document.querySelector(".navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
 
-        // Initialize EmailJS
-        (function() {
-            try {
-                emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
-                console.log('✅ EmailJS initialized successfully');
-            } catch (error) {
-                console.error('❌ EmailJS init error:', error);
-            }
-        })();
+      // Intersection Observer for animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
 
-        // State Management
-        let currentStep = 1;
-        let formData = {
-            name: '',
-            email: '',
-            phone: '',
-            company: '',
-            service: '',
-            candidates: '',
-            date: '',
-            time: '',
-            platform: ''
-        };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
 
-        // Service Selection
-        function selectService(serviceId) {
-            document.querySelectorAll('input[name="service"]').forEach(radio => {
-                radio.checked = false;
+      document
+        .querySelectorAll(".reveal")
+        .forEach((el) => observer.observe(el));
+
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            const offsetTop = target.offsetTop - 100;
+            window.scrollTo({
+              top: offsetTop,
+              behavior: "smooth",
             });
-            
-            const selectedRadio = document.getElementById(serviceId);
-            if (selectedRadio) {
-                selectedRadio.checked = true;
-            }
-            
-            validateStep1();
-        }
-
-        // Candidates Input
-        function setCandidates(value) {
-            document.getElementById('candidates').value = value;
-            
-            document.querySelectorAll('.preset-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if (parseInt(btn.dataset.value) === value) {
-                    btn.classList.add('active');
-                }
-            });
-            
-            validateStep1();
-        }
-
-        // Validate Step 1
-        function validateStep1() {
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const company = document.getElementById('company').value;
-            const service = document.querySelector('input[name="service"]:checked');
-            const candidates = document.getElementById('candidates').value;
-            
-            const isValid = name && email && phone && company && service && candidates;
-            document.getElementById('continueToStep2').disabled = !isValid;
-            return isValid;
-        }
-
-        // Add input listeners for text fields
-        document.querySelectorAll('#step1 input[type="text"], #step1 input[type="email"], #step1 input[type="tel"]').forEach(input => {
-            input.addEventListener('input', validateStep1);
+          }
         });
+      });
 
-        // Continue to Step 2
-        document.getElementById('continueToStep2').addEventListener('click', function() {
-            if (!validateStep1()) return;
-            
-            formData = {
-                ...formData,
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                company: document.getElementById('company').value,
-                service: document.querySelector('input[name="service"]:checked').value,
-                candidates: document.getElementById('candidates').value
-            };
-            
-            document.getElementById('step1').classList.remove('active');
-            document.getElementById('step2').classList.add('active');
-            updateProgress(2);
-            initCalendar();
-        });
+      // Form switching functionality
+      const businessRadio = document.getElementById("business");
+      const candidateRadio = document.getElementById("candidate");
+      const companyField = document.getElementById("companyField");
+      const companyName = document.getElementById("companyName");
+      const emailLabel = document.getElementById("emailLabel");
+      const email = document.getElementById("email");
+      const solutionLabel = document.getElementById("solutionLabel");
+      const solutionSelect = document.getElementById("solutionSelect");
+      const submitBtn = document.getElementById("submitBtn");
+      const marketingLabel = document.getElementById("marketingLabel");
 
-        // Initialize Calendar
-        function initCalendar() {
-            const today = new Date();
-            const maxDate = new Date();
-            maxDate.setDate(today.getDate() + 30);
-            
-            flatpickr("#calendar", {
-                inline: true,
-                minDate: today,
-                maxDate: maxDate,
-                disable: [
-                    function(date) {
-                        return date.getDay() === 0 || date.getDay() === 6;
-                    }
-                ],
-                onChange: function(selectedDates, dateStr) {
-                    formData.date = dateStr;
-                    generateTimeSlots(dateStr);
-                }
-            });
-        }
+      function updateFormForBusiness() {
+        // Show company field
+        companyField.classList.remove("hidden");
+        companyName.required = true;
 
-        // Generate Time Slots
-        function generateTimeSlots(dateStr) {
-            const slotsGrid = document.getElementById('slotsGrid');
-            const timeSlotsSection = document.getElementById('timeSlotsSection');
-            
-            slotsGrid.innerHTML = '';
-            timeSlotsSection.style.display = 'block';
-            
-            const slots = [
-                '9:00 AM - 9:30 AM',
-                '9:30 AM - 10:00 AM',
-                '10:00 AM - 10:30 AM',
-                '10:30 AM - 11:00 AM',
-                '11:00 AM - 11:30 AM',
-                '11:30 AM - 12:00 PM',
-                '1:00 PM - 1:30 PM',
-                '1:30 PM - 2:00 PM',
-                '2:00 PM - 2:30 PM',
-                '2:30 PM - 3:00 PM',
-                '3:00 PM - 3:30 PM',
-                '3:30 PM - 4:00 PM',
-                '4:00 PM - 4:30 PM',
-                '4:30 PM - 5:00 PM'
-            ];
-            
-            slots.forEach((slot, index) => {
-                const slotEl = document.createElement('div');
-                slotEl.className = 'time-slot';
-                slotEl.textContent = slot;
-                
-                if (Math.random() > 0.85) {
-                    slotEl.classList.add('disabled');
-                    slotEl.title = 'Booked';
-                } else {
-                    slotEl.addEventListener('click', function() {
-                        if (this.classList.contains('disabled')) return;
-                        
-                        document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
-                        this.classList.add('selected');
-                        formData.time = slot;
-                        showPlatforms(dateStr, slot);
-                    });
-                }
-                
-                slotsGrid.appendChild(slotEl);
-            });
-        }
+        // Update labels for business
+        emailLabel.textContent = "Work Email *";
+        email.placeholder = "john@company.com";
+        solutionLabel.textContent = "What are you looking for? *";
+        submitBtn.innerHTML =
+          'Schedule Demo <i class="bi bi-arrow-right ms-2"></i>';
+        marketingLabel.innerHTML =
+          "I agree to receive marketing communications from Verifitech";
 
-        function showPlatforms(dateStr, timeSlot) {
-            document.getElementById('selectedInfo').style.display = 'flex';
-            document.getElementById('selectedDateTimeText').textContent = dateStr + ' at ' + timeSlot.split(' - ')[0];
-            document.getElementById('meetingPlatforms').style.display = 'block';
-            document.getElementById('confirmBooking').disabled = true;
-        }
+        // Update solution options for business
+        solutionSelect.innerHTML = `
+          <option value="" disabled selected>Select a solution...</option>
+          <option>Employee Background Verification</option>
+          <option>Third Party Due Diligence</option>
+          <option>KYC (Know Your Customer)</option>
+          <option>KYB (Know Your Business)</option>
+          <option>BFSI Solutions</option>
+          <option>API Checks</option>
+          <option>E-sign / Digital Contracting</option>
+          <option>Other</option>
+        `;
+      }
 
-        // Platform Selection
-        function selectPlatform(radio) {
-            formData.platform = radio.value;
-            document.getElementById('confirmBooking').disabled = false;
-        }
+      function updateFormForCandidate() {
+        // Hide company field
+        companyField.classList.add("hidden");
+        companyName.required = false;
+        companyName.value = ""; // Clear value
 
-        // Back to Step 1
-        document.getElementById('backToStep1').addEventListener('click', function() {
-            document.getElementById('step2').classList.remove('active');
-            document.getElementById('step1').classList.add('active');
-            updateProgress(1);
-        });
+        // Update labels for candidate
+        emailLabel.textContent = "Email Address *";
+        email.placeholder = "john.doe@email.com";
+        solutionLabel.textContent = "Verification Type *";
+        submitBtn.innerHTML =
+          'Submit Request <i class="bi bi-arrow-right ms-2"></i>';
+        marketingLabel.innerHTML =
+          "I agree to receive updates about my verification status";
 
-        // ================= EMAILJS SEND FUNCTION - FIXED =================
-        async function sendEmails() {
-            const errorDiv = document.getElementById('emailError');
-            errorDiv.classList.remove('show');
-            
-            console.log('📧 Preparing to send emails...');
-            console.log('Form Data:', formData);
-            
-            // Template parameters - MUST match your EmailJS template variables exactly
-            const templateParams = {
-                user_name: formData.name,
-                user_email: formData.email,
-                user_phone: formData.phone,
-                company: formData.company,
-                service: formData.service,
-                candidates: formData.candidates,
-                date: formData.date,
-                time: formData.time,
-                platform: formData.platform,
-                reply_to: EMAILJS_CONFIG.HOST_EMAIL
-            };
+        // Update solution options for candidate
+        solutionSelect.innerHTML = `
+          <option value="" disabled selected>Select verification type...</option>
+          <option>Employment Verification</option>
+          <option>Education Verification</option>
+          <option>Address Verification</option>
+          <option>Identity Verification</option>
+          <option>Criminal Record Check</option>
+          <option>Reference Check</option>
+          <option>Other</option>
+        `;
+      }
 
-            try {
-                // Send to USER (confirmation email)
-                console.log('📤 Sending to user:', formData.email);
-                const userResponse = await emailjs.send(
-                    EMAILJS_CONFIG.SERVICE_ID,
-                    EMAILJS_CONFIG.USER_TEMPLATE_ID,
-                    {
-                        ...templateParams,
-                        to_email: formData.email
-                    }
-                );
-                console.log('✅ User email sent:', userResponse);
+      // Event listeners for radio buttons
+      businessRadio.addEventListener("change", updateFormForBusiness);
+      candidateRadio.addEventListener("change", updateFormForCandidate);
 
-                // Send to HOST (notification email)
-                console.log('📤 Sending to host:', EMAILJS_CONFIG.HOST_EMAIL);
-                const hostResponse = await emailjs.send(
-                    EMAILJS_CONFIG.SERVICE_ID,
-                    EMAILJS_CONFIG.USER_TEMPLATE_ID,
-                    {
-                        ...templateParams,
-                        to_email: EMAILJS_CONFIG.HOST_EMAIL,
-                        user_name: `[NEW BOOKING] ${formData.name}`
-                    }
-                );
-                console.log('✅ Host email sent:', hostResponse);
+      // Initialize form state
+      if (businessRadio.checked) {
+        updateFormForBusiness();
+      } else if (candidateRadio.checked) {
+        updateFormForCandidate();
+      }
 
-                return true;
-                
-            } catch (error) {
-                console.error('❌ EmailJS Error:', error);
-                
-                let errorMsg = 'Failed to send confirmation email. ';
-                if (error.text) {
-                    errorMsg += error.text;
-                } else if (error.message) {
-                    errorMsg += error.message;
-                } else {
-                    errorMsg += 'Please check your email configuration.';
-                }
-                
-                errorDiv.textContent = errorMsg;
-                errorDiv.classList.add('show');
-                return false;
-            }
-        }
-
-        // Confirm Booking with EmailJS
-        document.getElementById('confirmBooking').addEventListener('click', async function() {
-            const btn = this;
-            btn.classList.add('btn-loading');
-            btn.disabled = true;
-
-            // Send emails via EmailJS
-            const emailSent = await sendEmails();
-
-            if (emailSent) {
-                // Show success state
-                document.getElementById('step2').classList.remove('active');
-                document.getElementById('step3').classList.add('active');
-                document.querySelector('.progress-steps').style.display = 'none';
-                document.getElementById('formFooter').style.display = 'none';
-                updateSuccessContent();
-            }
-
-            btn.classList.remove('btn-loading');
-            btn.disabled = false;
-        });
-
-        function updateSuccessContent() {
-            const dateObj = new Date(formData.date);
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            
-            document.getElementById('summaryDate').textContent = dateObj.toLocaleDateString('en-US', options);
-            document.getElementById('summaryTime').textContent = formData.time + ' EST';
-            document.getElementById('summaryPlatform').textContent = formData.platform;
-            document.getElementById('summaryEmail').textContent = formData.email;
-            
-            const platformIcons = {
-                'Zoho Meeting': 'bi-camera-video-fill',
-                'Microsoft Teams': 'bi-microsoft-teams',
-                'Google Meet': 'bi-google'
-            };
-            document.getElementById('platformSummaryIcon').innerHTML = '<i class="bi ' + platformIcons[formData.platform] + '"></i>';
-            
-            generateCalendarLinks(dateObj);
-        }
-
-        function generateCalendarLinks(dateObj) {
-            const timeParts = formData.time.split(' - ');
-            const startTimeStr = timeParts[0];
-            const endTimeStr = timeParts[1];
-            
-            const startDate = parseTime(dateObj, startTimeStr);
-            const endDate = parseTime(dateObj, endTimeStr);
-            
-            const formatDate = function(d) {
-                return d.toISOString().replace(/-|:|\.\d+/g, '');
-            };
-            
-            const start = formatDate(startDate);
-            const end = formatDate(endDate);
-            
-            const title = 'Verifitech Product Demo';
-            const description = 'Personalized demo for ' + formData.company + '\nService: ' + formData.service + '\nCandidates per month: ' + formData.candidates;
-            const location = formData.platform;
-            
-            document.getElementById('googleCalLink').href = 
-                'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(title) + '&dates=' + start + '/' + end + '&details=' + encodeURIComponent(description) + '&location=' + encodeURIComponent(location);
-            
-            document.getElementById('outlookLink').href = 
-                'https://outlook.live.com/calendar/0/deeplink/compose?subject=' + encodeURIComponent(title) + '&startdt=' + startDate.toISOString() + '&enddt=' + endDate.toISOString() + '&body=' + encodeURIComponent(description) + '&location=' + encodeURIComponent(location);
-            
-            const ics = 'BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nDTSTART:' + start + '\nDTEND:' + end + '\nSUMMARY:' + title + '\nDESCRIPTION:' + description.replace(/\n/g, '\\n') + '\nLOCATION:' + location + '\nEND:VEVENT\nEND:VCALENDAR';
-            
-            const blob = new Blob([ics], { type: 'text/calendar' });
-            document.getElementById('icalLink').href = URL.createObjectURL(blob);
-        }
-
-        function parseTime(date, timeStr) {
-            const parts = timeStr.split(' ');
-            const time = parts[0];
-            const period = parts[1];
-            const timeParts = time.split(':');
-            let hours = parseInt(timeParts[0]);
-            const minutes = parseInt(timeParts[1]);
-            
-            if (period === 'PM' && hours !== 12) hours += 12;
-            if (period === 'AM' && hours === 12) hours = 0;
-            
-            const d = new Date(date);
-            d.setHours(hours, minutes, 0);
-            return d;
-        }
-
-        function updateProgress(step) {
-            currentStep = step;
-            document.querySelectorAll('.step').forEach(function(el, idx) {
-                const stepNum = idx + 1;
-                el.classList.remove('active', 'completed');
-                
-                if (stepNum === step) {
-                    el.classList.add('active');
-                } else if (stepNum < step) {
-                    el.classList.add('completed');
-                    el.querySelector('.step-number').innerHTML = '<i class="bi bi-check"></i>';
-                } else {
-                    el.querySelector('.step-number').textContent = stepNum;
-                }
-            });
-            
-            document.getElementById('line1').classList.toggle('completed', step > 1);
-            document.getElementById('line2').classList.toggle('completed', step > 2);
-        }
-
-        // Reset on close
-        document.getElementById('demoModal').addEventListener('hidden.bs.modal', function() {
-            document.getElementById('detailsForm').reset();
-            document.querySelectorAll('input[name="service"]').forEach(function(r) { r.checked = false; });
-            document.querySelectorAll('input[name="platform"]').forEach(function(r) { r.checked = false; });
-            document.querySelectorAll('.preset-btn').forEach(function(b) { b.classList.remove('active'); });
-            
-            document.getElementById('step1').classList.add('active');
-            document.getElementById('step2').classList.remove('active');
-            document.getElementById('step3').classList.remove('active');
-            document.querySelector('.progress-steps').style.display = 'flex';
-            document.getElementById('formFooter').style.display = 'block';
-            
-            document.getElementById('timeSlotsSection').style.display = 'none';
-            document.getElementById('selectedInfo').style.display = 'none';
-            document.getElementById('meetingPlatforms').style.display = 'none';
-            document.getElementById('confirmBooking').disabled = true;
-            document.getElementById('emailError').classList.remove('show');
-            
-            updateProgress(1);
-            document.getElementById('calendar').innerHTML = '';
-        });
-
-        // Auto-open for demo
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                new bootstrap.Modal(document.getElementById('demoModal')).show();
-            }, 500);
-        });
+      
     </script>
-</body>
+  </body>
 </html>
