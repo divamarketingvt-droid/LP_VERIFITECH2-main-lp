@@ -52,49 +52,63 @@
         box-sizing: border-box;
       }
 
-      html {
-        scroll-behavior: smooth;
-      }
+         html {
+  scroll-behavior: smooth;
+}
 
-      /* Z-INDEX FIXES */
-      .navbar {
-        z-index: 1050;
-      }
-      
-      .dropdown-menu {
-        z-index: 1060;
-        position: absolute;
-      }
-      
-      .dropdown-item {
-        position: relative;
-        z-index: 1061;
-      }
-      
-      .industry-hero {
-        position: relative;
-        z-index: 1;
-      }
-      
-      .navbar-collapse {
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(12px);
-        border-radius: 12px;
-        padding: 1rem;
-        margin-top: 0.5rem;
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-      }
-      
-      @media (min-width: 992px) {
-        .navbar-collapse {
-          background: transparent;
-          backdrop-filter: none;
-          padding: 0;
-          margin-top: 0;
-          box-shadow: none;
-        }
-      }
+/* ============================================
+   Z-INDEX FIXES - KEEP THESE AT TOP
+   ============================================ */
 
+
+/* ============================================
+   Z-INDEX FIXES - KEEP THESE AT TOP
+   ============================================ */
+
+/* Ensure navbar has proper z-index */
+  
+  /* Ensure navbar has proper z-index */
+  .navbar {
+    z-index: 1050; /* Higher than most content */
+  }
+  
+  /* Fix dropdown z-index to appear above hero content */
+  .dropdown-menu {
+    z-index: 1060; /* Higher than navbar */
+    position: absolute; /* Ensure proper positioning */
+  }
+  
+  /* Ensure dropdown items are clickable and visible */
+  .dropdown-item {
+    position: relative;
+    z-index: 1061;
+  }
+  
+  /* Fix for hero section overlapping */
+  .industry-hero {
+    position: relative;
+    z-index: 1; /* Lower than navbar */
+  }
+  
+  /* Ensure navbar collapse has proper background when expanded on mobile */
+  .navbar-collapse {
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(12px);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-top: 0.5rem;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+  }
+  
+  @media (min-width: 992px) {
+    .navbar-collapse {
+      background: transparent;
+      backdrop-filter: none;
+      padding: 0;
+      margin-top: 0;
+      box-shadow: none;
+    }
+  }
       /* Navigation */
       .navbar {
         padding: 0;
@@ -118,227 +132,13 @@
         flex-direction: column;
         line-height: 1.1;
         transition: color 0.3s;
-         padding: 0;
-  align-items: center;
       }
-
       .navbar-brand img {
-       height: auto;
-  width: 160px;
-  max-width: 100%;
-  object-fit: contain;
-  display: block;
+        height: 100px;
+        width: 200px;
+        object-fit: contain;
+        display: block;
       }
-      * Navbar height adjustment for mobile */
-@media (max-width: 991px) {
-  .navbar {
-    height: auto;
-    min-height: 70px;
-    padding: 0.5rem 0;
-  }
-  
-  .navbar-brand img {
-    width: 140px;
-  }
-  
-  .navbar-toggler {
-    padding: 0.25rem 0.5rem;
-    font-size: 1.25rem;
-    border: none;
-  }
-}
-
-/* Newsletter Section Responsive Fixes */
-@media (max-width: 991px) {
-  .newsletter-footer-section {
-    padding: 30px 20px;
-    text-align: center;
-    margin-bottom: 40px;
-  }
-  
-  .newsletter-footer-section .d-flex.align-items-center.gap-3 {
-    flex-direction: column;
-    text-align: center;
-    gap: 1rem !important;
-  }
-  
-  .newsletter-icon-footer {
-    margin: 0 auto;
-    width: 50px;
-    height: 50px;
-    font-size: 1.5rem;
-  }
-  
-  .newsletter-title {
-    font-size: 1.25rem;
-  }
-  
-  .newsletter-subtitle {
-    font-size: 0.9rem;
-    max-width: 100%;
-  }
-  
-  /* Form fixes for tablet */
-  .input-group-wrapper {
-    flex-direction: column;
-    width: 100%;
-  }
-  
-  .zf-tempContDiv {
-    width: 100%;
-  }
-  
-  .newsletter-input {
-    width: 100%;
-    padding: 12px 16px;
-    font-size: 16px; /* Prevents zoom on iOS */
-  }
-  
-  .newsletter-btn {
-    width: 100%;
-    justify-content: center;
-    padding: 12px 24px;
-  }
-}
-
-/* Mobile specific fixes */
-@media (max-width: 767px) {
-  .newsletter-footer-section {
-    padding: 24px 16px;
-    margin-bottom: 30px;
-    border-radius: 16px;
-  }
-  
-  .newsletter-footer-section::before {
-    width: 200px;
-    height: 200px;
-    top: -30%;
-    right: -20%;
-  }
-  
-  .newsletter-icon-footer {
-    width: 48px;
-    height: 48px;
-    font-size: 1.25rem;
-    border-radius: 12px;
-  }
-  
-  .newsletter-title {
-    font-size: 1.15rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .newsletter-subtitle {
-    font-size: 0.85rem;
-    line-height: 1.4;
-  }
-  
-  .newsletter-disclaimer {
-    justify-content: center;
-    font-size: 0.8rem;
-  }
-  
-  /* Footer columns on mobile */
-  .footer .col-lg-2,
-  .footer .col-lg-3 {
-    flex: 0 0 100%;
-    max-width: 100%;
-    text-align: center;
-    margin-bottom: 1.5rem;
-  }
-  
-  .footer-links {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .footer-logo {
-    margin: 0 auto 15px;
-    width: 150px;
-  }
-  
-  .footer-description {
-    max-width: 100%;
-    margin: 0 auto 1.5rem;
-    font-size: 0.9rem;
-  }
-}
-
-/* Extra small devices */
-@media (max-width: 375px) {
-  .navbar-brand img {
-    width: 120px;
-  }
-  
-  .newsletter-footer-section {
-    padding: 20px 12px;
-  }
-  
-  .newsletter-title {
-    font-size: 1.1rem;
-  }
-  
-  .newsletter-input {
-    padding: 10px 14px;
-    font-size: 16px;
-  }
-  
-  .newsletter-btn {
-    padding: 10px 20px;
-    font-size: 0.95rem;
-  }
-}
-
-/* Fix for newsletter icon alignment on desktop */
-@media (min-width: 992px) {
-  .newsletter-footer-section .d-flex.align-items-center.gap-3 {
-    justify-content: flex-start;
-  }
-  
-  .newsletter-icon-footer {
-    flex-shrink: 0;
-  }
-}
-
-/* Ensure proper stacking in footer main content on mobile */
-@media (max-width: 767px) {
-  .footer-main-content {
-    margin-top: 10px;
-  }
-  
-  .footer-heading {
-    margin-bottom: 1rem;
-    font-size: 1rem;
-  }
-  
-  .footer-links li {
-    margin-bottom: 0.75rem;
-  }
-  
-  .social-links {
-    justify-content: center;
-    margin-top: 1rem;
-  }
-  
-  .copyright {
-    text-align: center;
-    margin-bottom: 1rem;
-  }
-}
-
-/* Privacy row mobile fixes */
-@media (max-width: 575px) {
-  .privacy-row {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    align-items: center;
-  }
-  
-  .privacy-separator {
-    display: none;
-  }
 
       .navbar-brand span {
         color: var(--primary);
@@ -370,7 +170,7 @@
         color: var(--primary);
       }
 
-      /* Dropdown Styling */
+      /* Dropdown Styling with Teal Accents */
       .dropdown-menu {
         border: none;
         box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
@@ -426,7 +226,7 @@
         opacity: 0.1;
       }
 
-      /* CTA Buttons */
+      /* CTA Button Style - Talk to Sales */
       .btn-sales {
         background: var(--primary);
         color: white !important;
@@ -446,12 +246,11 @@
         transform: translateY(-2px);
         box-shadow: 0 8px 25px rgba(26, 194, 193, 0.4);
       }
-
       .btn-login {
         background-color: #ffffff !important;
-        color: #00bfa5 !important;
+        color: #00bfa5 !important; /* Teal color - adjust to your exact teal shade */
         border: 1px solid #00bfa5 !important;
-        box-shadow: 0 2px 8px rgba(0, 191, 165, 0.3) !important;
+        box-shadow: 0 2px 8px rgba(0, 191, 165, 0.3) !important; /* Teal box shadow */
         padding: 8px 24px;
         border-radius: 6px;
         font-weight: 500;
@@ -466,6 +265,7 @@
         box-shadow: 0 4px 12px rgba(0, 191, 165, 0.4) !important;
         transform: translateY(-1px);
       }
+
 
       /* Country Selector */
       .country-selector {
@@ -492,7 +292,8 @@
         font-size: 1.2rem;
       }
 
-      /* Hero Button */
+
+      /* Hero Button - Fixed Visibility */
       .btn-primary-custom {
         background: var(--primary) !important;
         color: white !important;
@@ -657,7 +458,7 @@
         color: var(--gray);
       }
 
-      /* Hero Visual */
+      /* Hero Visual - Floating Cards */
       .hero-visual {
         position: relative;
         height: 500px;
@@ -1174,6 +975,25 @@
         background: var(--light-gray);
       }
 
+      .btn-login {
+        background-color: #ffffff !important;
+        color: #00bfa5 !important; /* Teal color - adjust to your exact teal shade */
+        border: 1px solid #00bfa5 !important;
+        box-shadow: 0 2px 8px rgba(0, 191, 165, 0.3) !important; /* Teal box shadow */
+        padding: 8px 24px;
+        border-radius: 6px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        margin: 12px;
+      }
+
+      .btn-login:hover {
+        background-color: #00bfa5 !important;
+        color: #ffffff !important;
+        box-shadow: 0 4px 12px rgba(0, 191, 165, 0.4) !important;
+        transform: translateY(-1px);
+      }
       .code-block {
         background: var(--dark);
         border-radius: 16px;
@@ -1371,10 +1191,297 @@
         margin-bottom: 2.5rem;
         max-width: 600px;
       }
+      /* Newsletter Section - Matching Footer Background */
+      .newsletter-section {
+        background: #f0fdfa;
+        padding: 80px 0;
+        color: var(--dark);
+      }
 
-      /* Remove default Bootstrap dropdown arrow */
+      .newsletter-section .newsletter-icon {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, var(--primary-light), white);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        color: var(--primary);
+        font-size: 2.5rem;
+        border: 1px solid rgba(26, 194, 193, 0.2);
+      }
+
+      .newsletter-section h2,
+      .newsletter-section .display-6 {
+        color: var(--dark);
+      }
+
+      .newsletter-section .lead {
+        color: var(--gray) !important;
+      }
+
+      .newsletter-section .d-flex.align-items-center.gap-2 {
+        color: var(--navy);
+      }
+
+      .newsletter-section .bi-check-circle-fill {
+        color: var(--primary) !important;
+      }
+
+      .newsletter-form {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .newsletter-form input {
+        flex: 1;
+        min-width: 250px;
+        padding: 1rem 1.5rem;
+        border-radius: 10px;
+        border: 1px solid #cbd5e1;
+        background: white;
+        color: var(--dark);
+        font-size: 1rem;
+        transition: all 0.3s;
+      }
+
+      .newsletter-form input:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(26, 194, 193, 0.1);
+      }
+
+      .newsletter-form input::placeholder {
+        color: #94a3b8;
+      }
+
+      .btn-subscribe {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(26, 194, 193, 0.3);
+        white-space: nowrap;
+      }
+
+      .btn-subscribe:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(26, 194, 193, 0.4);
+      }
+
+      .newsletter-section p {
+        color: var(--gray) !important;
+      }
+
+      .newsletter-section a {
+        color: var(--primary);
+        text-decoration: none;
+      }
+
+      /* Responsive adjustments for newsletter */
+      @media (max-width: 767px) {
+        .newsletter-section {
+          padding: 60px 0;
+          text-align: center;
+        }
+
+        .newsletter-section .newsletter-icon {
+          margin: 0 auto 1.5rem;
+        }
+
+        .newsletter-form {
+          flex-direction: column;
+        }
+
+        .newsletter-form input {
+          width: 100%;
+        }
+
+        .btn-subscribe {
+          width: 100%;
+        }
+      }
+      /* Contact Section */
+      .contact-section {
+        padding: 100px 0;
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        color: white;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .contact-section::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(26, 194, 193, 0.1) 0%,
+          transparent 60%
+        );
+        border-radius: 50%;
+      }
+
+      .contact-section h2 {
+        font-size: 3rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+      }
+
+      .contact-section .lead {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 1.25rem;
+        margin-bottom: 3rem;
+      }
+
+      .contact-feature {
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .contact-feature-icon {
+        width: 50px;
+        height: 50px;
+        background: rgba(26, 194, 193, 0.2);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary);
+        font-size: 1.5rem;
+        flex-shrink: 0;
+        border: 1px solid rgba(26, 194, 193, 0.3);
+      }
+      /* Remove default Bootstrap dropdown arrow from nav links */
       .navbar .dropdown-toggle::after {
         display: none !important;
+      }
+      /* Contact Form Card - Glassmorphism */
+      .contact-form-card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 2.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .form-group {
+        position: relative;
+        margin-bottom: 1.5rem;
+      }
+
+      .form-control-custom {
+        width: 100%;
+        padding: 1rem 3rem 1rem 1.2rem;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(30, 41, 59, 0.6);
+        color: white;
+        font-size: 0.95rem;
+        transition: all 0.3s;
+      }
+
+      .form-control-custom:focus {
+        outline: none;
+        border-color: var(--primary);
+        background: rgba(30, 41, 59, 0.8);
+        box-shadow: 0 0 0 3px rgba(26, 194, 193, 0.1);
+      }
+
+      .form-control-custom::placeholder {
+        color: #94a3b8;
+      }
+
+      /* Red Required Icon (Right Side) */
+      .required-icon {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #ef4444;
+        font-size: 0.5rem;
+        pointer-events: none;
+      }
+      /* Checkbox styling */
+      .form-check-custom {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        margin: 1.5rem 0;
+      }
+
+      .form-check-input-custom {
+        width: 20px;
+        height: 20px;
+        margin-top: 2px;
+        border: 2px solid var(--primary);
+        border-radius: 4px;
+        background: transparent;
+        cursor: pointer;
+        appearance: none;
+        position: relative;
+        flex-shrink: 0;
+      }
+
+      .form-check-input-custom:checked {
+        background: var(--primary);
+        border-color: var(--primary);
+      }
+
+      .form-check-input-custom:checked::after {
+        content: "";
+        position: absolute;
+        left: 6px;
+        top: 2px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+      }
+
+      .form-check-label-custom {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
+      .form-check-label-custom a {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .btn-submit {
+        background: var(--primary) !important;
+        color: white !important;
+        border: none;
+        padding: 1rem;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 1rem;
+        width: 100%;
+        transition: all 0.3s;
+        box-shadow: 0 4px 15px rgba(26, 194, 193, 0.3);
+      }
+
+      .btn-submit:hover {
+        background: var(--primary-dark) !important;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(26, 194, 193, 0.4);
       }
 
       /* Footer - Light Cyan/Mint Background */
@@ -1498,463 +1605,295 @@
         transform: translateY(0);
       }
 
-      /* ============================================
-         NEWSLETTER FOOTER SECTION STYLES WITH ZOHO
-         ============================================ */
-      .newsletter-footer-section {
-        background: linear-gradient(135deg, rgba(26, 194, 193, 0.1) 0%, rgba(26, 194, 193, 0.05) 100%);
-        border-radius: 20px;
-        padding: 40px;
-        margin-bottom: 50px;
-        border: 1px solid rgba(26, 194, 193, 0.2);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .newsletter-footer-section::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        right: -10%;
-        width: 300px;
-        height: 300px;
-        background: radial-gradient(circle, rgba(26, 194, 193, 0.15) 0%, transparent 70%);
-        border-radius: 50%;
-        pointer-events: none;
-      }
-
-      .newsletter-icon-footer {
-        width: 60px;
-        height: 60px;
-        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-        border-radius: 16px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 1.8rem;
-        flex-shrink: 0;
-        box-shadow: 0 8px 20px rgba(26, 194, 193, 0.3);
-      }
-
-      .newsletter-title {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: var(--dark);
-        margin-bottom: 0.25rem;
-      }
-
-      .newsletter-subtitle {
-        color: var(--gray);
-        font-size: 0.95rem;
-        margin: 0;
-        line-height: 1.5;
-      }
-
-      /* Zoho Form Styles - Integrated with existing design */
-      .newsletter-form-footer {
-        width: 100%;
-        position: relative;
-        z-index: 2;
-      }
-
-      .input-group-wrapper {
-        display: flex;
-        gap: 12px;
-        margin-bottom: 10px;
-        align-items: flex-start;
-      }
-
-      /* Zoho input wrapper */
-      .zf-tempContDiv {
-        flex: 1;
-        position: relative;
-        margin: 0;
-        padding: 0;
-      }
-
-      /* Main input field - preserves your styling */
-      .newsletter-input {
-        width: 100%;
-        padding: 14px 20px;
-        border: 2px solid #e2e8f0;
-        border-radius: 12px;
-        font-size: 1rem;
-        color: var(--dark);
-        background: white;
-        transition: all 0.3s ease;
-        min-width: 0;
-        font-family: 'Inter', sans-serif;
-        margin: 0;
-      }
-
-      .newsletter-input:focus {
-        outline: none;
-        border-color: var(--primary);
-        box-shadow: 0 0 0 4px rgba(26, 194, 193, 0.1);
-      }
-
-      .newsletter-input::placeholder {
-        color: #94a3b8;
-      }
-
-      /* Zoho error message styling */
-      .zf-errorMessage {
-        color: #ef4444;
-        font-size: 0.85rem;
-        margin-top: 6px;
-        margin-bottom: 0;
-        display: none;
-        align-items: center;
-        gap: 4px;
-        font-weight: 500;
-      }
-
-      .zf-errorMessage::before {
-        content: '\F332';
-        font-family: 'bootstrap-icons';
-        font-size: 0.8rem;
-      }
-
-      /* Submit button - preserves your styling */
-      .newsletter-btn {
-        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-        color: white;
-        border: none;
-        padding: 14px 28px;
-        border-radius: 12px;
-        font-weight: 600;
-        font-size: 1rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        white-space: nowrap;
-        box-shadow: 0 4px 15px rgba(26, 194, 193, 0.3);
-        font-family: 'Inter', sans-serif;
-        height: fit-content;
-      }
-
-      .newsletter-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(26, 194, 193, 0.4);
-      }
-
-      .newsletter-btn i {
-        transition: transform 0.3s ease;
-      }
-
-      .newsletter-btn:hover i {
-        transform: translateX(4px);
-      }
-
-      .newsletter-btn:disabled {
-        opacity: 0.7;
-        cursor: not-allowed;
-      }
-
-      /* Zoho submit color class */
-      .zf-submitColor {
-        /* Inherits from .newsletter-btn */
-      }
-
-      .newsletter-disclaimer {
-        color: var(--gray);
-        font-size: 0.85rem;
-        margin: 8px 0 0 0;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-      }
-
-      .newsletter-disclaimer i {
-        color: var(--primary);
-      }
-
-      /* Success/Error States for Zoho */
-      .zf-error {
-        border-color: #ef4444 !important;
-        background-color: #fef2f2 !important;
-      }
-
-      .zf-success {
-        border-color: #10b981 !important;
-        background-color: #f0fdf4 !important;
-      }
-
-      /* Zoho validation message styling */
-      .zf-lblTop {
-        margin-bottom: 8px;
-      }
-
-      .zf-important {
-        color: #ef4444;
-        margin-left: 2px;
-      }
-
-      /* Footer Main Content Spacing */
-      .footer-main-content {
-        margin-top: 20px;
-      }
-
-      /* Privacy Row Fixes */
-      .privacy-row {
-        margin-top: 20px;
-        padding-top: 20px;
-        border-top: 1px solid #e2e8f0;
-        text-align: center;
-        color: var(--gray);
-        font-size: 0.9rem;
-      }
-
-      .privacy-link {
-        color: var(--primary);
-        text-decoration: none;
-        transition: color 0.3s;
-      }
-
-      .privacy-link:hover {
-        color: var(--primary-dark);
-        text-decoration: underline;
-      }
-
-      .privacy-separator {
-        margin: 0 10px;
-        color: #cbd5e1;
-      }
-
-      /* Footer Logo */
-      .footer-logo {
-        width: 180px;
-        height: auto;
-        margin-bottom: 20px;
-      }
-
-      .footer-description {
-        font-size: 14px;
-        line-height: 1.6;
-        max-width: 280px;
-        color: var(--gray);
-      }
-
-      .footer-heading {
-        color: #1a1a1a;
-        font-size: 16px;
-        font-weight: 600;
-        margin-bottom: 20px;
-      }
-
-      .social-links {
-        display: flex;
-        justify-content: flex-end;
-        gap: 15px;
-      }
-
-      .copyright {
-        font-size: 14px;
-        margin: 0;
-        color: var(--gray);
-      }
-
-      /* WhatsApp Float */
-      .whatsapp-float {
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-        color: white;
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
-        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-        z-index: 9999;
-        transition: all 0.3s ease;
-        border: 3px solid rgba(255, 255, 255, 0.3);
-        display: none;
-      }
-
-      .whatsapp-float:hover {
-        transform: scale(1.1) rotate(10deg);
-        color: white;
-        box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5);
-      }
-
-      .whatsapp-float i {
-        font-size: 1.8rem;
-      }
-
-      .float-tooltip {
-        position: absolute;
-        right: 70px;
-        background: #333;
-        color: white;
-        padding: 8px 16px;
-        border-radius: 8px;
-        font-size: 14px;
-        white-space: nowrap;
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-        pointer-events: none;
-      }
-
-      .float-tooltip::after {
-        content: '';
-        position: absolute;
-        right: -5px;
-        top: 50%;
-        transform: translateY(-50%);
-        border-top: 5px solid transparent;
-        border-bottom: 5px solid transparent;
-        border-left: 5px solid #333;
-      }
-
-      .whatsapp-float:hover .float-tooltip {
-        opacity: 1;
-        visibility: visible;
-        right: 75px;
-      }
-
+      /* Responsive Styles - Tablet */
       @media (max-width: 991px) {
-        .whatsapp-float {
-          display: flex;
+        .hero {
+          padding: 120px 0 80px;
+          min-height: auto;
         }
-      }
 
-      @media (max-width: 768px) {
-        .whatsapp-float {
-          width: 55px;
-          height: 55px;
+        .hero h1 {
+          font-size: 3rem;
+          letter-spacing: -1px;
+        }
+
+        .hero-visual {
+          height: 450px;
+          margin-top: 4rem;
+        }
+
+        .floating-card {
+          width: 260px !important;
+        }
+
+        .card-1 {
+          right: 10%;
+        }
+        .card-2 {
+          left: 0;
+          top: 120px;
+        }
+        .card-3 {
+          right: 5%;
           bottom: 20px;
-          right: 20px;
         }
-        
-        .whatsapp-float i {
-          font-size: 1.5rem;
+
+        .section-title {
+          font-size: 2.5rem;
         }
-        
-        .float-tooltip {
+
+        .section-padding {
+          padding: 80px 0;
+        }
+
+        .stat-number {
+          font-size: 3rem;
+        }
+
+        .process-connector {
           display: none;
         }
-      }
 
-      /* Responsive Styles */
-      @media (max-width: 991px) {
-        .newsletter-footer-section {
-          padding: 30px;
-          text-align: center;
-        }
-        
-        .newsletter-footer-section .d-flex {
-          flex-direction: column;
-          text-align: center;
-        }
-        
-        .newsletter-icon-footer {
-          margin: 0 auto;
-        }
-        
-        .input-group-wrapper {
-          flex-direction: column;
-        }
-        
-        .newsletter-btn {
-          width: 100%;
-          justify-content: center;
-        }
-
-        .zf-errorMessage {
-          position: static;
-          margin-top: 8px;
-          margin-bottom: 8px;
-          justify-content: center;
-        }
-
-        .footer .col-lg-2 {
-          flex: 0 0 33.333%;
-          max-width: 33.333%;
-        }
-        
-        .footer .col-lg-3 {
-          flex: 0 0 100%;
-          max-width: 100%;
-          text-align: center;
-        }
-        
-        .footer-logo {
-          margin: 0 auto 20px;
-          display: block;
-        }
-        
-        .footer-description {
-          max-width: 100%;
-          margin: 0 auto 2rem;
-        }
-
-        .social-links {
-          justify-content: center;
-          margin-top: 20px;
-        }
-
-        .copyright {
-          text-align: center;
-        }
-      }
-
-      @media (max-width: 767px) {
-        .newsletter-footer-section {
-          padding: 24px;
-          margin-bottom: 40px;
-        }
-        
-        .newsletter-title {
-          font-size: 1.25rem;
-        }
-        
-        .newsletter-subtitle {
-          font-size: 0.9rem;
-        }
-
-        .footer .col-lg-2,
-        .footer .col-lg-3,
-        .footer .col-md-6 {
-          flex: 0 0 100%;
-          max-width: 100%;
-          text-align: center;
+        .process-card {
           margin-bottom: 2rem;
         }
-        
-        .footer-links {
+
+        .testimonial-card-large {
+          min-width: 350px;
+        }
+
+        .cta-content h2 {
+          font-size: 3rem;
+        }
+
+        .navbar-collapse {
+          background: white;
+          padding: 1.5rem;
+          border-radius: 16px;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+          margin-top: 1rem;
+          max-height: 80vh;
+          overflow-y: auto;
+        }
+
+        .nav-link::after {
+          display: none;
+        }
+
+        .nav-link {
+          padding: 0.75rem 0 !important;
+          border-bottom: 1px solid #f1f5f9;
+        }
+
+        .dropdown-menu {
+          box-shadow: none;
+          border: 1px solid #e2e8f0;
+          margin-top: 0.5rem;
+        }
+      }
+
+      /* Responsive Styles - Mobile */
+      @media (max-width: 767px) {
+        .hero {
+          padding: 100px 0 60px;
+          text-align: center;
+        }
+
+        .hero h1 {
+          font-size: 2.25rem;
+          line-height: 1.2;
+          letter-spacing: -0.5px;
+        }
+
+        .hero h1 .highlight::after {
+          height: 8px;
+          bottom: 2px;
+        }
+
+        .hero-subtitle {
+          font-size: 1.1rem;
+          max-width: 100%;
+        }
+
+        .hero-badges {
+          flex-direction: column;
+          gap: 1.25rem;
+          align-items: center;
+          text-align: left;
+        }
+
+        .hero-visual {
+          height: 400px;
+          margin-top: 3rem;
           display: flex;
           flex-direction: column;
           align-items: center;
+          gap: 1rem;
         }
-        
-        .footer-heading {
+
+        .floating-card {
+          position: relative !important;
+          width: 90% !important;
+          max-width: 340px;
+          top: auto !important;
+          left: auto !important;
+          right: auto !important;
+          bottom: auto !important;
+          animation: none;
+          margin: 0 auto;
+        }
+
+        .floating-card.card-2 {
+          display: none;
+        } /* Hide 2 cards on mobile, keep 2 */
+        .floating-card.card-3 {
+          display: none;
+        }
+
+        .btn-primary-custom {
+          width: 100%;
+          max-width: 300px;
+          padding: 1rem 1.5rem;
+        }
+
+        .section-padding {
+          padding: 60px 0;
+        }
+
+        .section-title {
+          font-size: 2rem;
+          letter-spacing: -0.5px;
+        }
+
+        .section-header {
+          margin-bottom: 2.5rem;
+        }
+
+        .service-card {
+          padding: 2rem;
+        }
+
+        .service-icon-wrap {
+          width: 60px;
+          height: 60px;
+          font-size: 1.75rem;
+        }
+
+        .process-card {
+          padding: 2.5rem 1.5rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .process-number {
+          width: 60px;
+          height: 60px;
+          font-size: 1.5rem;
+        }
+
+        .process-icon-main {
+          font-size: 2rem;
+        }
+
+        .process-card h4 {
+          font-size: 1.25rem;
+        }
+
+        .industry-card {
+          padding: 1.5rem;
           margin-bottom: 1rem;
+        }
+
+        .industry-icon {
+          width: 60px;
+          height: 60px;
+          font-size: 1.5rem;
+        }
+
+        .code-block {
+          padding: 1.5rem;
+          font-size: 0.8rem;
+        }
+
+        .testimonial-card-large {
+          min-width: 300px;
+          padding: 2rem;
+        }
+
+        .testimonial-text {
+          font-size: 1rem;
+        }
+
+        .stats-bar .col-6 {
+          margin-bottom: 2rem;
+        }
+
+        .stat-number {
+          font-size: 2.5rem;
+        }
+
+        .cta-content h2 {
+          font-size: 2rem;
+        }
+
+        .cta-content p {
+          font-size: 1.1rem;
+        }
+
+        .cta-section {
+          padding: 80px 0;
+        }
+
+        .compliance-badges {
+          justify-content: center;
+        }
+
+        .feature-list-item {
+          flex-direction: column;
+          gap: 1rem;
+          text-align: center;
+        }
+
+        .contact-section h2 {
+          font-size: 2.5rem;
+        }
+
+        .contact-form-card {
+          padding: 1.5rem;
         }
       }
 
+      /* Small Mobile Devices */
       @media (max-width: 375px) {
         .hero h1 {
           font-size: 2rem;
         }
-      }
 
-      /* Shake animation for errors */
-      @keyframes shake {
-        0%, 100% { transform: translateX(0); }
-        25% { transform: translateX(-5px); }
-        75% { transform: translateX(5px); }
-      }
+        .floating-card {
+          width: 95% !important;
+          padding: 1.25rem;
+        }
 
-      .shake-animation {
-        animation: shake 0.5s ease-in-out;
+        .verification-row {
+          gap: 0.75rem;
+        }
+
+        .verif-avatar {
+          width: 38px;
+          height: 38px;
+          font-size: 0.8rem;
+        }
+
+        .verif-info h6 {
+          font-size: 0.9rem;
+        }
+
+        .section-title {
+          font-size: 1.75rem;
+        }
+
+        .logo-item {
+          font-size: 1.25rem;
+        }
       }
     </style>
   </head>
@@ -1964,8 +1903,9 @@
     <nav class="navbar navbar-expand-lg fixed-top">
       <div class="container">
         <a class="navbar-brand" href="./index.html">
+      
           <img
-            src="https://www.verifitech.com/wp-content/uploads/2022/05/verifitech-logo.svg"
+            src="https://www.verifitech.com/wp-content/uploads/2022/05/verifitech-logo.svg "
             alt="Verifitech"
             width="200 px"
             height="60%"
@@ -1983,7 +1923,7 @@
 
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav mx-auto">
-            <!-- SOLUTIONS Dropdown -->
+            <!-- 1. SOLUTIONS Dropdown -->
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
@@ -2024,6 +1964,11 @@
                     <a href="./checks/lp-refernce.html" class="dropdown-item"
                       ><i class="bi bi-people"></i> Reference Check</a
                     >
+
+                    <a href="./checks/lp-refernce.html" class="dropdown-item"
+                      ><i class="bi bi-people"></i> Reference Check</a
+                    >
+
                   </div>
                   <div class="col-md-6">
                     <h6 class="dropdown-header">Specialized Checks</h6>
@@ -2052,7 +1997,7 @@
                     >
                     <a class="dropdown-item" href="./checks/vendor.html"
                       ><i class="fa-solid fa-magnifying-glass-chart"></i> Vendor
-                      Diligence</a
+                      Digillencs</a
                     >
                   </div>
                 </div>
@@ -2086,7 +2031,7 @@
               </ul>
             </li>
 
-            <!-- INDUSTRY Dropdown -->
+            <!-- 2. INDUSTRY Dropdown -->
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
@@ -2151,6 +2096,11 @@
                     ><i class="bi bi-broadcast"></i> Telecom</a
                   >
                 </li>
+                <!--<li>
+                  <a class="dropdown-item" href="#"
+                    ><i class="bi bi-cart"></i> E-commerce and Retail</a
+                  >
+                </li>-->
                 <li>
                   <a class="dropdown-item" href="./industries/LP-FMCG.html"
                     ><i class="bi bi-box-seam"></i> FMCG/FMCD</a
@@ -2159,7 +2109,7 @@
               </ul>
             </li>
 
-            <!-- RESOURCES Dropdown -->
+            <!-- 3. RESOURCES Dropdown -->
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
@@ -2190,15 +2140,18 @@
                     ><i class="bi bi-camera-video"></i> Webinar</a
                   >
                 </li>
+                
                 <li>
+                
                   <a class="dropdown-item" href="./resources/webinar.html">
-                    <i class="bi bi-plug"></i> API
-                  </a>
+  <i class="bi bi-plug"></i> API
+</a>
+
                 </li>
               </ul>
             </li>
 
-            <!-- COMPANY Dropdown -->
+            <!-- 4. COMPANY Dropdown -->
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
@@ -2227,7 +2180,7 @@
               </ul>
             </li>
 
-            <!-- HELP CENTER Dropdown -->
+            <!-- 5. HELP CENTER Dropdown -->
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
@@ -2252,22 +2205,26 @@
                   <a class="dropdown-item" href="./helpcenter/partner.html"
                     ><i class="bi bi-people"></i> For Partners</a
                   >
-                </li>
+                  
                 <li>
                   <a class="dropdown-item" href="./resources/webinar.html"
                     ><i class="bi bi-link-45deg"></i> Affiliate Marketing
-                  </a>
+
+                  </a
+                  >
+                  
+                </li>
                 </li>
               </ul>
             </li>
           </ul>
 
           <div class="d-flex align-items-center">
-            <a href="https://web.verifitech.com/" target="blank" class="btn btn-login">Login</a>
+            <a href="https://web.verifitech.com/" targer="blank" class="btn btn-login">Login</a>
           </div>
 
           <div class="d-flex align-items-center">
-            <a href="./contact/contact.html" class="btn btn-sales"
+            <a href="../contact/contact.html" class="btn btn-sales"
               >Talk to Sales</a
             >
 
@@ -2338,13 +2295,22 @@
                     <span class="country-flag">🇸🇬</span> Singapore
                   </a>
                 </li>
+                <!--<li>
+                  <a
+                    class="dropdown-item country-option"
+                    href="./countries/india.html"
+                    data-country="India"
+                    data-flag="🇮🇳"
+                  >
+                    <span class="country-flag">🇮🇳</span> India
+                  </a>-->
+                </li>
               </ul>
             </div>
           </div>
         </div>
       </div>
     </nav>
-
     <!-- Hero Section -->
     <section class="hero">
       <div class="container">
@@ -3166,6 +3132,20 @@
               </div>
             </div>
           </div>
+          <!DOCTYPE html>
+          <html lang="en">
+            <head>
+              <meta charset="UTF-8" />
+              <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+              <title>Verifitech - Enterprise Background Verification Solutions</title>
+              <meta
+                name="description"
+                content="AI-powered background verification and screening solutions for enterprises. Fast, accurate, and compliant BGV services."
+              />
+          
+              </script>
+            </body>
+          </html>
           
           <div class="testimonial-card-large">
             <div class="quote-icon"><i class="bi bi-quote"></i></div>
@@ -3253,73 +3233,238 @@
                 >Start Free Trial</a
               >
             </div>
+            <!--<div class="mt-5 text-white-50 small">
+              <i class="bi bi-check-circle-fill me-2 text-primary"></i>No credit
+              card required
+              <span class="mx-3">|</span>
+              <i class="bi bi-check-circle-fill me-2 text-primary"></i>Free
+              14-day trial
+              <span class="mx-3">|</span>
+              <i class="bi bi-check-circle-fill me-2 text-primary"></i>Cancel
+              anytime
+            </div>-->
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Footer Section with Zoho Newsletter -->
-    <footer class="footer">
-      <div class="container">
-        <!-- Newsletter Section with Zoho Form -->
-        <!-- Newsletter Section with Zoho Form -->
-<div class="newsletter-footer-section">
-  <div class="row align-items-center">
-    <div class="col-lg-6 mb-4 mb-lg-0">
-      <div class="d-flex align-items-center gap-3 newsletter-header-content">
-        <div class="newsletter-icon-footer">
-          <i class="bi bi-envelope-open"></i>
-        </div>
-        <div class="newsletter-text-content">
-          <h4 class="newsletter-title">Stay Updated</h4>
-          <p class="newsletter-subtitle">Get the latest insights on background verification, compliance updates, and industry trends.</p>
+    <!-- 
+    <<section class="contact-section" id="contact-form">
+      <div class="container position-relative">
+        <div class="row">
+          <div class="col-lg-6 mb-5 mb-lg-0 reveal">
+            <h2>Ready to Explore Verifitech for your business?</h2>
+            <p class="lead">
+              Get in touch with our solutions team to discuss your employment
+              verification needs and customized pricing.
+            </p>
+
+            <div class="mt-5">
+              <div class="contact-feature">
+                <div class="contact-feature-icon">
+                  <i class="bi bi-check-lg"></i>
+                </div>
+                <span>Assess team's verification needs</span>
+              </div>
+              <div class="contact-feature">
+                <div class="contact-feature-icon">
+                  <i class="bi bi-check-lg"></i>
+                </div>
+                <span>Learn products & benefits</span>
+              </div>
+              <div class="contact-feature">
+                <div class="contact-feature-icon">
+                  <i class="bi bi-check-lg"></i>
+                </div>
+                <span>Discuss enterprise pricing</span>
+              </div>
+            </div>
+
+            <div
+              class="mt-5 pt-4"
+              style="border-top: 1px solid rgba(255, 255, 255, 0.1)"
+            >
+              <p class="text-white-50 mb-3">Or reach us directly:</p>
+              <p class="mb-2">
+                <i class="bi bi-envelope me-2 text-primary"></i>
+                sales@verifitech.com
+              </p>
+              <p>
+                <i class="bi bi-telephone me-2 text-primary"></i> +91
+                1800-123-4567
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-6 reveal">
+          
+            <div class="contact-form-card">
+              <form
+                action="https://forms.zohopublic.in/verifitech/form/SalesForm1/formperma/IymDC47Aajpd9ZIqnikAH56d_nr7X1o3wB9Tq1uqZdU/htmlRecords/submit"
+                name="form"
+                method="POST"
+                accept-charset="UTF-8"
+                enctype="multipart/form-data"
+                id="contactForm"
+              >
+                <input type="hidden" name="zf_referrer_name" value="" />
+                <input type="hidden" name="zf_redirect_url" value="" />
+                <input type="hidden" name="zc_gad" value="" />
+
+                
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        class="form-control-custom"
+                        name="SingleLine"
+                        placeholder="First Name"
+                        required
+                      />
+                      <i class="fas fa-asterisk required-icon"></i>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        class="form-control-custom"
+                        name="SingleLine3"
+                        placeholder="Last Name"
+                        required
+                      />
+                      <i class="fas fa-asterisk required-icon"></i>
+                    </div>
+                  </div>
+                </div>
+
+              
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input
+                        type="email"
+                        class="form-control-custom"
+                        name="Email"
+                        placeholder="Work Email"
+                        required
+                      />
+                      <i class="fas fa-asterisk required-icon"></i>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input
+                        type="tel"
+                        class="form-control-custom"
+                        name="PhoneNumber_countrycode"
+                        placeholder="Phone Number"
+                        required
+                      />
+                      <i class="fas fa-asterisk required-icon"></i>
+                    </div>
+                  </div>
+                </div>
+
+                
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        class="form-control-custom"
+                        name="SingleLine1"
+                        placeholder="Company Name"
+                        required
+                      />
+                      <i class="fas fa-asterisk required-icon"></i>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <select
+                        class="form-control-custom"
+                        name="Dropdown1"
+                        required
+                      >
+                        <option value="" disabled selected>
+                          Select Company Size
+                        </option>
+                        <option value="11-50">11-50</option>
+                        <option value="51-200">51-200</option>
+                        <option value="201-500">201-500</option>
+                        <option value="501-1000">501-1000</option>
+                        <option value="1000+">1000+</option>
+                      </select>
+                      <i class="fas fa-asterisk required-icon"></i>
+                    </div>
+                  </div>
+                </div>
+
+              
+                <div class="form-group">
+                  <select class="form-control-custom" name="Dropdown2" required>
+                    <option value="" disabled selected>
+                      Select Verification
+                    </option>
+                    <option value="EPFO verification">EPFO verification</option>
+                    <option value="Reference verification">
+                      Reference verification
+                    </option>
+                    <option value="Complete BGV suite">
+                      Complete BGV suite
+                    </option>
+
+                    <option value="Employe verification">
+                      Employe Verification
+                    </option>
+
+                    <option value="Others">Others</option>
+                  </select>
+                </div>
+
+                
+                <div class="form-group">
+                  <textarea
+                    class="form-control-custom"
+                    name="MultiLine"
+                    rows="3"
+                    placeholder="Tell us about your requirements (Optional)"
+                    style="resize: none"
+                  ></textarea>
+                </div>
+
+              
+                <div class="form-check-custom">
+                  <input
+                    type="checkbox"
+                    class="form-check-input-custom"
+                    id="agreement"
+                    name="Checkbox"
+                    value="I agree to the privacy policy and consent to being contacted regarding Verifitech services."
+                  />
+                  <label class="form-check-label-custom" for="agreement">
+                    I agree to the
+                    <a href="#" target="_blank">Privacy Policy</a> and consent
+                    to being contacted regarding Verifitech services.
+                  </label>
+                </div>
+
+                
+                <button type="submit" class="btn-submit">Submit Request</button>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-lg-6">
-      <!-- Zoho Form Integration -->
-      <form 
-        action='https://forms.zohopublic.in/verifitech/form/EmailForm/formperma/SKIJ3QipRaWUwFKnGbpchcOlGRfoBCpr-GTyQfdQAUQ/htmlRecords/submit' 
-        name='form'
-        method='POST'
-        onSubmit='javascript:document.charset="UTF-8"; return zf_ValidateAndSubmit();'
-        accept-charset='UTF-8' 
-        enctype='multipart/form-data' 
-        id='form'
-        class="newsletter-form-footer"
-      >
-        <input type="hidden" name="zf_referrer_name" value="">
-        <input type="hidden" name="zf_redirect_url" value="">
-        <input type="hidden" name="zc_gad" value="">
-        
-        <div class="input-group-wrapper">
-          <div class="zf-tempContDiv">
-            <input 
-              type="text" 
-              name="Email" 
-              checktype="c5" 
-              value="" 
-              maxlength="255" 
-              fieldType="9" 
-              placeholder="Enter your work email"
-              class="newsletter-input"
-              id="Email"
-            />
-            <p id="Email_error" class="zf-errorMessage">Invalid value</p>
-          </div>
-          <button type="submit" class="newsletter-btn zf-submitColor">
-            Subscribe <i class="bi bi-arrow-right"></i>
-          </button>
-        </div>
-        <p class="newsletter-disclaimer">
-          <i class="bi bi-shield-check"></i> We respect your privacy. No spam, ever.
-        </p>
-      </form>
-    </div>
-  </div>
-</div>
-        <div class="row footer-main-content">
-          <!-- Logo & Descriptireon Column -->
+    </section>  -->
+
+    <!-- Footer Section -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <!-- Logo & Description Column -->
           <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
             <div class="footer-brand">
               <img
@@ -3386,54 +3531,708 @@
               <li><a href="./products/api.html">API</a></li>
             </ul>
           </div>
-        </div>
+
+          <!--
+          <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+            <h5 class="footer-heading">Help Center</h5>
+            <ul class="footer-links">
+              <li><a href="./affilate/affilate.html">For candidate</a></li>
+              <li><a href="./resources/blog.html">For customer</a></li>
+              <li><a href="./resources/casestudy.html">For partners</a></li>
+            </ul>
+          </div>
+        </div>- -->
 
         <!-- Bottom Footer -->
         <div class="footer-bottom">
           <div class="row align-items-center">
             <div class="col-md-6">
-              <p class="copyright">
-                © 2026 Verifitech Solutions Private Limited. All rights
-                reserved.
-              </p>
+             
             </div>
             <div class="col-md-6">
               <div class="social-links">
-                <a href="https://in.linkedin.com/company/verifitechinkedin" class="social-icon"><i class="bi bi-linkedin"></i></a>
-                <a href="https://twitter.com/VerifiTechRaju/status/1595311653192716289" class="social-icon"><i class="bi bi-twitter"></i></a>
-                <a href="https://www.facebook.com/VerifiTechInfo/" class="social-icon"><i class="bi bi-facebook"></i></a>
-                <a href="https://m.youtube.com/@verifitechindia4689" class="social-icon"><i class="bi bi-youtube"></i></a>
-               <a href="https://www.instagram.com/verifitech/reels/" class="social-icon"><i class="bi bi-instagram"></i></a>
-              
+                <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+                <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="social-icon"><i class="bi bi-youtube"></i></a>
               </div>
             </div>
           </div>
           
           <!-- Privacy Policy Row -->
-          <div class="privacy-row">
-            <a href="./privacy-policy.html" class="privacy-link">Privacy Policy</a>
+  <div class="privacy-row">
+             <p class="copyright">
+                © 2026 Verifitech Solutions Private Limited. All rights
+                reserved.
+              </p>
+            <a href="./Privacy policy pages/privacypolicy.html" class="privacy-link">Privacy Policy</a>
             <span class="privacy-separator">|</span>
-            <a href="./disclaimer.html" class="privacy-link">Disclaimer</a>
+            <a href="./Privacy policy pages/disclaimer.html" class="privacy-link">Disclamier</a>
             <span class="privacy-separator">|</span>  
-            <a href="./terms-of-service.html" class="privacy-link">Terms of Service</a>
+            <a href="./Privacy policy pages/terms and conditions.html" class="privacy-link">Terms of Service</a>
             <span class="privacy-separator">|</span>        
-            <a href="./cookie-policy.html" class="privacy-link">Cookies Policy</a>
+            <a href="./Privacy policy pages/cookiepolicy.html" class="privacy-link">cookies policy</a>
+           <a href="." class="privacy-link">Terms of Service</a>
+          
           </div>
         </div>
       </div>
     </footer>
+<!-- Floating WhatsApp Button for Mobile -->
+<a 
+  href="#" 
+  id="whatsappFloat"
+  class="whatsapp-float" 
+  title="Chat with us on WhatsApp"
+  onclick="openWhatsApp(event)"
+>
+  <i class="bi bi-whatsapp"></i>
+  <span class="float-tooltip">How can we help?</span>
+</a>
 
-    <!-- Floating WhatsApp Button -->
-    <a 
-      href="#" 
-      id="whatsappFloat"
-      class="whatsapp-float" 
-      title="Chat with us on WhatsApp"
-      onclick="openWhatsApp(event)"
-    >
-      <i class="bi bi-whatsapp"></i>
-      <span class="float-tooltip">How can we help?</span>
-    </a>
+<!-- WhatsApp Styles -->
+<style>
+  /* Header WhatsApp Button */
+  .whatsapp-btn-header {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: white;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .whatsapp-btn-header:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+    color: white;
+  }
+
+  .whatsapp-btn-header i {
+    font-size: 1.4rem;
+  }
+
+  .whatsapp-tooltip {
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+  }
+
+  .whatsapp-tooltip::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #333;
+  }
+
+  .whatsapp-btn-header:hover .whatsapp-tooltip {
+    opacity: 1;
+    visibility: visible;
+    bottom: -40px;
+  }
+
+  /* Pulse Animation */
+  @keyframes whatsappPulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+    }
+    70% {
+      box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    }
+  }
+
+  .whatsapp-btn-header.pulse {
+    animation: whatsappPulse 2s infinite;
+  }
+
+  /* Floating WhatsApp Button (Mobile) */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    z-index: 9999;
+    transition: all 0.3s ease;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    display: none; /* Hidden by default on desktop */
+  }
+
+  .whatsapp-float:hover {
+    transform: scale(1.1) rotate(10deg);
+    color: white;
+    box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5);
+  }
+
+  .whatsapp-float i {
+    font-size: 1.8rem;
+  }
+
+  .float-tooltip {
+    position: absolute;
+    right: 70px;
+    background: #333;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+  }
+
+  .float-tooltip::after {
+    content: '';
+    position: absolute;
+    right: -5px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid #333;
+  }
+
+  .whatsapp-float:hover .float-tooltip {
+    opacity: 1;
+    visibility: visible;
+    right: 75px;
+  }
+
+  /* Show floating button on mobile */
+  @media (max-width: 991px) {
+    .whatsapp-float {
+      display: flex;
+    }
+    .whatsapp-btn-header {
+      display: none; /* Hide header button on mobile */
+    }
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .whatsapp-float {
+      width: 55px;
+      height: 55px;
+      bottom: 20px;
+      right: 20px;
+    }
+    
+    .whatsapp-float i {
+      font-size: 1.5rem;
+    }
+    
+    .float-tooltip {
+      display: none; /* Hide tooltip on small mobile */
+    }
+  }
+
+  /* Ripple Effect */
+  @keyframes ripple {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1.5);
+      opacity: 0;
+    }
+  }
+
+  .whatsapp-btn-header::after,
+  .whatsapp-float::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    border: 2px solid #25D366;
+    animation: ripple 1.5s infinite;
+    pointer-events: none;
+  }
+</style>
+
+<!-- WhatsApp JavaScript Functionality -->
+<script>
+  // WhatsApp Configuration
+  const whatsappConfig = {
+    phoneNumber: '+919176663777', // Replace with your actual WhatsApp number (country code + number, no + sign)
+    defaultMessage: 'Hi Verifitech Team,\n\nI am interested in your background verification services. Please share more details.',
+    pageContext: true // Enable dynamic page context in message
+  };
+
+  // Initialize WhatsApp functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    // Add pulse animation to header button periodically
+    const headerBtn = document.getElementById('whatsappBtn');
+    if (headerBtn) {
+      setInterval(() => {
+        headerBtn.classList.add('pulse');
+        setTimeout(() => {
+          headerBtn.classList.remove('pulse');
+        }, 2000);
+      }, 10000); // Pulse every 10 seconds
+    }
+
+    // Track page for context-aware messaging
+    if (whatsappConfig.pageContext) {
+      trackPageContext();
+    }
+  });
+
+  // Main WhatsApp Open Function
+  function openWhatsApp(event) {
+    event.preventDefault();
+    
+    // Get current page context
+    const pageTitle = document.title;
+    const currentUrl = window.location.href;
+    
+    // Build message with context
+    let message = whatsappConfig.defaultMessage;
+    
+    // Add page context if available
+    if (whatsappConfig.pageContext && pageTitle) {
+      message += `\n\nI am currently viewing: ${pageTitle}`;
+    }
+    
+    // Encode message for URL
+    const encodedMessage = encodeURIComponent(message);
+    
+    // Build WhatsApp URL
+    const whatsappUrl = `https://wa.me/${whatsappConfig.phoneNumber}?text=${encodedMessage}`;
+    
+    // Detect device and open appropriately
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    if (isMobile) {
+      // Try to open WhatsApp app first
+      window.location.href = whatsappUrl;
+      
+      // Fallback to web after 1 second if app doesn't open
+      setTimeout(() => {
+        window.open(whatsappUrl, '_blank');
+      }, 1000);
+    } else {
+      // Desktop: Open WhatsApp Web in new tab
+      window.open(whatsappUrl, '_blank');
+    }
+    
+    // Track click event (optional - for analytics)
+    trackWhatsAppClick(pageTitle, currentUrl);
+    
+    // Show user feedback
+    showWhatsAppFeedback(event.target);
+  }
+
+  // Track page context for better messaging
+  function trackPageContext() {
+    const path = window.location.pathname;
+    const pageContexts = {
+      '/checks/': 'ID Verification services',
+      '/lp-employment.html': 'Employment Verification',
+      '/lp-education': 'Education Verification',
+      '/industries/': 'Industry solutions',
+      '/resources/': 'Resources and blogs',
+      '/Contact/': 'Contact/Sales inquiry'
+    };
+    
+    // Update default message based on page context
+    for (const [key, value] of Object.entries(pageContexts)) {
+      if (path.includes(key)) {
+        whatsappConfig.defaultMessage = `Hi Verifitech Team,\n\nI am interested in your ${value}. Please share more details.`;
+        break;
+      }
+    }
+  }
+
+  // Analytics Tracking Function
+  function trackWhatsAppClick(pageTitle, currentUrl) {
+    // Google Analytics 4 Event
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'whatsapp_click', {
+        'event_category': 'engagement',
+        'event_label': pageTitle,
+        'page_location': currentUrl
+      });
+    }
+    
+    // Facebook Pixel Event (if installed)
+    if (typeof fbq !== 'undefined') {
+      fbq('trackCustom', 'WhatsAppClick', {
+        page_title: pageTitle,
+        page_url: currentUrl
+      });
+    }
+    
+    // Console log for debugging
+    console.log('WhatsApp clicked:', {
+      timestamp: new Date().toISOString(),
+      page: pageTitle,
+      url: currentUrl,
+      message: whatsappConfig.defaultMessage
+    });
+  }
+
+  // Visual Feedback Function
+  function showWhatsAppFeedback(element) {
+    // Create ripple effect
+    const ripple = document.createElement('span');
+    ripple.style.cssText = `
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 50%;
+      transform: scale(0);
+      animation: rippleEffect 0.6s linear;
+      pointer-events: none;
+    `;
+    
+    // Add ripple animation styles
+    if (!document.getElementById('rippleStyle')) {
+      const style = document.createElement('style');
+      style.id = 'rippleStyle';
+      style.textContent = `
+        @keyframes rippleEffect {
+          to {
+            transform: scale(4);
+            opacity: 0;
+          }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+    
+    element.appendChild(ripple);
+    
+    // Remove ripple after animation
+    setTimeout(() => {
+      ripple.remove();
+    }, 600);
+    
+    // Optional: Show toast notification
+    showToast('Opening WhatsApp...');
+  }
+
+  // Toast Notification Function
+  function showToast(message) {
+    // Remove existing toast
+    const existingToast = document.getElementById('whatsappToast');
+    if (existingToast) {
+      existingToast.remove();
+    }
+    
+    // Create toast
+    const toast = document.createElement('div');
+    toast.id = 'whatsappToast';
+    toast.style.cssText = `
+      position: fixed;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #25D366;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 25px;
+      font-size: 14px;
+      z-index: 10000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      animation: slideUp 0.3s ease;
+    `;
+    toast.textContent = message;
+    
+    // Add animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes slideUp {
+        from {
+          transform: translateX(-50%) translateY(20px);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(-50%) translateY(0);
+          opacity: 1;
+        }
+      }
+    `;
+    toast.appendChild(style);
+    
+    document.body.appendChild(toast);
+    
+    // Remove after 3 seconds
+    setTimeout(() => {
+      toast.style.animation = 'slideUp 0.3s ease reverse';
+      setTimeout(() => {
+        toast.remove();
+      }, 300);
+    }, 3000);
+  }
+
+  // Country-specific WhatsApp numbers (optional)
+  function getCountryWhatsAppNumber() {
+    const countryNumbers = {
+      'India': '+919176663777 ',
+      'USA': '15555555555'
+    };
+    
+    const currentCountry = document.getElementById('current-country')?.textContent || 'India';
+    return countryNumbers[currentCountry] || whatsappConfig.phoneNumber;
+  }
+
+  // Update WhatsApp number based on country selection
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('.country-option')) {
+      setTimeout(() => {
+        const newNumber = getCountryWhatsAppNumber();
+        if (newNumber) {
+          whatsappConfig.phoneNumber = newNumber;
+          console.log('WhatsApp number updated for:', document.getElementById('current-country')?.textContent);
+        }
+      }, 100);
+    }
+  });
+</script>
+    <style>
+      /* Footer Base Styles */
+
+      /* Updated Footer Styles for 6 columns layout */
+.footer .row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Make columns break to next line on medium screens */
+@media (max-width: 991px) {
+  .footer .col-lg-2 {
+    flex: 0 0 33.333%;
+    max-width: 33.333%;
+  }
+  
+  .footer .col-lg-3 {
+    flex: 0 0 100%;
+    max-width: 100%;
+    text-align: center;
+  }
+  
+  .footer-logo {
+    margin: 0 auto 20px;
+    display: block;
+  }
+  
+  .footer-description {
+    max-width: 100%;
+    margin: 0 auto 2rem;
+  }
+}
+
+/* Stack all columns on mobile */
+@media (max-width: 767px) {
+  .footer .col-lg-2,
+  .footer .col-lg-3,
+  .footer .col-md-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .footer-heading {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Help Center specific styling */
+.help-center-section {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+      .footer {
+        background-color: #f8fffe;
+        padding: 60px 0 30px;
+        color: #5a6b7b;
+      }
+      
+
+      .footer-logo {
+        width: 180px;
+        height: auto;
+        margin-bottom: 20px;
+      }
+
+      .footer-description {
+        font-size: 14px;
+        line-height: 1.6;
+        max-width: 280px;
+      }
+
+      .footer-heading {
+        color: #1a1a1a;
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 20px;
+      }
+
+      .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .footer-links li {
+        margin-bottom: 12px;
+      }
+
+      .footer-links a {
+        color: #5a6b7b;
+        text-decoration: none;
+        font-size: 14px;
+        transition: color 0.3s;
+      }
+
+      .footer-links a:hover {
+        color: #00bfa5;
+      }
+
+
+      .help-links {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .help-links li {
+        margin-bottom: 8px;
+      }
+
+      /* Footer Bottom */
+      .footer-bottom {
+        margin-top: 50px;
+        padding-top: 30px;
+        border-top: 1px solid #e0e0e0;
+      }
+
+      .copyright {
+        font-size: 14px;
+        margin: 0;
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: flex-end;
+        gap: 15px;
+      }
+
+      .social-icon {
+        width: 40px;
+        height: 40px;
+        background-color: #e8f5f3;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #1a1a1a;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+
+      .social-icon:hover {
+        background-color: #00bfa5;
+        color: white;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 991px) {
+        .footer-description {
+          max-width: 100%;
+        }
+      }
+
+      @media (max-width: 767px) {
+        .footer {
+          padding: 40px 0 20px;
+        }
+
+        .footer-heading {
+          margin-bottom: 15px;
+        }
+
+        /* Stack footer columns on mobile */
+        .footer .col-md-6 {
+          margin-bottom: 30px;
+        }
+
+        /* Help center spacing on mobile */
+        .help-center-section {
+          margin-top: 25px;
+          padding-top: 25px;
+        }
+
+        /* Center copyright and social on mobile */
+        .copyright {
+          text-align: center;
+          margin-bottom: 20px;
+        }
+
+        .social-links {
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 575px) {
+        .footer-logo {
+          width: 150px;
+        }
+
+        .footer-bottom {
+          margin-top: 30px;
+          padding-top: 20px;
+        }
+      }
+    </style>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -3524,122 +4323,100 @@
             }
           });
         });
-      });
 
-      // Zoho Form Validation Variables
-      var dateAndMonthRegexFormateArray = zf_SetDateAndMonthRegexBasedOnDateFormate('dd-MMM-yyyy');
-      var zf_DateRegex = new RegExp(dateAndMonthRegexFormateArray[0]);
-      var zf_MonthYearRegex = new RegExp(dateAndMonthRegexFormateArray[1]);
-      var zf_MandArray = [ "Email"]; 
-      var zf_FieldArray = [ "Email"]; 
-      var isSalesIQIntegrationEnabled = false;
-      var salesIQFieldsArray = [];
-
-      // Zoho Validation and Submission Function
-      function zf_ValidateAndSubmit() {
-        var email = document.getElementById('Email').value.trim();
-        var emailInput = document.getElementById('Email');
-        var errorElement = document.getElementById('Email_error');
-        
-        // Email validation regex
-        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        
-        // Reset states
-        emailInput.classList.remove('zf-error', 'zf-success');
-        errorElement.style.display = 'none';
-        
-        // Check if empty
-        if (email === '') {
-          errorElement.textContent = 'Email is required';
-          errorElement.style.display = 'flex';
-          emailInput.classList.add('zf-error');
-          emailInput.classList.add('shake-animation');
-          setTimeout(() => emailInput.classList.remove('shake-animation'), 500);
-          return false;
-        }
-        
-        // Check format
-        if (!emailRegex.test(email)) {
-          errorElement.textContent = 'Please enter a valid email address';
-          errorElement.style.display = 'flex';
-          emailInput.classList.add('zf-error');
-          emailInput.classList.add('shake-animation');
-          setTimeout(() => emailInput.classList.remove('shake-animation'), 500);
-          return false;
-        }
-        
-        // Show loading state
-        var submitBtn = document.querySelector('.newsletter-btn');
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<i class="bi bi-hourglass-split"></i> Subscribing...';
-        
-        // Add success state
-        emailInput.classList.add('zf-success');
-        
-        // Allow form submission to Zoho
-        return true;
-      }
-
-      function zf_SetDateAndMonthRegexBasedOnDateFormate(dateFormat) {
-        return ["", ""];
-      }
-
-      // Real-time validation
-      document.addEventListener('DOMContentLoaded', function() {
-        var emailInput = document.getElementById('Email');
-        
-        if (emailInput) {
-          emailInput.addEventListener('input', function() {
-            this.classList.remove('zf-error', 'zf-success');
-            document.getElementById('Email_error').style.display = 'none';
-          });
-          
-          emailInput.addEventListener('blur', function() {
-            if (this.value.trim() !== '') {
-              var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-              if (!emailRegex.test(this.value.trim())) {
-                var errorElement = document.getElementById('Email_error');
-                errorElement.textContent = 'Please enter a valid email address';
-                errorElement.style.display = 'flex';
-                this.classList.add('zf-error');
-              }
+        // Form validation
+        const form = document.getElementById("contactForm");
+        if (form) {
+          form.addEventListener("submit", function (e) {
+            const agreement = document.getElementById("agreement");
+            if (agreement && !agreement.checked) {
+              e.preventDefault();
+              alert("Please agree to the Privacy Policy");
+              return false;
             }
           });
         }
       });
 
-      // WhatsApp Functionality
-      const whatsappConfig = {
-        phoneNumber: '+919176663777',
-        defaultMessage: 'Hi Verifitech Team,\n\nI am interested in your background verification services. Please share more details.',
-        pageContext: true
-      };
+      // Form submission with loading overlay
+      const form = document.getElementById("contactForm");
+      const loadingOverlay = document.getElementById("formLoadingOverlay");
+      const submitBtn = document.getElementById("submitBtn");
 
-      function openWhatsApp(event) {
-        event.preventDefault();
+      if (form && loadingOverlay && submitBtn) {
+        form.addEventListener("submit", function (e) {
+          const agreement = document.getElementById("agreement");
+          if (agreement && !agreement.checked) {
+            e.preventDefault();
+            alert("Please agree to the Privacy Policy");
+            return false;
+          }
+          loadingOverlay.classList.add("active");
+          submitBtn.disabled = true;
+          submitBtn.innerHTML =
+            '<span>Submitting...</span> <i class="bi bi-hourglass-split"></i>';
+        });
+      }
+
+      // Check if current page is a 404/error page
+     // Version with brief delay to show message
+(function() {
+    const title = document.title.toLowerCase();
+    const bodyText = document.body.innerText.toLowerCase();
+    
+    const is404 = 
+        title.includes("404") || 
+        title.includes("not found") ||
+        bodyText.includes("page not found") ||
+        !document.querySelector(".navbar");
+    
+    if (is404) {
+        sessionStorage.setItem("attemptedUrl", window.location.href);
         
-        const pageTitle = document.title;
-        const currentUrl = window.location.href;
+        // Show message then redirect
+        document.body.innerHTML = `
+            <div style="display:flex;justify-content:center;align-items:center;height:100vh;font-family:Inter,sans-serif;text-align:center;">
+                <div>
+                    <h1 style="color:#1ac2c1;font-size:3rem;margin-bottom:1rem;">404</h1>
+                    <p>Page not found. Redirecting...</p>
+                </div>
+            </div>
+        `;
         
-        let message = whatsappConfig.defaultMessage;
-        
-        if (whatsappConfig.pageContext && pageTitle) {
-          message += `\n\nI am currently viewing: ${pageTitle}`;
+        setTimeout(() => {
+            window.location.replace("./404/404.html");
+        }, 1500);
+    }
+})();
+      <!-- Zoho Validation Script -->
+
+      var dateAndMonthRegexFormateArray =
+        zf_SetDateAndMonthRegexBasedOnDateFormate("dd-MMM-yyyy");
+      var zf_DateRegex = new RegExp(dateAndMonthRegexFormateArray[0]);
+      var zf_MonthYearRegex = new RegExp(dateAndMonthRegexFormateArray[1]);
+      var zf_MandArray = ["Email"];
+      var zf_FieldArray = ["Email"];
+      var isSalesIQIntegrationEnabled = false;
+      var salesIQFieldsArray = [];
+
+      // Zoho validation functions (simplified)
+      function zf_ValidateAndSubmit() {
+        var email = document.querySelector('input[name="Email"]').value;
+        if (!email || !validateEmail(email)) {
+          document.getElementById("Email_error").style.display = "block";
+          return false;
         }
-        
-        const encodedMessage = encodeURIComponent(message);
-        const whatsappUrl = `https://wa.me/${whatsappConfig.phoneNumber}?text=${encodedMessage}`;
-        
-        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        
-        if (isMobile) {
-          window.location.href = whatsappUrl;
-          setTimeout(() => {
-            window.open(whatsappUrl, '_blank');
-          }, 1000);
-        } else {
-          window.open(whatsappUrl, '_blank');
-        }
+        document.getElementById("Email_error").style.display = "none";
+        return true;
+      }
+
+      function validateEmail(email) {
+        var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+      }
+
+      function zf_SetDateAndMonthRegexBasedOnDateFormate(dateFormat) {
+        return ["", ""];
       }
     </script>
   </body>
