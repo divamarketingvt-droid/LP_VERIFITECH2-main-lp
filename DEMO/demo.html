@@ -1542,6 +1542,24 @@
             font-size: 18px;
             flex-shrink: 0;
         }
+
+        /* Redirect countdown message */
+        .redirect-message {
+            margin-top: 20px;
+            padding: 12px 20px;
+            background: var(--primary-lighter);
+            border: 1px solid var(--primary-light);
+            border-radius: 8px;
+            color: var(--primary-dark);
+            font-size: 14px;
+            font-weight: 600;
+            display: none;
+        }
+        
+        .redirect-message.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
     </style>
 </head>
 <body>
@@ -1556,11 +1574,11 @@
     </div>
 
     <!-- Demo Modal -->
-    <div class="modal fade demo-modal" id="demoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal fade demo-modal" id="demoModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-body">
-                    <button type="button" class="btn-close-custom" data-bs-dismiss="modal" aria-label="Close">
+                    <button type="button" class="btn-close-custom" data-bs-dismiss="modal" aria-label="Close" id="closeModalBtn">
                         <i class="bi bi-x-lg"></i>
                     </button>
                     
@@ -1598,7 +1616,7 @@
                         <div class="demo-form-section">
                             
                             <!-- Progress Steps -->
-                            <div class="progress-steps">
+                            <div class="progress-steps" id="progressSteps">
                                 <div class="step active" data-step="1">
                                     <span class="step-number">1</span>
                                     <span>Details</span>
@@ -1899,7 +1917,11 @@
                                         </a>
                                     </div>
                                     
-                                    <button type="button" class="btn-primary-custom" data-bs-dismiss="modal" style="min-width: 200px;">
+                                    <div class="redirect-message" id="redirectMessage">
+                                        <i class="bi bi-arrow-clockwise"></i> Redirecting to home page in <span id="countdown">5</span> seconds...
+                                    </div>
+                                    
+                                    <button type="button" class="btn-primary-custom" onclick="goToHome()" style="min-width: 200px;">
                                         <i class="bi bi-check-circle"></i> Done
                                     </button>
                                 </div>
@@ -1986,6 +2008,8 @@
             platform: '',
             meetLink: ''
         };
+        
+        let bookingCompleted = false; // Flag to track if booking is done
 
         // Service Selection
         function selectService(serviceId) {
@@ -2445,6 +2469,38 @@ Please add more links before the next booking.`;
             }
         }
 
+        // ================= REDIRECT TO HOME FUNCTION =================
+        function redirectToHome() {
+            console.log('🏠 Starting redirect countdown...');
+            const redirectMessage = document.getElementById('redirectMessage');
+            const countdownSpan = document.getElementById('countdown');
+            
+            if (redirectMessage) {
+                redirectMessage.classList.add('show');
+            }
+            
+            let seconds = 5;
+            
+            const countdownInterval = setInterval(function() {
+                seconds--;
+                if (countdownSpan) {
+                    countdownSpan.textContent = seconds;
+                }
+                console.log('⏱️ Redirecting in ' + seconds + ' seconds...');
+                
+                if (seconds <= 0) {
+                    clearInterval(countdownInterval);
+                    goToHome();
+                }
+            }, 1000);
+        }
+
+        function goToHome() {
+            console.log('🚀 Redirecting to home page now!');
+            // Change this to your actual home page URL
+            window.location.href = 'index.html';
+        }
+
         // Confirm Booking with EmailJS
         document.getElementById('confirmBooking').addEventListener('click', async function() {
             const btn = this;
@@ -2455,6 +2511,9 @@ Please add more links before the next booking.`;
             const emailSent = await sendEmails();
 
             if (emailSent) {
+                // Mark booking as completed
+                bookingCompleted = true;
+                
                 // Move assigned link to used pool permanently
                 const pool = getPlatformPool(formData.platform);
                 if (pool && pool.currentAssignment) {
@@ -2467,7 +2526,14 @@ Please add more links before the next booking.`;
                 document.getElementById('step3').classList.add('active');
                 document.querySelector('.progress-steps').style.display = 'none';
                 document.getElementById('formFooter').style.display = 'none';
+                
+                // Hide close button on success to prevent accidental closing
+                document.getElementById('closeModalBtn').style.display = 'none';
+                
                 updateSuccessContent();
+                
+                // Call redirect function after successful booking
+                redirectToHome();
             } else {
                 // Return link to pool if email failed
                 const pool = getPlatformPool(formData.platform);
@@ -2598,8 +2664,16 @@ Please add more links before the next booking.`;
             document.getElementById('line2').classList.toggle('completed', step > 2);
         }
 
-        // Reset on close
+        // Reset on close - ONLY if booking is NOT completed
         document.getElementById('demoModal').addEventListener('hidden.bs.modal', function() {
+            // If booking was completed, don't reset - let the redirect happen
+            if (bookingCompleted) {
+                console.log('✅ Booking completed, modal closed, redirect in progress...');
+                return;
+            }
+            
+            console.log('🔄 Resetting form (booking not completed)');
+            
             clearPreviousPlatformAssignment();
             
             document.getElementById('detailsForm').reset();
@@ -2613,12 +2687,16 @@ Please add more links before the next booking.`;
             document.querySelector('.progress-steps').style.display = 'flex';
             document.getElementById('formFooter').style.display = 'block';
             
+            // Show close button again
+            document.getElementById('closeModalBtn').style.display = 'flex';
+            
             document.getElementById('timeSlotsSection').style.display = 'none';
             document.getElementById('selectedInfo').style.display = 'none';
             document.getElementById('meetingPlatforms').style.display = 'none';
             document.getElementById('confirmBooking').disabled = true;
             document.getElementById('emailError').classList.remove('show');
             document.getElementById('platformWarning').classList.remove('show');
+            document.getElementById('redirectMessage').classList.remove('show');
             
             // Reset all platform radios
             ['platform-google', 'platform-zoho', 'platform-teams'].forEach(function(id) {
