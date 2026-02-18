@@ -26,6 +26,11 @@
     />
 <!-- Font Awesome 6 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
     <style>
       :root {
         --primary: #1ac2c1;
@@ -48,6 +53,12 @@
 
       html {
         scroll-behavior: smooth;
+      }
+      
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: var(--light-gray);
+        overflow-x: hidden;
       }
       
         
@@ -1641,33 +1652,50 @@
         color: #6272a4;
       }
 
-      /* Testimonials */
+      /* Testimonials - 3D Slider Styles */
       .testimonial-section {
         background: white;
+        overflow: hidden;
       }
 
-      .testimonial-row {
+      .testimonial-wrapper {
+        position: relative;
+        width: 100%;
+        height: 500px;
+        perspective: 1000px;
         display: flex;
-        gap: 2rem;
-        overflow-x: auto;
-        padding-bottom: 2rem;
-        scrollbar-width: thin;
-        scrollbar-color: var(--primary) transparent;
+        align-items: center;
+        justify-content: center;
+        margin-top: 2rem;
+      }
+
+      .testimonial-carousel {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        transition: transform 0.5s;
       }
 
       .testimonial-card-large {
-        min-width: 400px;
+        position: absolute;
+        width: 400px;
+        left: 50%;
+        top: 50%;
+        margin-left: -200px;
+        margin-top: -150px;
         background: white;
         border-radius: 24px;
         padding: 2.5rem;
         border: 1px solid #e2e8f0;
-        transition: all 0.3s;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: grab;
+        user-select: none;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
       }
 
-      .testimonial-card-large:hover {
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        transform: translateY(-5px);
-        border-color: var(--primary);
+      .testimonial-card-large:active {
+        cursor: grabbing;
       }
 
       .quote-icon {
@@ -1719,6 +1747,72 @@
       .author-details span {
         color: var(--gray);
         font-size: 0.9rem;
+      }
+
+      .slider-controls {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .slider-btn {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 2px solid #e2e8f0;
+        background: white;
+        color: var(--dark);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 1.2rem;
+      }
+
+      .slider-btn:hover {
+        background: var(--primary);
+        border-color: var(--primary);
+        color: white;
+        transform: scale(1.1);
+      }
+
+      .slider-dots {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 1.5rem;
+      }
+
+      .slider-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #e2e8f0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .slider-dot.active {
+        background: var(--primary);
+        width: 30px;
+        border-radius: 5px;
+      }
+
+      @media (max-width: 768px) {
+        .testimonial-wrapper {
+          height: 400px;
+        }
+        .testimonial-card-large {
+          width: 300px;
+          margin-left: -150px;
+          margin-top: -120px;
+          padding: 1.5rem;
+        }
+        .testimonial-text {
+          font-size: 0.95rem;
+        }
       }
 
       /* CTA Section */
@@ -2606,7 +2700,7 @@
                   >
                 </li>
                 <li>
-                  <a class="dropdown-item" href="./products/api.html">
+                  <a class="dropdown-item" href="./resources/webinar.html">
                     <i class="bi bi-plug"></i> API
                   </a>
                 </li>
@@ -3550,10 +3644,10 @@
       </div>
     </section>
 
-    <!-- Testimonials -->
+    <!-- Testimonials - 3D Slider Section -->
     <section class="testimonial-section section-padding">
       <div class="container">
-        <div class="row justify-content-center mb-5">
+        <div class="row justify-content-center mb-3">
           <div class="col-lg-8 text-center reveal">
             <div class="section-subtitle justify-content-center">
               <i class="bi bi-chat-square-quote"></i> Testimonials
@@ -3565,86 +3659,21 @@
             </p>
           </div>
         </div>
-        <div class="testimonial-row reveal">
-          <div class="testimonial-card-large">
-            <div class="quote-icon"><i class="bi bi-quote"></i></div>
-            <p class="testimonial-text">
-              "Verifitech reduced our verification turnaround from 2 weeks to 24
-              hours. Their API integration with our Workday HRMS was seamless,
-              and the accuracy is unmatched."
-            </p>
-            <div class="testimonial-author-row">
-              <div class="author-img">PK</div>
-              <div class="author-details">
-                <h6>Priya Kumar</h6>
-                <span>VP Human Resources, TechCorp Global</span>
-              </div>
-            </div>
-          </div>
-          
-          <div class="testimonial-card-large">
-            <div class="quote-icon"><i class="bi bi-quote"></i></div>
-            <p class="testimonial-text">
-              "The depth of their criminal record checks and court verification
-              processes gives us complete confidence in our hiring decisions.
-              Highly recommended for BFSI sector."
-            </p>
-            <div class="testimonial-author-row">
-              <div
-                class="author-img"
-                style="background: #dbeafe; color: #1e40af"
-              >
-                RS
-              </div>
-              <div class="author-details">
-                <h6>Rajesh Sharma</h6>
-                <span>Chief Compliance Officer, FinBank Ltd</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="testimonial-card-large">
-            <div class="quote-icon"><i class="bi bi-quote"></i></div>
-            <p class="testimonial-text">
-              "Their pan-India Field executive network verified addresses in
-              tier-3 cities where others failed. Real-time tracking dashboard is
-              a game changer."
-            </p>
-            <div class="testimonial-author-row">
-              <div
-                class="author-img"
-                style="background: #fef3c7; color: #92400e"
-              >
-                AP
-              </div>
-              <div class="author-details">
-                <h6>Anita Patel</h6>
-                <span>Head of TA, RetailMax India</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="testimonial-card-large">
-            <div class="quote-icon"><i class="bi bi-quote"></i></div>
-            <p class="testimonial-text">
-              "ISO 27001 certification and their data privacy standards were
-              crucial for our GDPR compliance. Excellent support team and robust
-              platform."
-            </p>
-            <div class="testimonial-author-row">
-              <div
-                class="author-img"
-                style="background: #fce7f3; color: #be185d"
-              >
-                MK
-              </div>
-              <div class="author-details">
-                <h6>Michael Chen</h6>
-                <span>Global Security Director, CloudFirst</span>
-              </div>
-            </div>
+        
+        <!-- 3D Slider Container -->
+        <div class="testimonial-wrapper reveal" id="testimonialWrapper">
+          <div class="testimonial-carousel" id="testimonialCarousel">
+            <!-- Cards will be injected by JS -->
           </div>
         </div>
+        
+        <!-- Controls -->
+        <div class="slider-controls reveal">
+          <button class="slider-btn" id="prevBtn"><i class="bi bi-chevron-left"></i></button>
+          <button class="slider-btn" id="nextBtn"><i class="bi bi-chevron-right"></i></button>
+        </div>
+        
+        <div class="slider-dots" id="sliderDots"></div>
       </div>
     </section>
 
@@ -4396,6 +4425,197 @@
             localStorage.removeItem('cookieConsent');
             location.reload();
         };
+
+      // --- GSAP 3D Testimonial Slider Logic ---
+      document.addEventListener("DOMContentLoaded", function() {
+        const carousel = document.getElementById('testimonialCarousel');
+        const wrapper = document.getElementById('testimonialWrapper');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const dotsContainer = document.getElementById('sliderDots');
+        
+        // Data for testimonials
+        const testimonials = [
+          {
+            quote: "Verifitech reduced our verification turnaround from 2 weeks to 24 hours. Their API integration with our Workday HRMS was seamless, and the accuracy is unmatched.",
+            author: "Priya Kumar",
+            role: "VP Human Resources, TechCorp Global",
+            initials: "PK",
+            color: "linear-gradient(135deg, var(--primary), var(--primary-dark))"
+          },
+          {
+            quote: "The depth of their criminal record checks and court verification processes gives us complete confidence in our hiring decisions. Highly recommended for BFSI sector.",
+            author: "Rajesh Sharma",
+            role: "Chief Compliance Officer, FinBank Ltd",
+            initials: "RS",
+            color: "linear-gradient(135deg, #3b82f6, #1d4ed8)"
+          },
+          {
+            quote: "Their pan-India Field executive network verified addresses in tier-3 cities where others failed. Real-time tracking dashboard is a game changer.",
+            author: "Anita Patel",
+            role: "Head of TA, RetailMax India",
+            initials: "AP",
+            color: "linear-gradient(135deg, #f59e0b, #d97706)"
+          },
+          {
+            quote: "ISO 27001 certification and their data privacy standards were crucial for our GDPR compliance. Excellent support team and robust platform.",
+            author: "Michael Chen",
+            role: "Global Security Director, CloudFirst",
+            initials: "MK",
+            color: "linear-gradient(135deg, #ec4899, #be185d)"
+          }
+        ];
+
+        let currentIndex = 0;
+        let autoPlayInterval;
+        const total = testimonials.length;
+        let isDragging = false;
+        let startX = 0;
+
+        // Generate Cards
+        testimonials.forEach((t, i) => {
+          const card = document.createElement('div');
+          card.className = 'testimonial-card-large';
+          card.innerHTML = `
+            <div class="quote-icon"><i class="bi bi-quote"></i></div>
+            <p class="testimonial-text">"${t.quote}"</p>
+            <div class="testimonial-author-row">
+              <div class="author-img" style="background: ${t.color}">${t.initials}</div>
+              <div class="author-details">
+                <h6>${t.author}</h6>
+                <span>${t.role}</span>
+              </div>
+            </div>
+          `;
+          carousel.appendChild(card);
+          
+          // Generate Dots
+          const dot = document.createElement('div');
+          dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+          dot.addEventListener('click', () => goToSlide(i));
+          dotsContainer.appendChild(dot);
+        });
+
+        const cards = document.querySelectorAll('.testimonial-card-large');
+        const dots = document.querySelectorAll('.slider-dot');
+
+        function updateCards() {
+          cards.forEach((card, i) => {
+            const offset = i - currentIndex;
+            const absOffset = Math.abs(offset);
+            
+            // Calculate 3D transforms
+            let translateX = offset * 60; // % based spacing
+            let translateZ = -absOffset * 150;
+            let rotateY = offset * -15;
+            let scale = 1 - (absOffset * 0.15);
+            let opacity = 1 - (absOffset * 0.3);
+            let zIndex = total - absOffset;
+
+            // Limit the visible cards
+            if (absOffset > 2) {
+              opacity = 0;
+              scale = 0.5;
+            }
+
+            gsap.to(card, {
+              duration: 0.6,
+              xPercent: translateX,
+              z: translateZ,
+              rotateY: rotateY,
+              scale: scale,
+              opacity: opacity,
+              zIndex: zIndex,
+              ease: "power2.out"
+            });
+          });
+
+          // Update dots
+          dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentIndex);
+          });
+        }
+
+        function goToSlide(index) {
+          currentIndex = index;
+          if (currentIndex < 0) currentIndex = total - 1;
+          if (currentIndex >= total) currentIndex = 0;
+          updateCards();
+          resetAutoPlay();
+        }
+
+        function nextSlide() {
+          goToSlide(currentIndex + 1);
+        }
+
+        function prevSlide() {
+          goToSlide(currentIndex - 1);
+        }
+
+        // Auto Play
+        function startAutoPlay() {
+          autoPlayInterval = setInterval(nextSlide, 4000);
+        }
+
+        function resetAutoPlay() {
+          clearInterval(autoPlayInterval);
+          startAutoPlay();
+        }
+
+        // Event Listeners
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+
+        // Drag/Swipe Support
+        wrapper.addEventListener('mousedown', (e) => {
+          isDragging = true;
+          startX = e.pageX;
+          clearInterval(autoPlayInterval);
+        });
+
+        wrapper.addEventListener('mousemove', (e) => {
+          if (!isDragging) return;
+        });
+
+        wrapper.addEventListener('mouseup', (e) => {
+          if (!isDragging) return;
+          isDragging = false;
+          const diff = startX - e.pageX;
+          if (Math.abs(diff) > 50) {
+            if (diff > 0) nextSlide();
+            else prevSlide();
+          } else {
+            startAutoPlay();
+          }
+        });
+
+        wrapper.addEventListener('mouseleave', () => {
+          if (isDragging) {
+            isDragging = false;
+            startAutoPlay();
+          }
+        });
+
+        // Touch support
+        wrapper.addEventListener('touchstart', (e) => {
+          startX = e.touches[0].pageX;
+          clearInterval(autoPlayInterval);
+        });
+
+        wrapper.addEventListener('touchend', (e) => {
+          const diff = startX - e.changedTouches[0].pageX;
+          if (Math.abs(diff) > 50) {
+            if (diff > 0) nextSlide();
+            else prevSlide();
+          } else {
+            startAutoPlay();
+          }
+        });
+
+        // Initialize
+        updateCards();
+        startAutoPlay();
+      });
     </script>
   </body>
 </html>
