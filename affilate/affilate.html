@@ -3428,7 +3428,36 @@
         // Allow form submission to Zoho
         return true;
       }
+ <!-- Zoho Validation Script -->
 
+      var dateAndMonthRegexFormateArray =
+        zf_SetDateAndMonthRegexBasedOnDateFormate("dd-MMM-yyyy");
+      var zf_DateRegex = new RegExp(dateAndMonthRegexFormateArray[0]);
+      var zf_MonthYearRegex = new RegExp(dateAndMonthRegexFormateArray[1]);
+      var zf_MandArray = ["Email"];
+      var zf_FieldArray = ["Email"];
+      var isSalesIQIntegrationEnabled = false;
+      var salesIQFieldsArray = [];
+
+      // Zoho validation functions (simplified)
+      function zf_ValidateAndSubmit() {
+        var email = document.querySelector('input[name="Email"]').value;
+        if (!email || !validateEmail(email)) {
+          document.getElementById("Email_error").style.display = "block";
+          return false;
+        }
+        document.getElementById("Email_error").style.display = "none";
+        return true;
+      }
+
+      function validateEmail(email) {
+        var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+      }
+
+      function zf_SetDateAndMonthRegexBasedOnDateFormate(dateFormat) {
+        return ["", ""];
+      }
       // Real-time validation
       document.addEventListener('DOMContentLoaded', function() {
         var emailInput = document.getElementById('Email');
