@@ -1497,6 +1497,75 @@
           }
         });
       });
+
+
+        /*single post*/
+        // Replace your existing createBlogCard function with this:
+function createBlogCard(post) {
+    const col = document.createElement('div');
+    col.className = 'col-md-6 col-lg-4';
+    
+    // Get featured image
+    let imageUrl = 'https://via.placeholder.com/600x400/e0f7f7/1ac2c1?text=Verifitech';
+    if (post._embedded && post._embedded['wp:featuredmedia'] && post._embedded['wp:featuredmedia'][0]) {
+        imageUrl = post._embedded['wp:featuredmedia'][0].source_url;
+    }
+
+    // Get category
+    let categoryName = 'General';
+    let categorySlug = 'others';
+    if (post._embedded && post._embedded['wp:term']) {
+        const categories = post._embedded['wp:term'].find(terms => terms[0]?.taxonomy === 'category');
+        if (categories && categories[0]) {
+            categoryName = categories[0].name;
+            categorySlug = categories[0].slug;
+        }
+    }
+
+    // Format date
+    const date = new Date(post.date);
+    const formattedDate = date.toLocaleDateString('en-US', { 
+        year: 'numeric', 
+        month: 'short', 
+        day: 'numeric' 
+    });
+
+    // Calculate read time
+    const wordCount = post.content.rendered.split(/\s+/).length;
+    const readTime = Math.ceil(wordCount / 200);
+
+    // IMPORTANT: Changed from external link to internal navigation
+    col.innerHTML = `
+        <article class="blog-card" onclick="openSinglePost(${post.id})" style="cursor: pointer;">
+            <div class="blog-image">
+                <span class="category-tag">${categoryName}</span>
+                <img src="${imageUrl}" alt="${post.title.rendered}" loading="lazy">
+            </div>
+            <div class="blog-content">
+                <div class="post-meta">
+                    <span><i class="bi bi-calendar3"></i> ${formattedDate}</span>
+                    <span><i class="bi bi-clock"></i> ${readTime} min read</span>
+                </div>
+                <h3>${post.title.rendered}</h3>
+                <p>${stripHtml(post.excerpt.rendered).substring(0, 120)}...</p>
+                <span class="read-more">
+                    Read Article <i class="bi bi-arrow-right"></i>
+                </span>
+            </div>
+        </article>
+    `;
+    
+    return col;
+}
+
+// NEW FUNCTION: Navigate to single post page with post ID
+function openSinglePost(postId) {
+    // Store post ID in sessionStorage to pass to single blog page
+    sessionStorage.setItem('selectedPostId', postId);
+    
+    // Navigate to your single blog template page
+    window.location.href = `single-blog.html?post=${postId}`;
+}
     </script>
 
 </body>
