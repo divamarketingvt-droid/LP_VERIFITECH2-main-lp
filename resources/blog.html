@@ -96,27 +96,7 @@
             text-transform: uppercase;
             margin-top: 2px;
         }
-/* Hide comment sections that might appear in post content */
-.post-content-single .comments-area,
-.post-content-single #comments,
-.post-content-single .wp-block-comments,
-.post-content-single #respond,
-.post-content-single .comment-respond,
-.post-content-single .commentlist,
-.post-content-single .comment-list,
-.post-content-single [class*="comment-section"],
-.post-content-single [class*="comments-wrap"] {
-    display: none !important;
-}
 
-/* Hide taxonomy sections if they appear */
-.post-content-single .entry-terms,
-.post-content-single .taxonomy-category,
-.post-content-single .taxonomy-post_tag,
-.post-content-single .tags-links,
-.post-content-single .cat-links {
-    display: none !important;
-}
         .nav-link {
             font-weight: 600;
             color: var(--navy);
@@ -820,91 +800,7 @@
         .related-blog-content {
             padding: 1.25rem;
         }
-/* Hide ALL comment and taxonomy elements - aggressive hiding */
-.post-content-single .comments-area,
-.post-content-single #comments,
-.post-content-single .wp-block-comments,
-.post-content-single .wp-block-comments-query-loop,
-.post-content-single #respond,
-.post-content-single .comment-respond,
-.post-content-single .commentlist,
-.post-content-single .comment-list,
-.post-content-single .comments-list,
-.post-content-single .comments-container,
-.post-content-single .comments-section,
-.post-content-single .comments-wrap,
-.post-content-single .comment-form,
-.post-content-single .comment-navigation,
-.post-content-single .comment-reply-title,
-.post-content-single .comments-title,
-.post-content-single .no-comments,
-.post-content-single .discussion-section,
-.post-content-single [class*="comment-section"],
-.post-content-single [class*="comments-section"],
-.post-content-single [class*="comment-area"],
-.post-content-single [id*="comment"],
-.post-content-single [id*="respond"],
-.post-content-single section.comments,
-.post-content-single div.comments,
-.post-content-single .post-comments,
-.post-content-single .entry-comments,
-.post-content-single .article-comments,
-.post-content-single .blog-comments,
-.post-content-single .single-comments,
-.post-content-single .commentbox,
-.post-content-single .comment-box,
-.post-content-single .comment-wrapper,
-.post-content-single .comment-wrap,
-.post-content-single .comment-container,
-.post-content-single .comment-body,
-.post-content-single .comment-content,
-.post-content-single .comment-meta,
-.post-content-single .comment-metadata,
-.post-content-single .comment-author,
-.post-content-single .pingback,
-.post-content-single .trackback,
-.post-content-single .comment-paging,
-.post-content-single .comment-pagination,
 
-/* Hide taxonomy elements */
-.post-content-single .entry-terms,
-.post-content-single .entry-categories,
-.post-content-single .entry-tags,
-.post-content-single .taxonomy-category,
-.post-content-single .taxonomy-post_tag,
-.post-content-single .tags-links,
-.post-content-single .cat-links,
-.post-content-single .category-links,
-.post-content-single .tag-links,
-.post-content-single .post-categories,
-.post-content-single .post-tags,
-.post-content-single .meta-categories,
-.post-content-single .meta-tags,
-.post-content-single .article-categories,
-.post-content-single .article-tags,
-.post-content-single .blog-categories,
-.post-content-single .blog-tags,
-.post-content-single .single-categories,
-.post-content-single .single-tags,
-.post-content-single .entry-meta-categories,
-.post-content-single .entry-meta-tags,
-.post-content-single .posted-in,
-.post-content-single [class*="taxonomy-"],
-.post-content-single [class*="category-"] [rel="category"],
-.post-content-single [rel="tag"],
-.post-content-single .wp-block-post-terms,
-.post-content-single .wp-block-terms,
-.post-content-single .term-list,
-.post-content-single .category-list,
-.post-content-single .tag-list,
-.post-content-single .categories-list,
-.post-content-single .tags-list {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    height: 0 !important;
-    overflow: hidden !important;
-}
         .related-blog-category {
             display: inline-block;
             padding: 0.3rem 0.8rem;
@@ -1392,543 +1288,405 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
- // WordPress REST API Configuration
-const WP_API_URL = 'https://verifitech.com/wp-json/wp/v2';
-let currentPage = 1;
-let currentCategory = 'all';
-let isLoading = false;
-let totalPosts = 0;
-let currentPostId = null;
+        // WordPress REST API Configuration
+        const WP_API_URL = 'https://verifitech.com/wp-json/wp/v2';
+        let currentPage = 1;
+        let currentCategory = 'all';
+        let isLoading = false;
+        let totalPosts = 0;
+        let currentPostId = null;
 
-// Category mapping
-const categoryMap = {
-    'case-studies': 10,
-    'healthcare': 220,
-    'it-ites': 224,
-    'manufacturing': 221,
-    'banking': 225,
-    'education': 226,
-    'news-events': 11,
-    'others': 1
-};
+        // Category mapping
+        const categoryMap = {
+            'case-studies': 10,
+            'healthcare': 220,
+            'it-ites': 224,
+            'manufacturing': 221,
+            'banking': 225,
+            'education': 226,
+            'news-events': 11,
+            'others': 1
+        };
 
-// Initialize
-document.addEventListener('DOMContentLoaded', () => {
-    if (window.location.hash.startsWith('#post-')) {
-        const postId = window.location.hash.replace('#post-', '');
-        showSinglePost(postId);
-    } else {
-        fetchPosts();
-    }
-    setupCategoryFilters();
-});
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.location.hash.startsWith('#post-')) {
+                const postId = window.location.hash.replace('#post-', '');
+                showSinglePost(postId);
+            } else {
+                fetchPosts();
+            }
+            setupCategoryFilters();
+        });
 
-// Show/Hide Views
-function showBlogListing() {
-    document.getElementById('blogListingView').style.display = 'block';
-    document.getElementById('singlePostView').classList.remove('active');
-    window.location.hash = '';
-    window.scrollTo(0, 0);
-}
-
-async function showSinglePost(postId) {
-    currentPostId = postId;
-    document.getElementById('blogListingView').style.display = 'none';
-    document.getElementById('singlePostView').classList.add('active');
-    document.getElementById('singlePostLoading').style.display = 'block';
-    document.getElementById('singlePostError').style.display = 'none';
-    document.getElementById('singlePostContent').style.display = 'none';
-    document.getElementById('relatedBlogsSection').style.display = 'none';
-    
-    window.location.hash = `post-${postId}`;
-    window.scrollTo(0, 0);
-
-    try {
-        // Fetch post without embedded terms to avoid taxonomy data
-        const response = await fetch(`${WP_API_URL}/posts/${postId}?_embed=wp:featuredmedia,author`);
-        if (!response.ok) throw new Error('Post not found');
-        
-        const post = await response.json();
-        renderSinglePost(post);
-        fetchRelatedPosts(post);
-        
-    } catch (error) {
-        console.error('Error:', error);
-        document.getElementById('singlePostLoading').style.display = 'none';
-        document.getElementById('singlePostError').style.display = 'block';
-    }
-}
-
-function renderSinglePost(post) {
-    // Get featured image
-    let imageUrl = 'https://via.placeholder.com/1200x600/e0f7f7/1ac2c1?text=Verifitech';
-    if (post._embedded?.['wp:featuredmedia']?.[0]) {
-        imageUrl = post._embedded['wp:featuredmedia'][0].source_url;
-    }
-
-    // Get category from post.categories array (basic data, not embedded)
-    let categoryName = 'General';
-    if (post.categories && post.categories.length > 0) {
-        // You can map category IDs to names here if needed
-        categoryName = 'Article'; // Default since we're not embedding terms
-    }
-
-    const date = new Date(post.date).toLocaleDateString('en-US', { 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric' 
-    });
-    const readTime = Math.ceil(post.content.rendered.split(/\s+/).length / 200);
-
-    // AGGRESSIVE CONTENT CLEANING - Remove comments, taxonomies, and unwanted sections
-    let cleanContent = cleanPostContent(post.content.rendered);
-
-    // Update DOM
-    document.getElementById('spCategory').textContent = categoryName;
-    document.getElementById('spTitle').textContent = post.title.rendered;
-    document.getElementById('spDate').innerHTML = `<i class="bi bi-calendar3"></i> ${date}`;
-    document.getElementById('spReadTime').innerHTML = `<i class="bi bi-clock"></i> ${readTime} min read`;
-    document.getElementById('spImage').src = imageUrl;
-    document.getElementById('spImage').alt = post.title.rendered;
-    document.getElementById('spBody').innerHTML = cleanContent;
-    document.title = `${post.title.rendered} - Verifitech Blog`;
-
-    // Setup share links
-    setupShareLinks(post.title.rendered, window.location.href);
-
-    // Show content
-    document.getElementById('singlePostLoading').style.display = 'none';
-    document.getElementById('singlePostContent').style.display = 'block';
-}
-
-// AGGRESSIVE CONTENT CLEANING FUNCTION
-function cleanPostContent(content) {
-    let tempDiv = document.createElement('div');
-    tempDiv.innerHTML = content;
-    
-    // Remove ALL comment-related elements (comprehensive list)
-    const commentSelectors = [
-        '.comments-area',
-        '#comments',
-        '.wp-block-comments',
-        '.wp-block-comments-query-loop',
-        '#respond',
-        '.comment-respond',
-        '.commentlist',
-        '.comment-list',
-        '.comments-list',
-        '.comments-container',
-        '.comments-section',
-        '.comments-wrap',
-        '.comments-template',
-        '.discussion-section',
-        '.comment-form',
-        '.comment-navigation',
-        '.comment-reply-title',
-        '.comments-title',
-        '.no-comments',
-        '[class*="comment-section"]',
-        '[class*="comments-section"]',
-        '[class*="comment-area"]',
-        '[id*="comment"]',
-        '[id*="respond"]',
-        'section.comments',
-        'div.comments',
-        '.post-comments',
-        '.entry-comments',
-        '.article-comments',
-        '.blog-comments',
-        '.single-comments',
-        '.commentbox',
-        '.comment-box',
-        '.comment-wrapper',
-        '.comment-wrap',
-        '.comment-container',
-        '.comment-body',
-        '.comment-content',
-        '.comment-meta',
-        '.comment-metadata',
-        '.comment-author',
-        '.comment-awaiting-moderation',
-        '.pingback',
-        '.trackback',
-        '.comment-paging',
-        '.comment-pagination'
-    ];
-    
-    commentSelectors.forEach(selector => {
-        try {
-            const elements = tempDiv.querySelectorAll(selector);
-            elements.forEach(el => {
-                console.log('Removing comment element:', selector, el);
-                el.remove();
-            });
-        } catch (e) {
-            console.warn('Error removing selector:', selector, e);
+        // Show/Hide Views
+        function showBlogListing() {
+            document.getElementById('blogListingView').style.display = 'block';
+            document.getElementById('singlePostView').classList.remove('active');
+            window.location.hash = '';
+            window.scrollTo(0, 0);
         }
-    });
-    
-    // Remove ALL taxonomy/category/tag elements
-    const taxonomySelectors = [
-        '.entry-terms',
-        '.entry-categories',
-        '.entry-tags',
-        '.taxonomy-category',
-        '.taxonomy-post_tag',
-        '.tags-links',
-        '.cat-links',
-        '.category-links',
-        '.tag-links',
-        '.post-categories',
-        '.post-tags',
-        '.meta-categories',
-        '.meta-tags',
-        '.article-categories',
-        '.article-tags',
-        '.blog-categories',
-        '.blog-tags',
-        '.single-categories',
-        '.single-tags',
-        '.entry-meta-categories',
-        '.entry-meta-tags',
-        '.posted-in',
-        '.posted-on',
-        '[class*="taxonomy-"]',
-        '[class*="category-"]',
-        '[class*="tag-"]',
-        '[rel="category"]',
-        '[rel="tag"]',
-        '.wp-block-post-terms',
-        '.wp-block-terms',
-        '.term-list',
-        '.category-list',
-        '.tag-list',
-        '.categories-list',
-        '.tags-list'
-    ];
-    
-    taxonomySelectors.forEach(selector => {
-        try {
-            const elements = tempDiv.querySelectorAll(selector);
-            elements.forEach(el => {
-                console.log('Removing taxonomy element:', selector, el);
-                el.remove();
-            });
-        } catch (e) {
-            console.warn('Error removing selector:', selector, e);
-        }
-    });
-    
-    // Remove "Leave a Comment" or "No Comments" text nodes and links
-    const allElements = tempDiv.querySelectorAll('*');
-    allElements.forEach(el => {
-        // Check text content for comment-related phrases
-        const text = el.textContent.toLowerCase().trim();
-        if (text.includes('leave a comment') || 
-            text.includes('no comments') || 
-            text.includes('comments are closed') ||
-            text.includes('add a comment') ||
-            text.includes('post a comment') ||
-            text.includes('reply') && el.closest('.comments-area, #comments, #respond')) {
-            el.remove();
-        }
-        
-        // Remove links that point to #respond or #comments
-        if (el.tagName === 'A') {
-            const href = el.getAttribute('href') || '';
-            if (href.includes('#respond') || href.includes('#comments') || href.includes('?replytocom=')) {
-                el.remove();
+
+        async function showSinglePost(postId) {
+            currentPostId = postId;
+            document.getElementById('blogListingView').style.display = 'none';
+            document.getElementById('singlePostView').classList.add('active');
+            document.getElementById('singlePostLoading').style.display = 'block';
+            document.getElementById('singlePostError').style.display = 'none';
+            document.getElementById('singlePostContent').style.display = 'none';
+            document.getElementById('relatedBlogsSection').style.display = 'none';
+            
+            window.location.hash = `post-${postId}`;
+            window.scrollTo(0, 0);
+
+            try {
+                const response = await fetch(`${WP_API_URL}/posts/${postId}?_embed=wp:featuredmedia,wp:term,author`);
+                if (!response.ok) throw new Error('Post not found');
+                
+                const post = await response.json();
+                renderSinglePost(post);
+                fetchRelatedPosts(post);
+                
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('singlePostLoading').style.display = 'none';
+                document.getElementById('singlePostError').style.display = 'block';
             }
         }
-    });
-    
-    // Remove empty paragraphs that might be left behind
-    const emptyParagraphs = tempDiv.querySelectorAll('p:empty, p:only-child:empty, br');
-    emptyParagraphs.forEach(el => el.remove());
-    
-    // Remove first image if it's a duplicate of featured image
-    const firstImg = tempDiv.querySelector('img');
-    if (firstImg) {
-        firstImg.remove();
-    }
-    
-    return tempDiv.innerHTML;
-}
 
-// Setup social share links
-function setupShareLinks(title, url) {
-    const encodedTitle = encodeURIComponent(title);
-    const encodedUrl = encodeURIComponent(url);
+        function renderSinglePost(post) {
+            // Get data
+            let imageUrl = 'https://via.placeholder.com/1200x600/e0f7f7/1ac2c1?text=Verifitech';
+            if (post._embedded?.['wp:featuredmedia']?.[0]) {
+                imageUrl = post._embedded['wp:featuredmedia'][0].source_url;
+            }
 
-    document.getElementById('shareTwitter').href = `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`;
-    document.getElementById('shareLinkedIn').href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`;
-    document.getElementById('shareFacebook').href = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
-    document.getElementById('shareWhatsApp').href = `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`;
-}
+            let categoryName = 'General';
+            let categoryId = null;
+            if (post._embedded?.['wp:term']) {
+                const cats = post._embedded['wp:term'].find(t => t[0]?.taxonomy === 'category');
+                if (cats?.[0]) {
+                    categoryName = cats[0].name;
+                    categoryId = cats[0].id;
+                }
+            }
 
-// Copy blog link function
-function copyBlogLink() {
-    const url = window.location.href;
-    navigator.clipboard.writeText(url).then(() => {
-        const feedback = document.getElementById('copyFeedback');
-        feedback.classList.add('show');
-        setTimeout(() => {
-            feedback.classList.remove('show');
-        }, 3000);
-    }).catch(err => {
-        console.error('Failed to copy:', err);
-        // Fallback for older browsers
-        const textArea = document.createElement('textarea');
-        textArea.value = url;
-        document.body.appendChild(textArea);
-        textArea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textArea);
-        
-        const feedback = document.getElementById('copyFeedback');
-        feedback.classList.add('show');
-        setTimeout(() => {
-            feedback.classList.remove('show');
-        }, 3000);
-    });
-}
+            const date = new Date(post.date).toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+            const readTime = Math.ceil(post.content.rendered.split(/\s+/).length / 200);
 
-// Fetch related posts
-async function fetchRelatedPosts(currentPost) {
-    try {
-        let categoryId = currentPost.categories?.[0];
-        // Don't embed terms to avoid taxonomy data
-        let url = `${WP_API_URL}/posts?per_page=3&exclude=${currentPost.id}&_embed=wp:featuredmedia`;
-        
-        if (categoryId) {
-            url += `&categories=${categoryId}`;
+            // Clean content - remove duplicate featured image
+            let tempDiv = document.createElement('div');
+            tempDiv.innerHTML = post.content.rendered;
+            const firstImg = tempDiv.querySelector('img');
+            if (firstImg) {
+                firstImg.remove();
+            }
+            const cleanContent = tempDiv.innerHTML;
+
+            // Update DOM
+            document.getElementById('spCategory').textContent = categoryName;
+            document.getElementById('spTitle').textContent = post.title.rendered;
+            document.getElementById('spDate').innerHTML = `<i class="bi bi-calendar3"></i> ${date}`;
+            document.getElementById('spReadTime').innerHTML = `<i class="bi bi-clock"></i> ${readTime} min read`;
+            document.getElementById('spImage').src = imageUrl;
+            document.getElementById('spImage').alt = post.title.rendered;
+            document.getElementById('spBody').innerHTML = cleanContent;
+            document.title = `${post.title.rendered} - Verifitech Blog`;
+
+            // Setup share links
+            setupShareLinks(post.title.rendered, window.location.href);
+
+            // Show content
+            document.getElementById('singlePostLoading').style.display = 'none';
+            document.getElementById('singlePostContent').style.display = 'block';
         }
 
-        const response = await fetch(url);
-        const posts = await response.json();
+        // Setup social share links
+        function setupShareLinks(title, url) {
+            const encodedTitle = encodeURIComponent(title);
+            const encodedUrl = encodeURIComponent(url);
 
-        if (posts.length > 0) {
-            renderRelatedPosts(posts);
+            document.getElementById('shareTwitter').href = `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`;
+            document.getElementById('shareLinkedIn').href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`;
+            document.getElementById('shareFacebook').href = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+            document.getElementById('shareWhatsApp').href = `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`;
         }
 
-    } catch (error) {
-        console.error('Error fetching related posts:', error);
-    }
-}
-
-// Render related posts
-function renderRelatedPosts(posts) {
-    const container = document.getElementById('relatedBlogsGrid');
-    document.getElementById('relatedBlogsSection').style.display = 'block';
-    container.innerHTML = '';
-
-    posts.forEach(post => {
-        let imageUrl = 'https://via.placeholder.com/400x250/e0f7f7/1ac2c1?text=Verifitech';
-        if (post._embedded?.['wp:featuredmedia']?.[0]) {
-            imageUrl = post._embedded['wp:featuredmedia'][0].source_url;
+        // Copy blog link function
+        function copyBlogLink() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                const feedback = document.getElementById('copyFeedback');
+                feedback.classList.add('show');
+                setTimeout(() => {
+                    feedback.classList.remove('show');
+                }, 3000);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = url;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                
+                const feedback = document.getElementById('copyFeedback');
+                feedback.classList.add('show');
+                setTimeout(() => {
+                    feedback.classList.remove('show');
+                }, 3000);
+            });
         }
 
-        let categoryName = 'Article';
+        // Fetch related posts
+        async function fetchRelatedPosts(currentPost) {
+            try {
+                let categoryId = currentPost.categories?.[0];
+                let url = `${WP_API_URL}/posts?per_page=3&exclude=${currentPost.id}&_embed=wp:featuredmedia`;
+                
+                if (categoryId) {
+                    url += `&categories=${categoryId}`;
+                }
 
-        const date = new Date(post.date).toLocaleDateString('en-US', { 
-            month: 'short', 
-            day: 'numeric',
-            year: 'numeric'
-        });
+                const response = await fetch(url);
+                const posts = await response.json();
 
-        const col = document.createElement('div');
-        col.className = 'col-md-4';
-        col.innerHTML = `
-            <article class="related-blog-card" onclick="showSinglePost(${post.id})">
-                <div class="related-blog-image">
-                    <img src="${imageUrl}" alt="${post.title.rendered}" loading="lazy">
-                </div>
-                <div class="related-blog-content">
-                    <span class="related-blog-category">${categoryName}</span>
-                    <h4>${post.title.rendered}</h4>
-                    <div class="related-blog-date">
-                        <i class="bi bi-calendar3"></i> ${date}
+                if (posts.length > 0) {
+                    renderRelatedPosts(posts);
+                }
+
+            } catch (error) {
+                console.error('Error fetching related posts:', error);
+            }
+        }
+
+        // Render related posts
+        function renderRelatedPosts(posts) {
+            const container = document.getElementById('relatedBlogsGrid');
+            document.getElementById('relatedBlogsSection').style.display = 'block';
+            container.innerHTML = '';
+
+            posts.forEach(post => {
+                let imageUrl = 'https://via.placeholder.com/400x250/e0f7f7/1ac2c1?text=Verifitech';
+                if (post._embedded?.['wp:featuredmedia']?.[0]) {
+                    imageUrl = post._embedded['wp:featuredmedia'][0].source_url;
+                }
+
+                let categoryName = 'General';
+                if (post._embedded?.['wp:term']) {
+                    const cats = post._embedded['wp:term'].find(t => t[0]?.taxonomy === 'category');
+                    if (cats?.[0]) categoryName = cats[0].name;
+                }
+
+                const date = new Date(post.date).toLocaleDateString('en-US', { 
+                    month: 'short', 
+                    day: 'numeric',
+                    year: 'numeric'
+                });
+
+                const col = document.createElement('div');
+                col.className = 'col-md-4';
+                col.innerHTML = `
+                    <article class="related-blog-card" onclick="showSinglePost(${post.id})">
+                        <div class="related-blog-image">
+                            <img src="${imageUrl}" alt="${post.title.rendered}" loading="lazy">
+                        </div>
+                        <div class="related-blog-content">
+                            <span class="related-blog-category">${categoryName}</span>
+                            <h4>${post.title.rendered}</h4>
+                            <div class="related-blog-date">
+                                <i class="bi bi-calendar3"></i> ${date}
+                            </div>
+                        </div>
+                    </article>
+                `;
+                container.appendChild(col);
+            });
+        }
+
+        // Setup category filter buttons
+        function setupCategoryFilters() {
+            const buttons = document.querySelectorAll('.category-btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    buttons.forEach(b => b.classList.remove('active'));
+                    e.currentTarget.classList.add('active');
+                    currentCategory = e.currentTarget.dataset.category;
+                    currentPage = 1;
+                    fetchPosts(true);
+                });
+            });
+        }
+
+        // Fetch posts from WordPress API
+        async function fetchPosts(reset = false) {
+            if (isLoading) return;
+            isLoading = true;
+
+            const blogGrid = document.getElementById('blogGrid');
+            
+            if (reset) {
+                blogGrid.innerHTML = generateSkeletons(6);
+            }
+
+            try {
+                let url = `${WP_API_URL}/posts?per_page=9&page=${currentPage}&_embed=wp:featuredmedia,wp:term,author`;
+                
+                if (currentCategory !== 'all' && categoryMap[currentCategory]) {
+                    url += `&categories=${categoryMap[currentCategory]}`;
+                }
+
+                const response = await fetch(url);
+                const posts = await response.json();
+                
+                totalPosts = response.headers.get('X-WP-Total') || posts.length;
+                
+                if (reset) {
+                    blogGrid.innerHTML = '';
+                }
+
+                if (posts.length === 0 && reset) {
+                    blogGrid.innerHTML = `
+                        <div class="col-12 no-posts">
+                            <i class="bi bi-inbox"></i>
+                            <h3>No posts found</h3>
+                            <p>No articles available in this category.</p>
+                        </div>
+                    `;
+                    document.getElementById('loadMoreContainer').style.display = 'none';
+                    return;
+                }
+
+                posts.forEach(post => {
+                    const card = createBlogCard(post);
+                    blogGrid.appendChild(card);
+                });
+
+                const loadMoreContainer = document.getElementById('loadMoreContainer');
+                if (posts.length === 9 && blogGrid.children.length < totalPosts) {
+                    loadMoreContainer.style.display = 'block';
+                } else {
+                    loadMoreContainer.style.display = 'none';
+                }
+
+            } catch (error) {
+                console.error('Error fetching posts:', error);
+                if (reset) {
+                    blogGrid.innerHTML = `
+                        <div class="col-12 error-message">
+                            <i class="bi bi-exclamation-circle"></i>
+                            <h3>Failed to load posts</h3>
+                            <p>Please check your internet connection and try again.</p>
+                        </div>
+                    `;
+                }
+            } finally {
+                isLoading = false;
+            }
+        }
+
+        // Create blog card element
+        function createBlogCard(post) {
+            const col = document.createElement('div');
+            col.className = 'col-md-6 col-lg-4';
+            
+            let imageUrl = 'https://via.placeholder.com/600x400/e0f7f7/1ac2c1?text=Verifitech';
+            if (post._embedded && post._embedded['wp:featuredmedia'] && post._embedded['wp:featuredmedia'][0]) {
+                imageUrl = post._embedded['wp:featuredmedia'][0].source_url;
+            }
+
+            let categoryName = 'General';
+            if (post._embedded && post._embedded['wp:term']) {
+                const categories = post._embedded['wp:term'].find(terms => terms[0]?.taxonomy === 'category');
+                if (categories && categories[0]) {
+                    categoryName = categories[0].name;
+                }
+            }
+
+            const date = new Date(post.date).toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric' 
+            });
+
+            const excerpt = stripHtml(post.excerpt.rendered).substring(0, 120) + '...';
+
+            col.innerHTML = `
+                <article class="blog-card" onclick="showSinglePost(${post.id})" style="cursor: pointer;">
+                    <div class="blog-image">
+                        <span class="category-tag">${categoryName}</span>
+                        <img src="${imageUrl}" alt="${post.title.rendered}" loading="lazy">
                     </div>
-                </div>
-            </article>
-        `;
-        container.appendChild(col);
-    });
-}
-
-// Setup category filter buttons
-function setupCategoryFilters() {
-    const buttons = document.querySelectorAll('.category-btn');
-    buttons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            buttons.forEach(b => b.classList.remove('active'));
-            e.currentTarget.classList.add('active');
-            currentCategory = e.currentTarget.dataset.category;
-            currentPage = 1;
-            fetchPosts(true);
-        });
-    });
-}
-
-// Fetch posts from WordPress API
-async function fetchPosts(reset = false) {
-    if (isLoading) return;
-    isLoading = true;
-
-    const blogGrid = document.getElementById('blogGrid');
-    
-    if (reset) {
-        blogGrid.innerHTML = generateSkeletons(6);
-    }
-
-    try {
-        // Don't embed wp:term to avoid taxonomy data
-        let url = `${WP_API_URL}/posts?per_page=9&page=${currentPage}&_embed=wp:featuredmedia,author`;
-        
-        if (currentCategory !== 'all' && categoryMap[currentCategory]) {
-            url += `&categories=${categoryMap[currentCategory]}`;
-        }
-
-        const response = await fetch(url);
-        const posts = await response.json();
-        
-        totalPosts = response.headers.get('X-WP-Total') || posts.length;
-        
-        if (reset) {
-            blogGrid.innerHTML = '';
-        }
-
-        if (posts.length === 0 && reset) {
-            blogGrid.innerHTML = `
-                <div class="col-12 no-posts">
-                    <i class="bi bi-inbox"></i>
-                    <h3>No posts found</h3>
-                    <p>No articles available in this category.</p>
-                </div>
+                    <div class="blog-content">
+                        <div class="post-meta">
+                            <span><i class="bi bi-calendar3"></i> ${date}</span>
+                        </div>
+                        <h3>${post.title.rendered}</h3>
+                        <p>${excerpt}</p>
+                        <span class="read-more">
+                            Read Article <i class="bi bi-arrow-right"></i>
+                        </span>
+                    </div>
+                </article>
             `;
-            document.getElementById('loadMoreContainer').style.display = 'none';
-            return;
+            
+            return col;
         }
 
-        posts.forEach(post => {
-            const card = createBlogCard(post);
-            blogGrid.appendChild(card);
+        // Generate loading skeletons
+        function generateSkeletons(count) {
+            let html = '';
+            for (let i = 0; i < count; i++) {
+                html += `
+                    <div class="col-md-6 col-lg-4">
+                        <div class="loading-skeleton skeleton-card"></div>
+                    </div>
+                `;
+            }
+            return html;
+        }
+
+        // Strip HTML tags
+        function stripHtml(html) {
+            const tmp = document.createElement('div');
+            tmp.innerHTML = html;
+            return tmp.textContent || tmp.innerText || '';
+        }
+
+        // Load more posts
+        function loadMorePosts() {
+            currentPage++;
+            const btn = document.getElementById('loadMoreBtn');
+            btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Loading...';
+            btn.disabled = true;
+            
+            fetchPosts().then(() => {
+                btn.innerHTML = 'Load More Articles <i class="bi bi-arrow-down"></i>';
+                btn.disabled = false;
+            });
+        }
+
+        // WhatsApp Functionality
+        function openWhatsApp(event) {
+            event.preventDefault();
+            const message = encodeURIComponent(`Hi Verifitech Team, I'm interested in your services.\n\nCurrent page: ${window.location.href}`);
+            window.open(`https://wa.me/+919176663777?text=${message}`, '_blank');
+        }
+
+        // Navbar scroll effect
+        window.addEventListener("scroll", () => {
+            const navbar = document.querySelector(".navbar");
+            if (window.scrollY > 50) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.remove("scrolled");
+            }
         });
-
-        const loadMoreContainer = document.getElementById('loadMoreContainer');
-        if (posts.length === 9 && blogGrid.children.length < totalPosts) {
-            loadMoreContainer.style.display = 'block';
-        } else {
-            loadMoreContainer.style.display = 'none';
-        }
-
-    } catch (error) {
-        console.error('Error fetching posts:', error);
-        if (reset) {
-            blogGrid.innerHTML = `
-                <div class="col-12 error-message">
-                    <i class="bi bi-exclamation-circle"></i>
-                    <h3>Failed to load posts</h3>
-                    <p>Please check your internet connection and try again.</p>
-                </div>
-            `;
-        }
-    } finally {
-        isLoading = false;
-    }
-}
-
-// Create blog card element
-function createBlogCard(post) {
-    const col = document.createElement('div');
-    col.className = 'col-md-6 col-lg-4';
-    
-    let imageUrl = 'https://via.placeholder.com/600x400/e0f7f7/1ac2c1?text=Verifitech';
-    if (post._embedded && post._embedded['wp:featuredmedia'] && post._embedded['wp:featuredmedia'][0]) {
-        imageUrl = post._embedded['wp:featuredmedia'][0].source_url;
-    }
-
-    let categoryName = 'Article';
-
-    const date = new Date(post.date).toLocaleDateString('en-US', { 
-        year: 'numeric', 
-        month: 'short', 
-        day: 'numeric' 
-    });
-
-    const excerpt = stripHtml(post.excerpt.rendered).substring(0, 120) + '...';
-
-    col.innerHTML = `
-        <article class="blog-card" onclick="showSinglePost(${post.id})" style="cursor: pointer;">
-            <div class="blog-image">
-                <span class="category-tag">${categoryName}</span>
-                <img src="${imageUrl}" alt="${post.title.rendered}" loading="lazy">
-            </div>
-            <div class="blog-content">
-                <div class="post-meta">
-                    <span><i class="bi bi-calendar3"></i> ${date}</span>
-                </div>
-                <h3>${post.title.rendered}</h3>
-                <p>${excerpt}</p>
-                <span class="read-more">
-                    Read Article <i class="bi bi-arrow-right"></i>
-                </span>
-            </div>
-        </article>
-    `;
-    
-    return col;
-}
-
-// Generate loading skeletons
-function generateSkeletons(count) {
-    let html = '';
-    for (let i = 0; i < count; i++) {
-        html += `
-            <div class="col-md-6 col-lg-4">
-                <div class="loading-skeleton skeleton-card"></div>
-            </div>
-        `;
-    }
-    return html;
-}
-
-// Strip HTML tags
-function stripHtml(html) {
-    const tmp = document.createElement('div');
-    tmp.innerHTML = html;
-    return tmp.textContent || tmp.innerText || '';
-}
-
-// Load more posts
-function loadMorePosts() {
-    currentPage++;
-    const btn = document.getElementById('loadMoreBtn');
-    btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Loading...';
-    btn.disabled = true;
-    
-    fetchPosts().then(() => {
-        btn.innerHTML = 'Load More Articles <i class="bi bi-arrow-down"></i>';
-        btn.disabled = false;
-    });
-}
-
-// WhatsApp Functionality
-function openWhatsApp(event) {
-    event.preventDefault();
-    const message = encodeURIComponent(`Hi Verifitech Team, I'm interested in your services.\n\nCurrent page: ${window.location.href}`);
-    window.open(`https://wa.me/+919176663777?text=${message}`, '_blank');
-}
-
-// Navbar scroll effect
-window.addEventListener("scroll", () => {
-    const navbar = document.querySelector(".navbar");
-    if (window.scrollY > 50) {
-        navbar.classList.add("scrolled");
-    } else {
-        navbar.classList.remove("scrolled");
-    }
-});
     </script>
 </body>
 </html>
