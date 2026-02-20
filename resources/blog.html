@@ -96,7 +96,27 @@
             text-transform: uppercase;
             margin-top: 2px;
         }
+/* Hide comment sections that might appear in post content */
+.post-content-single .comments-area,
+.post-content-single #comments,
+.post-content-single .wp-block-comments,
+.post-content-single #respond,
+.post-content-single .comment-respond,
+.post-content-single .commentlist,
+.post-content-single .comment-list,
+.post-content-single [class*="comment-section"],
+.post-content-single [class*="comments-wrap"] {
+    display: none !important;
+}
 
+/* Hide taxonomy sections if they appear */
+.post-content-single .entry-terms,
+.post-content-single .taxonomy-category,
+.post-content-single .taxonomy-post_tag,
+.post-content-single .tags-links,
+.post-content-single .cat-links {
+    display: none !important;
+}
         .nav-link {
             font-weight: 600;
             color: var(--navy);
