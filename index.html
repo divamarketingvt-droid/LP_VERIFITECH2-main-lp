@@ -1458,48 +1458,261 @@
         margin: 0;
       }
 
-      /* Stats Section */
-      .stats-bar {
-        background: linear-gradient(
-          135deg,
-          var(--primary) 0%,
-          var(--primary-dark) 100%
-        );
-        color: white;
-        padding: 60px 0;
-        position: relative;
-        overflow: hidden;
-      }
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Stats Counter</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #4338ca;
+        }
 
-      .stats-bar::before {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-      }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
-      .stat-item-main {
-        text-align: center;
-        position: relative;
-      }
+        /* Stats Section */
+        .stats-bar {
+            background: linear-gradient(
+                135deg,
+                var(--primary) 0%,
+                var(--primary-dark) 100%
+            );
+            color: white;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
 
-      .stat-number {
-        font-size: 3.5rem;
-        font-weight: 800;
-        margin-bottom: 0.5rem;
-        display: block;
-        line-height: 1;
-      }
+        .stats-bar::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg '%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: patternMove 20s linear infinite;
+        }
 
-      .stat-label {
-        font-size: 1.1rem;
-        opacity: 0.95;
-        font-weight: 500;
-      }
+        @keyframes patternMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(60px, 60px); }
+        }
 
+        .stat-item-main {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item-main:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            display: block;
+            line-height: 1;
+            background: linear-gradient(45deg, #fff, #e0e7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered delays */
+        .reveal:nth-child(1) { transition-delay: 0.1s; }
+        .reveal:nth-child(2) { transition-delay: 0.2s; }
+        .reveal:nth-child(3) { transition-delay: 0.3s; }
+        .reveal:nth-child(4) { transition-delay: 0.4s; }
+
+        /* Pulse effect on numbers */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .stat-number.counting {
+            animation: pulse 0.3s ease;
+        }
+
+        /* Glow effect */
+        .stat-item-main::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .stat-item-main:hover::after {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Stats Bar -->
+    <section class="stats-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-6 mb-4 mb-md-0 reveal">
+                    <div class="stat-item-main">
+                        <span class="stat-number" data-target="2">0</span>M+
+                        <div class="stat-label">Checks Completed</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4 mb-md-0 reveal">
+                    <div class="stat-item-main">
+                        <span class="stat-number" data-target="500">0</span>+
+                        <div class="stat-label">Enterprise Clients</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 reveal">
+                    <div class="stat-item-main">
+                        <span class="stat-number" data-target="99">0</span>.9%
+                        <div class="stat-label">Accuracy Rate</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 reveal">
+                    <div class="stat-item-main">
+                        <span class="stat-number" data-target="19000">0</span>+
+                        <div class="stat-label">Pin Codes Covered</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Intersection Observer for reveal animation
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: "0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    
+                    // Start counter animation
+                    const statNumber = entry.target.querySelector('.stat-number');
+                    if (statNumber && !statNumber.classList.contains('counted')) {
+                        animateCounter(statNumber);
+                        statNumber.classList.add('counted');
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all reveal elements
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Counter animation function
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-target'));
+            const duration = 2000; // 2 seconds
+            const startTime = performance.now();
+            
+            element.classList.add('counting');
+            
+            function updateCounter(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                // Easing function (ease-out-quart)
+                const easeOut = 1 - Math.pow(1 - progress, 4);
+                
+                const current = Math.floor(easeOut * target);
+                element.textContent = current.toLocaleString();
+                
+                if (progress < 1) {
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target.toLocaleString();
+                    element.classList.remove('counting');
+                }
+            }
+            
+            requestAnimationFrame(updateCounter);
+        }
+
+        // Add floating particles effect
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.style.cssText = `
+                position: absolute;
+                width: 4px;
+                height: 4px;
+                background: rgba(255,255,255,0.3);
+                border-radius: 50%;
+                pointer-events: none;
+                left: ${Math.random() * 100}%;
+                top: 100%;
+                animation: floatUp ${3 + Math.random() * 4}s linear forwards;
+            `;
+            
+            document.querySelector('.stats-bar').appendChild(particle);
+            
+            setTimeout(() => particle.remove(), 7000);
+        }
+
+        // Add floating animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes floatUp {
+                to {
+                    transform: translateY(-100vh) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Create particles periodically
+        setInterval(createParticle, 800);
+    </script>
+
+</body>
+</html>
       /* Process Section */
       .process-section {
         background: white;
