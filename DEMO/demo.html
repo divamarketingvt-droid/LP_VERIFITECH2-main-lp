@@ -9,8 +9,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Flatpickr -->
@@ -454,6 +452,7 @@
             overflow-x: hidden;
             padding-right: 8px;
             margin-right: -8px;
+            scroll-behavior: smooth;
         }
         
         .form-content::-webkit-scrollbar {
@@ -514,126 +513,35 @@
             outline: none;
         }
         
-        /* Invalid state for email validation */
         .demo-form .form-control.is-invalid {
-            border-color: #dc2626;
-            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23dc2626' viewBox='0 0 16 16'%3E%3Cpath d='M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zM7 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm.5-6a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 1 .5-.5z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 12px center;
-            background-size: 20px;
-            padding-right: 40px;
-        }
-
-        .demo-form .form-control.is-invalid:focus {
-            border-color: #dc2626;
-            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+            border-color: var(--danger);
+            background-image: none;
         }
         
-        /* Valid business email state */
         .demo-form .form-control.is-valid {
             border-color: var(--success);
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2310b981' viewBox='0 0 16 16'%3E%3Cpath d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 12px center;
-            background-size: 20px;
-            padding-right: 40px;
+            background-image: none;
         }
-
+        
         /* Email validation message */
         .email-validation-msg {
-            margin-top: 8px;
-            padding: 10px 14px;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: 500;
+            font-size: 12px;
+            margin-top: 6px;
             display: none;
             align-items: center;
-            gap: 8px;
-            animation: slideDown 0.2s ease;
+            gap: 6px;
         }
-
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
+        
         .email-validation-msg.show {
             display: flex;
         }
-
-        .email-validation-msg.error {
-            background: #fef2f2;
-            border: 1px solid #fecaca;
-            color: #dc2626;
+        
+        .email-validation-msg.invalid {
+            color: var(--danger);
         }
-
-        .email-validation-msg.success {
-            background: #f0fdf4;
-            border: 1px solid #bbf7d0;
-            color: #16a34a;
-        }
-
-        .email-validation-msg i {
-            font-size: 16px;
-            flex-shrink: 0;
-        }
-
-        /* Email hint tooltip */
-        .email-hint {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin-top: 6px;
-            font-size: 12px;
-            color: var(--gray);
-            font-weight: 500;
-        }
-
-        .email-hint i {
-            color: var(--primary);
-            font-size: 14px;
-        }
-
-        /* Suggested email correction */
-        .email-suggestion {
-            margin-top: 8px;
-            padding: 12px;
-            background: #fffbeb;
-            border: 1px solid #fcd34d;
-            border-radius: 8px;
-            font-size: 13px;
-            color: #92400e;
-            display: none;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .email-suggestion.show {
-            display: flex;
-            animation: slideDown 0.3s ease;
-        }
-
-        .email-suggestion i {
-            font-size: 18px;
-            color: #f59e0b;
-        }
-
-        .email-suggestion button {
-            margin-left: auto;
-            padding: 6px 12px;
-            background: #f59e0b;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .email-suggestion button:hover {
-            background: #d97706;
+        
+        .email-validation-msg.valid {
+            color: var(--success);
         }
         
         /* ================= WORKABLE SERVICE SELECTION (3 CARDS) ================= */
@@ -775,19 +683,6 @@
         
         @media (max-width: 1024px) {
             .service-card-icon i {
-                font-size: 24px;
-            }
-        }
-        
-        /* Font Awesome icon sizing */
-        .service-card-icon .fa-brain {
-            font-size: 28px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        @media (max-width: 1024px) {
-            .service-card-icon .fa-brain {
                 font-size: 24px;
             }
         }
@@ -944,67 +839,76 @@
             color: white;
         }
         
-        /* ================= CALENDAR SECTION ================= */
+        /* ================= NEW CALENDAR LAYOUT ================= */
         .calendar-section {
             display: flex;
+            flex-direction: column;
             gap: 24px;
-            margin-bottom: 20px;
         }
         
-        @media (max-width: 1024px) {
-            .calendar-section {
-                flex-direction: column;
-                gap: 16px;
-            }
+        .calendar-fullwidth {
+            width: 100%;
         }
         
-        .calendar-left {
-            flex: 0 0 300px;
-        }
-        
-        @media (max-width: 1024px) {
-            .calendar-left {
-                flex: none;
-                width: 100%;
-            }
-        }
-        
+        /* FULL WIDTH CALENDAR STYLES */
         .flatpickr-calendar {
             box-shadow: none;
             border: 1.5px solid var(--border-gray);
             border-radius: 16px;
             width: 100% !important;
-            padding: 16px;
+            max-width: 100% !important;
+            padding: 20px;
+            margin: 0 auto;
+        }
+        
+        .flatpickr-calendar,
+        .flatpickr-innerContainer,
+        .flatpickr-rContainer,
+        .flatpickr-days {
+            width: 100% !important;
+            max-width: 100% !important;
+        }
+        
+        .flatpickr-days {
+            width: 100% !important;
+        }
+        
+        .dayContainer {
+            width: 100% !important;
+            max-width: 100% !important;
+            display: grid !important;
+            grid-template-columns: repeat(7, 1fr) !important;
+        }
+        
+        .flatpickr-day {
+            width: 100% !important;
+            max-width: 100% !important;
+            height: 44px !important;
+            line-height: 44px !important;
+            margin: 2px !important;
+            font-weight: 600;
+            border-radius: 10px;
         }
         
         .flatpickr-month {
-            height: 40px;
-            margin-bottom: 8px;
+            height: 50px;
+            margin-bottom: 12px;
         }
         
         .flatpickr-current-month {
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 700;
             color: var(--dark);
         }
         
         .flatpickr-weekdays {
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
         
         .flatpickr-weekday {
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 700;
             color: var(--gray);
-        }
-        
-        .flatpickr-day {
-            font-size: 13px;
-            height: 36px;
-            line-height: 36px;
-            border-radius: 8px;
-            margin: 2px;
-            font-weight: 600;
         }
         
         .flatpickr-day.selected {
@@ -1020,40 +924,47 @@
             background: var(--primary-light);
         }
         
-        /* Time Slots */
+        /* Time Slots - Below Calendar */
         .time-slots-section {
-            flex: 1;
-            min-height: 0;
+            width: 100%;
         }
         
         .time-slots-header {
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 700;
             color: var(--dark);
-            margin-bottom: 12px;
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border-gray);
+        }
+        
+        .time-slots-header i {
+            color: var(--primary);
+            font-size: 20px;
         }
         
         .slots-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 8px;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 12px;
         }
         
         @media (max-width: 576px) {
             .slots-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
             }
         }
         
         .time-slot {
-            padding: 12px;
-            border: 1.5px solid var(--border-gray);
-            border-radius: 10px;
+            padding: 16px 12px;
+            border: 2px solid var(--border-gray);
+            border-radius: 12px;
             text-align: center;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 600;
             color: var(--dark);
             cursor: pointer;
@@ -1065,12 +976,14 @@
             border-color: var(--primary);
             color: var(--primary);
             background: var(--primary-light);
+            transform: translateY(-2px);
         }
         
         .time-slot.selected {
             border-color: var(--primary);
             background: var(--primary);
             color: white;
+            box-shadow: 0 4px 12px rgba(26, 194, 193, 0.3);
         }
         
         .time-slot.disabled {
@@ -1080,28 +993,45 @@
             text-decoration: line-through;
         }
         
-        /* Meeting Platforms */
+        /* Meeting Platforms - Initially Hidden */
         .meeting-platforms {
-            margin-top: 16px;
+            margin-top: 32px;
+            padding-top: 32px;
+            border-top: 2px solid var(--border-gray);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+            display: none;
+        }
+        
+        .meeting-platforms.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .platforms-title {
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 700;
             color: var(--dark);
-            margin-bottom: 12px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+        }
+        
+        .platforms-title i {
+            color: var(--primary);
+            font-size: 20px;
         }
         
         .platform-options {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
+            gap: 16px;
         }
         
-        @media (max-width: 576px) {
+        @media (max-width: 768px) {
             .platform-options {
                 grid-template-columns: 1fr;
             }
@@ -1119,10 +1049,10 @@
         .platform-radio label {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 16px;
+            gap: 16px;
+            padding: 20px;
             border: 2px solid var(--border-gray);
-            border-radius: 12px;
+            border-radius: 16px;
             cursor: pointer;
             transition: all 0.2s ease;
             background: white;
@@ -1131,28 +1061,32 @@
         
         @media (max-width: 576px) {
             .platform-radio label {
-                padding: 12px;
+                padding: 16px;
             }
         }
         
         .platform-radio label:hover {
             border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
         }
         
         .platform-radio input:checked + label {
             border-color: var(--primary);
             background: var(--primary-lighter);
+            box-shadow: 0 8px 24px rgba(26, 194, 193, 0.15);
         }
         
         .platform-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 10px;
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            font-size: 24px;
             flex-shrink: 0;
+            transition: all 0.2s ease;
         }
         
         .zoho .platform-icon { background: #fef3c7; color: #f59e0b; }
@@ -1162,17 +1096,18 @@
         .platform-radio input:checked + label .platform-icon {
             background: var(--primary);
             color: white;
+            transform: scale(1.1);
         }
         
         .platform-info h5 {
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 700;
-            margin: 0 0 2px 0;
+            margin: 0 0 4px 0;
             color: var(--dark);
         }
         
         .platform-info p {
-            font-size: 12px;
+            font-size: 13px;
             color: var(--gray);
             margin: 0;
         }
@@ -1180,15 +1115,16 @@
         /* Platform Availability Badge */
         .platform-availability {
             position: absolute;
-            top: -8px;
-            right: -8px;
+            top: -10px;
+            right: -10px;
             background: var(--success);
             color: white;
-            font-size: 10px;
+            font-size: 11px;
             font-weight: 700;
-            padding: 4px 8px;
-            border-radius: 12px;
+            padding: 6px 10px;
+            border-radius: 20px;
             z-index: 10;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
         
         .platform-availability.low {
@@ -1199,24 +1135,24 @@
             background: var(--danger);
         }
         
-        /* Selected Info */
+        /* Selected Info Summary */
         .selected-info {
-            background: var(--primary-lighter);
-            border: 1.5px solid var(--primary-light);
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--primary-lighter) 0%, white 100%);
+            border: 2px solid var(--primary);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 24px;
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-size: 14px;
+            gap: 16px;
+            font-size: 15px;
             color: var(--dark);
             font-weight: 600;
         }
         
         .selected-info i {
             color: var(--primary);
-            font-size: 20px;
+            font-size: 24px;
         }
         
         /* ================= BUTTONS ================= */
@@ -1240,23 +1176,23 @@
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: white;
             border: none;
-            padding: 14px 24px;
-            border-radius: 12px;
+            padding: 16px 28px;
+            border-radius: 14px;
             font-weight: 700;
-            font-size: 15px;
+            font-size: 16px;
             transition: all 0.25s ease;
             box-shadow: 0 4px 15px rgba(26, 194, 193, 0.3);
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            height: 52px;
+            gap: 10px;
+            height: 56px;
         }
         
         @media (max-width: 576px) {
             .btn-primary-custom {
-                height: 48px;
-                font-size: 14px;
+                height: 52px;
+                font-size: 15px;
             }
         }
         
@@ -1272,25 +1208,25 @@
         }
         
         .btn-secondary-custom {
-            padding: 14px 24px;
-            border-radius: 12px;
+            padding: 16px 28px;
+            border-radius: 14px;
             font-weight: 600;
-            font-size: 15px;
-            border: 1.5px solid var(--border-gray);
+            font-size: 16px;
+            border: 2px solid var(--border-gray);
             background: white;
             color: var(--gray);
             transition: all 0.2s ease;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            height: 52px;
+            gap: 10px;
+            height: 56px;
         }
         
         @media (max-width: 576px) {
             .btn-secondary-custom {
-                height: 48px;
-                font-size: 14px;
+                height: 52px;
+                font-size: 15px;
             }
         }
         
@@ -1697,20 +1633,31 @@
             display: block;
             animation: fadeIn 0.3s ease;
         }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            text-align: center;
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 16px;
+            animation: bounce 2s infinite;
+            display: none;
+        }
+        
+        .scroll-indicator.show {
+            display: block;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
     </style>
 </head>
 <body>
-    <!-- Page Demo Trigger -->
-    <div class="page-demo">
-        <div class="text-center">
-            <h1 class="mb-4">Verifitech USA<br>Background Checks</h1>
-            <button type="button" class="btn-schedule-demo" data-bs-toggle="modal" data-bs-target="#demoModal">
-                <i class="bi bi-calendar-check"></i> Schedule a Demo
-            </button>
-        </div>
-    </div>
-
-    <!-- Demo Modal -->
+    <!-- Demo Modal - Auto Opens Immediately -->
     <div class="modal fade demo-modal" id="demoModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -1790,25 +1737,10 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="email">Work Email *</label>
-                                                        <input type="email" class="form-control" id="email" placeholder="you@company.com" required oninput="validateEmailRealTime(this.value)">
-                                                        
-                                                        <!-- Email validation message -->
+                                                        <input type="email" class="form-control" id="email" placeholder="you@company.com" required>
                                                         <div class="email-validation-msg" id="emailValidationMsg">
-                                                            <i class="bi bi-exclamation-circle-fill"></i>
-                                                            <span id="emailValidationText"></span>
-                                                        </div>
-                                                        
-                                                        <!-- Email suggestion -->
-                                                        <div class="email-suggestion" id="emailSuggestion">
-                                                            <i class="bi bi-lightbulb-fill"></i>
-                                                            <span>Did you mean <strong id="suggestedEmail"></strong>?</span>
-                                                            <button type="button" onclick="applySuggestedEmail()">Use this</button>
-                                                        </div>
-                                                        
-                                                        <!-- Email hint -->
-                                                        <div class="email-hint">
-                                                            <i class="bi bi-info-circle-fill"></i>
-                                                            <span>Please use your work email (e.g., name@company.com)</span>
+                                                            <i class="bi bi-exclamation-circle"></i>
+                                                            <span>Please use a company email address</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1865,7 +1797,7 @@
                                                         <div class="service-card-inner">
                                                             <div class="service-check"><i class="bi bi-check-lg"></i></div>
                                                             <div class="service-card-icon">
-                                                                <i class="fa-solid fa-brain"></i>
+                                                                   <i class="bi bi-brain"></i>
                                                             </div>
                                                             <h4>Psychometric</h4>
                                                             <p>Cognitive & behavioral assessment tests for candidates</p>
@@ -1918,7 +1850,7 @@
                                         <p>Select your preferred date, time, and meeting platform.</p>
                                     </div>
                                     
-                                    <div class="form-content">
+                                    <div class="form-content" id="step2Content">
                                         <!-- Error Message Container -->
                                         <div class="error-message" id="emailError"></div>
                                         
@@ -1928,11 +1860,19 @@
                                             <span id="platformWarningText">Low availability warning</span>
                                         </div>
                                         
+                                        <!-- Selected Date Summary -->
+                                        <div class="selected-info" id="selectedInfo" style="display: none;">
+                                            <i class="bi bi-calendar-check-fill"></i>
+                                            <span id="selectedDateTimeText"></span>
+                                        </div>
+                                        
                                         <div class="calendar-section">
-                                            <div class="calendar-left">
+                                            <!-- Full Width Calendar -->
+                                            <div class="calendar-fullwidth" id="calendarContainer">
                                                 <div id="calendar"></div>
                                             </div>
                                             
+                                            <!-- Time Slots Below Calendar -->
                                             <div class="time-slots-section" id="timeSlotsSection" style="display: none;">
                                                 <div class="time-slots-header">
                                                     <i class="bi bi-clock"></i>
@@ -1941,18 +1881,19 @@
                                                 <div class="slots-grid" id="slotsGrid">
                                                     <!-- Generated by JS -->
                                                 </div>
+                                                
+                                                <!-- Scroll Indicator -->
+                                                <div class="scroll-indicator" id="scrollIndicator">
+                                                    <i class="bi bi-chevron-down"></i> Select a time slot to continue
+                                                </div>
                                             </div>
                                         </div>
                                         
-                                        <div class="selected-info" id="selectedInfo" style="display: none;">
-                                            <i class="bi bi-calendar-check-fill"></i>
-                                            <span id="selectedDateTimeText"></span>
-                                        </div>
-                                        
-                                        <div class="meeting-platforms" id="meetingPlatforms" style="display: none;">
+                                        <!-- Meeting Platforms - Hidden until time slot selected -->
+                                        <div class="meeting-platforms" id="meetingPlatforms">
                                             <div class="platforms-title">
                                                 <i class="bi bi-camera-video"></i>
-                                                Select Meeting Platform
+                                                Choose Meeting Platform
                                             </div>
                                             <div class="platform-options">
                                                 <div class="platform-radio zoho" style="position: relative;">
@@ -2100,155 +2041,46 @@
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     
     <script>
-        // ================= EMAIL VALIDATION - BUSINESS EMAIL ONLY =================
-        const FREE_EMAIL_DOMAINS = [
-            'gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'aol.com',
-            'icloud.com', 'live.com', 'msn.com', 'ymail.com', 'qq.com',
-            '163.com', '126.com', 'sina.com', 'sohu.com', 'foxmail.com',
-            'protonmail.com', 'zoho.com', 'yandex.com', 'mail.ru', 'gmx.com',
-            'hey.com', 'fastmail.com', 'tutanota.com', 'pm.me',
-            'yahoo.co.uk', 'yahoo.co.in', 'yahoo.com.br', 'hotmail.co.uk',
-            'live.co.uk', 'outlook.co.uk', 'googlemail.com', 'me.com', 'mac.com'
+        // ================= BLOCKED EMAIL DOMAINS =================
+        const BLOCKED_DOMAINS = [
+            'gmail.com',
+            'yahoo.com',
+            'hotmail.com',
+            'outlook.com',
+            'aol.com',
+            'icloud.com',
+            'me.com',
+            'mac.com',
+            'live.com',
+            'msn.com',
+            'ymail.com',
+            'rocketmail.com',
+            'protonmail.com',
+            'zoho.com',
+            'yandex.com',
+            'mail.ru',
+            'qq.com',
+            '163.com',
+            '126.com',
+            'sina.com',
+            'sohu.com',
+            'hotmail.co.uk',
+            'hotmail.fr',
+            'yahoo.co.uk',
+            'yahoo.fr',
+            'yahoo.in',
+            'outlook.co.uk',
+            'gmail.co.uk',
+            'googlemail.com',
+            'hey.com',
+            'pm.me',
+            'fastmail.com',
+            'tutanota.com',
+            'gmx.com',
+            'gmx.net',
+            'mail.com',
+            'inbox.com'
         ];
-
-        let currentSuggestedEmail = '';
-
-        function isBusinessEmail(email) {
-            if (!email || !email.includes('@')) return false;
-            
-            const domain = email.split('@')[1].toLowerCase().trim();
-            
-            if (FREE_EMAIL_DOMAINS.includes(domain)) {
-                return false;
-            }
-            
-            for (let freeDomain of FREE_EMAIL_DOMAINS) {
-                if (domain === freeDomain || domain.endsWith('.' + freeDomain)) {
-                    return false;
-                }
-            }
-            
-            if (!domain.includes('.') || domain.split('.').length < 2) {
-                return false;
-            }
-            
-            return true;
-        }
-
-        function getEmailDomain(email) {
-            if (!email || !email.includes('@')) return '';
-            return email.split('@')[1].toLowerCase().trim();
-        }
-
-        function suggestBusinessEmail(personalEmail) {
-            const domain = getEmailDomain(personalEmail);
-            const username = personalEmail.split('@')[0];
-            
-            // Common company domain patterns based on personal email username
-            const suggestions = [
-                username + '@' + username + '.com',
-                username + '@company.com',
-                'admin@' + username + '.com',
-                'info@' + username + '.com'
-            ];
-            
-            // Try to extract company name from username
-            const companyName = username.replace(/[0-9]/g, '').replace(/[._-]/g, '');
-            if (companyName.length > 2) {
-                suggestions.unshift(username + '@' + companyName + '.com');
-            }
-            
-            return suggestions[0];
-        }
-
-        function validateEmailRealTime(email) {
-            const emailInput = document.getElementById('email');
-            const validationMsg = document.getElementById('emailValidationMsg');
-            const validationText = document.getElementById('emailValidationText');
-            const suggestionBox = document.getElementById('emailSuggestion');
-            const suggestedEmailSpan = document.getElementById('suggestedEmail');
-            
-            // Clear previous states
-            emailInput.classList.remove('is-invalid', 'is-valid');
-            validationMsg.classList.remove('show', 'error', 'success');
-            suggestionBox.classList.remove('show');
-            
-            if (!email || !email.includes('@')) {
-                validateStep1();
-                return;
-            }
-            
-            const domain = getEmailDomain(email);
-            
-            // Check if it's a free email domain
-            const isFreeEmail = FREE_EMAIL_DOMAINS.includes(domain) || 
-                               FREE_EMAIL_DOMAINS.some(free => domain.endsWith('.' + free));
-            
-            if (isFreeEmail) {
-                // Show error state
-                emailInput.classList.add('is-invalid');
-                validationMsg.classList.add('show', 'error');
-                validationText.innerHTML = `<strong>${domain}</strong> is a personal email. Please use your work email (e.g., name@yourcompany.com)`;
-                
-                // Show suggestion
-                currentSuggestedEmail = suggestBusinessEmail(email);
-                suggestedEmailSpan.textContent = currentSuggestedEmail;
-                suggestionBox.classList.add('show');
-                
-                // Shake animation on input
-                emailInput.style.animation = 'shake 0.5s ease';
-                setTimeout(() => {
-                    emailInput.style.animation = '';
-                }, 500);
-                
-            } else {
-                // Valid business email
-                emailInput.classList.add('is-valid');
-                validationMsg.classList.add('show', 'success');
-                validationText.innerHTML = `<i class="bi bi-check-circle-fill"></i> Great! This looks like a business email.`;
-            }
-            
-            validateStep1();
-        }
-
-        function applySuggestedEmail() {
-            const emailInput = document.getElementById('email');
-            if (currentSuggestedEmail) {
-                emailInput.value = currentSuggestedEmail;
-                validateEmailRealTime(currentSuggestedEmail);
-            }
-        }
-
-        // Add shake animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes shake {
-                0%, 100% { transform: translateX(0); }
-                20%, 60% { transform: translateX(-5px); }
-                40%, 80% { transform: translateX(5px); }
-            }
-        `;
-        document.head.appendChild(style);
-
-        function validateEmailField() {
-            const emailInput = document.getElementById('email');
-            const email = emailInput.value.trim();
-            
-            if (!email) return false;
-            
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                emailInput.classList.add('is-invalid');
-                return false;
-            }
-            
-            if (!isBusinessEmail(email)) {
-                emailInput.classList.add('is-invalid');
-                return false;
-            }
-            
-            return true;
-        }
 
         // ================= PLATFORM LINK POOLS SYSTEM =================
         const PLATFORM_LINKS_POOL = {
@@ -2316,6 +2148,65 @@
         };
         
         let bookingCompleted = false;
+        let isEmailValid = false;
+
+        // ================= EMAIL VALIDATION =================
+        function validateCompanyEmail(email) {
+            if (!email || !email.includes('@')) return false;
+            
+            const domain = email.split('@')[1].toLowerCase();
+            return !BLOCKED_DOMAINS.includes(domain);
+        }
+
+        function checkEmailValidation() {
+            const emailInput = document.getElementById('email');
+            const validationMsg = document.getElementById('emailValidationMsg');
+            const email = emailInput.value.trim();
+            
+            if (!email) {
+                emailInput.classList.remove('is-invalid', 'is-valid');
+                validationMsg.classList.remove('show', 'valid', 'invalid');
+                isEmailValid = false;
+                validateStep1();
+                return;
+            }
+            
+            // Basic email format check
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                emailInput.classList.add('is-invalid');
+                emailInput.classList.remove('is-valid');
+                validationMsg.classList.add('show', 'invalid');
+                validationMsg.classList.remove('valid');
+                validationMsg.innerHTML = '<i class="bi bi-exclamation-circle"></i><span>Please enter a valid email address</span>';
+                isEmailValid = false;
+                validateStep1();
+                return;
+            }
+            
+            // Company email check
+            if (validateCompanyEmail(email)) {
+                emailInput.classList.remove('is-invalid');
+                emailInput.classList.add('is-valid');
+                validationMsg.classList.add('show', 'valid');
+                validationMsg.classList.remove('invalid');
+                validationMsg.innerHTML = '<i class="bi bi-check-circle"></i><span>Valid company email</span>';
+                isEmailValid = true;
+            } else {
+                emailInput.classList.add('is-invalid');
+                emailInput.classList.remove('is-valid');
+                validationMsg.classList.add('show', 'invalid');
+                validationMsg.classList.remove('valid');
+                validationMsg.innerHTML = '<i class="bi bi-exclamation-circle"></i><span>Please use a company email address (personal emails like Gmail, Yahoo, Outlook are not allowed)</span>';
+                isEmailValid = false;
+            }
+            
+            validateStep1();
+        }
+
+        // Add email validation listener
+        document.getElementById('email').addEventListener('input', checkEmailValidation);
+        document.getElementById('email').addEventListener('blur', checkEmailValidation);
 
         // Service Selection
         function selectService(serviceId) {
@@ -2354,20 +2245,19 @@
             const service = document.querySelector('input[name="service"]:checked');
             const candidates = document.getElementById('candidates').value;
             
-            // Check email is business email
-            const isBusiness = isBusinessEmail(email);
-            
-            const isValid = name && email && phone && company && service && candidates && isBusiness;
+            const isValid = name && email && phone && company && service && candidates && isEmailValid;
             document.getElementById('continueToStep2').disabled = !isValid;
             return isValid;
         }
 
+        // Add input listeners for text fields
+        document.querySelectorAll('#step1 input[type="text"], #step1 input[type="tel"]').forEach(input => {
+            input.addEventListener('input', validateStep1);
+        });
+
         // Continue to Step 2
         document.getElementById('continueToStep2').addEventListener('click', function() {
             if (!validateStep1()) return;
-            
-            // Validate email again before proceeding
-            if (!validateEmailField()) return;
             
             formData = {
                 ...formData,
@@ -2488,25 +2378,42 @@
                 onChange: function(selectedDates, dateStr) {
                     formData.date = dateStr;
                     generateTimeSlots(dateStr);
+                    
+                    // Scroll to time slots after date selection
+                    setTimeout(() => {
+                        const timeSlotsSection = document.getElementById('timeSlotsSection');
+                        if (timeSlotsSection && timeSlotsSection.style.display !== 'none') {
+                            timeSlotsSection.scrollIntoView({ 
+                                behavior: 'smooth', 
+                                block: 'start' 
+                            });
+                        }
+                    }, 100);
                 }
             });
         }
 
-        // Generate Time Slots
+        // Generate Time Slots - STARTING FROM 10:00 AM
         function generateTimeSlots(dateStr) {
             const slotsGrid = document.getElementById('slotsGrid');
             const timeSlotsSection = document.getElementById('timeSlotsSection');
+            const scrollIndicator = document.getElementById('scrollIndicator');
             
             slotsGrid.innerHTML = '';
             timeSlotsSection.style.display = 'block';
+            scrollIndicator.classList.add('show');
             
+            document.getElementById('selectedInfo').style.display = 'flex';
+            document.getElementById('selectedDateTimeText').textContent = dateStr;
+            
+            // Time slots starting from 10:00 AM
             const slots = [
-                '9:00 AM - 9:30 AM',
-                '9:30 AM - 10:00 AM',
                 '10:00 AM - 10:30 AM',
                 '10:30 AM - 11:00 AM',
                 '11:00 AM - 11:30 AM',
                 '11:30 AM - 12:00 PM',
+                '12:00 PM - 12:30 PM',
+                '12:30 PM - 1:00 PM',
                 '1:00 PM - 1:30 PM',
                 '1:30 PM - 2:00 PM',
                 '2:00 PM - 2:30 PM',
@@ -2514,7 +2421,8 @@
                 '3:00 PM - 3:30 PM',
                 '3:30 PM - 4:00 PM',
                 '4:00 PM - 4:30 PM',
-                '4:30 PM - 5:00 PM'
+                '4:30 PM - 5:00 PM',
+                '5:00 PM - 5:30 PM'
             ];
             
             slots.forEach((slot, index) => {
@@ -2532,7 +2440,12 @@
                         document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
                         this.classList.add('selected');
                         formData.time = slot;
-                        showPlatforms(dateStr, slot);
+                        
+                        document.getElementById('selectedDateTimeText').textContent = dateStr + ' at ' + slot.split(' - ')[0];
+                        
+                        scrollIndicator.classList.remove('show');
+                        
+                        showPlatforms();
                     });
                 }
                 
@@ -2540,17 +2453,29 @@
             });
         }
 
-        function showPlatforms(dateStr, timeSlot) {
-            document.getElementById('selectedInfo').style.display = 'flex';
-            document.getElementById('selectedDateTimeText').textContent = dateStr + ' at ' + timeSlot.split(' - ')[0];
-            document.getElementById('meetingPlatforms').style.display = 'block';
-            document.getElementById('confirmBooking').disabled = true;
+        function showPlatforms() {
+            const platformsSection = document.getElementById('meetingPlatforms');
+            const step2Content = document.getElementById('step2Content');
+            
+            platformsSection.style.display = 'block';
+            setTimeout(() => {
+                platformsSection.classList.add('show');
+            }, 10);
+            
+            // Scroll to meeting platforms section
+            setTimeout(() => {
+                platformsSection.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
+            }, 100);
             
             document.querySelectorAll('input[name="platform"]').forEach(radio => {
                 radio.checked = false;
             });
             formData.platform = '';
             formData.meetLink = '';
+            document.getElementById('confirmBooking').disabled = true;
             
             updateAllPlatformAvailability();
         }
@@ -2686,38 +2611,16 @@
                 console.log('✅ Host email sent successfully:', hostResponse);
 
                 if (remainingLinks <= 2) {
-                    console.log('🚨 Sending EXPIRY LINK ALERT to host - ' + formData.platform + ' links running low!');
+                    console.log('🚨 Sending EXPIRY LINK ALERT to host');
                     
                     const alertSubject = remainingLinks === 0 ? 
                         `🚨 ADD ${formData.platform.toUpperCase()} LINK NOW: All Links Depleted` : 
                         `⚠️ ADD ${formData.platform.toUpperCase()} LINK SOON: Only ${remainingLinks} Left`;
                     
                     const alertBody = remainingLinks === 0 ? 
-                        `ADD ${formData.platform.toUpperCase()} LINK IMMEDIATELY
-
-All ${formData.platform} links have been used up!
-
-Last booking that used final link:
-- Customer: ${formData.name} (${formData.email})
-- Company: ${formData.company}
-- Service: ${formData.service}
-- Scheduled: ${formData.date} at ${formData.time}
-- Link Used: ${formData.meetLink}
-
-ACTION REQUIRED: Add new ${formData.platform} links to the pool immediately to prevent booking disruptions.` 
+                        `ADD ${formData.platform.toUpperCase()} LINK IMMEDIATELY\n\nAll ${formData.platform} links have been used up!\n\nLast booking details:\n- Customer: ${formData.name} (${formData.email})\n- Company: ${formData.company}\n- Scheduled: ${formData.date} at ${formData.time}` 
                         : 
-                        `ADD ${formData.platform.toUpperCase()} LINK SOON
-
-Only ${remainingLinks} ${formData.platform} link${remainingLinks === 1 ? '' : 's'} remaining.
-
-Recent booking details:
-- Customer: ${formData.name} (${formData.email})
-- Company: ${formData.company}
-- Service: ${formData.service}
-- Scheduled: ${formData.date} at ${formData.time}
-- Link Assigned: ${formData.meetLink}
-
-Please add more links before the next booking.`;
+                        `ADD ${formData.platform.toUpperCase()} LINK SOON\n\nOnly ${remainingLinks} ${formData.platform} link${remainingLinks === 1 ? '' : 's'} remaining.\n\nRecent booking:\n- Customer: ${formData.name}\n- Company: ${formData.company}`;
 
                     const expiryAlertParams = {
                         to_email: EMAILJS_CONFIG.HOST_EMAIL,
@@ -2735,7 +2638,7 @@ Please add more links before the next booking.`;
                         EMAILJS_CONFIG.HOST_TEMPLATE_ID || EMAILJS_CONFIG.USER_TEMPLATE_ID,
                         expiryAlertParams
                     );
-                    console.log('✅ EXPIRY LINK ALERT sent to host successfully');
+                    console.log('✅ EXPIRY LINK ALERT sent');
                 }
 
                 return true;
@@ -2758,7 +2661,7 @@ Please add more links before the next booking.`;
             }
         }
 
-        // ================= REDIRECT TO HOME FUNCTION =================
+        // ================= REDIRECT TO HOME =================
         function redirectToHome() {
             console.log('🏠 Starting redirect countdown...');
             const redirectMessage = document.getElementById('redirectMessage');
@@ -2768,14 +2671,13 @@ Please add more links before the next booking.`;
                 redirectMessage.classList.add('show');
             }
             
-            let seconds = 60;
+            let seconds = 5;
             
             const countdownInterval = setInterval(function() {
                 seconds--;
                 if (countdownSpan) {
                     countdownSpan.textContent = seconds;
                 }
-                console.log('⏱️ Redirecting in ' + seconds + ' seconds...');
                 
                 if (seconds <= 0) {
                     clearInterval(countdownInterval);
@@ -2785,11 +2687,11 @@ Please add more links before the next booking.`;
         }
 
         function goToHome() {
-            console.log('🚀 Redirecting to home page now!');
+            console.log('🚀 Redirecting to home page');
             window.location.href = '../index.html';
         }
 
-        // Confirm Booking with EmailJS
+        // Confirm Booking
         document.getElementById('confirmBooking').addEventListener('click', async function() {
             const btn = this;
             btn.classList.add('btn-loading');
@@ -2944,14 +2846,14 @@ Please add more links before the next booking.`;
             document.getElementById('line2').classList.toggle('completed', step > 2);
         }
 
-        // Reset on close - ONLY if booking is NOT completed
+        // Reset on close
         document.getElementById('demoModal').addEventListener('hidden.bs.modal', function() {
             if (bookingCompleted) {
-                console.log('✅ Booking completed, modal closed, redirect in progress...');
+                console.log('✅ Booking completed');
                 return;
             }
             
-            console.log('🔄 Resetting form (booking not completed)');
+            console.log('🔄 Resetting form');
             
             clearPreviousPlatformAssignment();
             
@@ -2959,6 +2861,13 @@ Please add more links before the next booking.`;
             document.querySelectorAll('input[name="service"]').forEach(function(r) { r.checked = false; });
             document.querySelectorAll('input[name="platform"]').forEach(function(r) { r.checked = false; });
             document.querySelectorAll('.preset-btn').forEach(function(b) { b.classList.remove('active'); });
+            
+            // Reset email validation
+            const emailInput = document.getElementById('email');
+            const validationMsg = document.getElementById('emailValidationMsg');
+            emailInput.classList.remove('is-invalid', 'is-valid');
+            validationMsg.classList.remove('show', 'valid', 'invalid');
+            isEmailValid = false;
             
             document.getElementById('step1').classList.add('active');
             document.getElementById('step2').classList.remove('active');
@@ -2971,15 +2880,12 @@ Please add more links before the next booking.`;
             document.getElementById('timeSlotsSection').style.display = 'none';
             document.getElementById('selectedInfo').style.display = 'none';
             document.getElementById('meetingPlatforms').style.display = 'none';
+            document.getElementById('meetingPlatforms').classList.remove('show');
             document.getElementById('confirmBooking').disabled = true;
             document.getElementById('emailError').classList.remove('show');
             document.getElementById('platformWarning').classList.remove('show');
             document.getElementById('redirectMessage').classList.remove('show');
-            
-            // Clear email validation
-            document.getElementById('email').classList.remove('is-invalid', 'is-valid');
-            document.getElementById('emailValidationMsg').classList.remove('show');
-            document.getElementById('emailSuggestion').classList.remove('show');
+            document.getElementById('scrollIndicator').classList.remove('show');
             
             ['platform-google', 'platform-zoho', 'platform-teams'].forEach(function(id) {
                 const radio = document.getElementById(id);
@@ -2994,11 +2900,9 @@ Please add more links before the next booking.`;
             document.getElementById('calendar').innerHTML = '';
         });
 
-        // Auto-open for demo
+        // Auto-open modal immediately
         window.addEventListener('load', function() {
-            setTimeout(function() {
-                new bootstrap.Modal(document.getElementById('demoModal')).show();
-            }, 500);
+            new bootstrap.Modal(document.getElementById('demoModal')).show();
         });
     </script>
 </body>
