@@ -603,25 +603,70 @@
         display: block;
       }
 
-      /* Navbar height adjustment for mobile */
-      @media (max-width: 991px) {
-        .navbar {
-          height: auto;
-          min-height: 70px;
-          padding: 0.5rem 0;
-        }
-        
-        .navbar-brand img {
-          width: 140px;
-        }
-        
-        .navbar-toggler {
-          padding: 0.25rem 0.5rem;
-          font-size: 1.25rem;
-          border: none;
-        }
-      }
+      /* Dropdown Arrow Styling - Exact match to reference image */
+.dropdown-arrow {
+  font-size: 0.6rem;
+  margin-left: 4px;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+  transition: transform 0.2s ease;
+  color: inherit;
+  opacity: 0.8;
+}
 
+/* Rotate arrow when dropdown is open */
+.nav-item.dropdown.show .dropdown-arrow,
+.nav-link[aria-expanded="true"] .dropdown-arrow,
+.country-selector[aria-expanded="true"] .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+/* Nav link styling adjustments */
+.nav-link {
+  display: flex !important;
+  align-items: center !important;
+  padding: 2rem 0.75rem !important;
+  font-weight: 600 !important;
+  color: var(--navy) !important;
+}
+
+/* Country selector arrow adjustments */
+.country-selector .dropdown-arrow {
+  font-size: 0.55rem;
+  margin-left: 6px;
+  opacity: 0.7;
+}
+
+/* Ensure no Bootstrap default caret shows */
+.navbar .dropdown-toggle::after {
+  display: none !important;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 991px) {
+  .nav-link {
+    padding: 1rem 0.5rem !important;
+    justify-content: space-between;
+  }
+  
+  .dropdown-arrow {
+    margin-left: auto;
+    font-size: 0.7rem;
+  }
+  
+  .dropdown-menu {
+    border: none;
+    padding-left: 1rem;
+    background: rgba(26, 194, 193, 0.03);
+    margin-top: 0.5rem;
+  }
+  
+  .dropdown-menu.mega-menu {
+    min-width: 100%;
+  }
+}
+      
       /* Newsletter Section Responsive Fixes */
       @media (max-width: 991px) {
         .newsletter-footer-section {
@@ -2519,6 +2564,7 @@
   <body>
 
 <!-- Navigation -->
+<!-- Navigation -->
 <nav class="navbar navbar-expand-lg fixed-top">
   <div class="container">
     <a class="navbar-brand" href="./index.html">
@@ -2550,8 +2596,7 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Solutions
-            <i class="bi bi-chevron-down dropdown-chevron ms-1"></i>
+            Solutions <span class="dropdown-arrow">▾</span>
           </a>
           <div class="dropdown-menu mega-menu">
             <div class="row">
@@ -2641,8 +2686,7 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Products
-            <i class="bi bi-chevron-down dropdown-chevron ms-1"></i>
+            Products <span class="dropdown-arrow">▾</span>
           </a>
           <ul class="dropdown-menu">
             <li>
@@ -2670,8 +2714,7 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Industry
-            <i class="bi bi-chevron-down dropdown-chevron ms-1"></i>
+            Industry <span class="dropdown-arrow">▾</span>
           </a>
           <ul class="dropdown-menu">
             <li>
@@ -2745,8 +2788,7 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Resources
-            <i class="bi bi-chevron-down dropdown-chevron ms-1"></i>
+            Resources <span class="dropdown-arrow">▾</span>
           </a>
           <ul class="dropdown-menu">
             <li>
@@ -2786,8 +2828,7 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Company
-            <i class="bi bi-chevron-down dropdown-chevron ms-1"></i>
+            Company <span class="dropdown-arrow">▾</span>
           </a>
           <ul class="dropdown-menu">
             <li>
@@ -2817,8 +2858,7 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Help Center
-            <i class="bi bi-chevron-down dropdown-chevron ms-1"></i>
+            Help Center <span class="dropdown-arrow">▾</span>
           </a>
           <ul class="dropdown-menu">
             <li>
@@ -2862,7 +2902,7 @@
           >
             <span class="country-flag" id="current-flag">🇮🇳</span>
             <span id="current-country">India</span>
-            <i class="bi bi-chevron-down ms-1" style="font-size: 0.7rem"></i>
+            <span class="dropdown-arrow">▾</span>
           </div>
           <ul
             class="dropdown-menu dropdown-menu-end"
