@@ -820,7 +820,91 @@
         .related-blog-content {
             padding: 1.25rem;
         }
+/* Hide ALL comment and taxonomy elements - aggressive hiding */
+.post-content-single .comments-area,
+.post-content-single #comments,
+.post-content-single .wp-block-comments,
+.post-content-single .wp-block-comments-query-loop,
+.post-content-single #respond,
+.post-content-single .comment-respond,
+.post-content-single .commentlist,
+.post-content-single .comment-list,
+.post-content-single .comments-list,
+.post-content-single .comments-container,
+.post-content-single .comments-section,
+.post-content-single .comments-wrap,
+.post-content-single .comment-form,
+.post-content-single .comment-navigation,
+.post-content-single .comment-reply-title,
+.post-content-single .comments-title,
+.post-content-single .no-comments,
+.post-content-single .discussion-section,
+.post-content-single [class*="comment-section"],
+.post-content-single [class*="comments-section"],
+.post-content-single [class*="comment-area"],
+.post-content-single [id*="comment"],
+.post-content-single [id*="respond"],
+.post-content-single section.comments,
+.post-content-single div.comments,
+.post-content-single .post-comments,
+.post-content-single .entry-comments,
+.post-content-single .article-comments,
+.post-content-single .blog-comments,
+.post-content-single .single-comments,
+.post-content-single .commentbox,
+.post-content-single .comment-box,
+.post-content-single .comment-wrapper,
+.post-content-single .comment-wrap,
+.post-content-single .comment-container,
+.post-content-single .comment-body,
+.post-content-single .comment-content,
+.post-content-single .comment-meta,
+.post-content-single .comment-metadata,
+.post-content-single .comment-author,
+.post-content-single .pingback,
+.post-content-single .trackback,
+.post-content-single .comment-paging,
+.post-content-single .comment-pagination,
 
+/* Hide taxonomy elements */
+.post-content-single .entry-terms,
+.post-content-single .entry-categories,
+.post-content-single .entry-tags,
+.post-content-single .taxonomy-category,
+.post-content-single .taxonomy-post_tag,
+.post-content-single .tags-links,
+.post-content-single .cat-links,
+.post-content-single .category-links,
+.post-content-single .tag-links,
+.post-content-single .post-categories,
+.post-content-single .post-tags,
+.post-content-single .meta-categories,
+.post-content-single .meta-tags,
+.post-content-single .article-categories,
+.post-content-single .article-tags,
+.post-content-single .blog-categories,
+.post-content-single .blog-tags,
+.post-content-single .single-categories,
+.post-content-single .single-tags,
+.post-content-single .entry-meta-categories,
+.post-content-single .entry-meta-tags,
+.post-content-single .posted-in,
+.post-content-single [class*="taxonomy-"],
+.post-content-single [class*="category-"] [rel="category"],
+.post-content-single [rel="tag"],
+.post-content-single .wp-block-post-terms,
+.post-content-single .wp-block-terms,
+.post-content-single .term-list,
+.post-content-single .category-list,
+.post-content-single .tag-list,
+.post-content-single .categories-list,
+.post-content-single .tags-list {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+}
         .related-blog-category {
             display: inline-block;
             padding: 0.3rem 0.8rem;
@@ -1308,7 +1392,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-     // WordPress REST API Configuration
+ // WordPress REST API Configuration
 const WP_API_URL = 'https://verifitech.com/wp-json/wp/v2';
 let currentPage = 1;
 let currentCategory = 'all';
@@ -1360,7 +1444,7 @@ async function showSinglePost(postId) {
     window.scrollTo(0, 0);
 
     try {
-        // REMOVED wp:term from _embed to stop fetching taxonomy data
+        // Fetch post without embedded terms to avoid taxonomy data
         const response = await fetch(`${WP_API_URL}/posts/${postId}?_embed=wp:featuredmedia,author`);
         if (!response.ok) throw new Error('Post not found');
         
@@ -1376,15 +1460,18 @@ async function showSinglePost(postId) {
 }
 
 function renderSinglePost(post) {
-    // Get data
+    // Get featured image
     let imageUrl = 'https://via.placeholder.com/1200x600/e0f7f7/1ac2c1?text=Verifitech';
     if (post._embedded?.['wp:featuredmedia']?.[0]) {
         imageUrl = post._embedded['wp:featuredmedia'][0].source_url;
     }
 
-    // Since we removed wp:term from embed, we won't have category data
-    // Set to empty or fetch separately if needed
+    // Get category from post.categories array (basic data, not embedded)
     let categoryName = 'General';
+    if (post.categories && post.categories.length > 0) {
+        // You can map category IDs to names here if needed
+        categoryName = 'Article'; // Default since we're not embedding terms
+    }
 
     const date = new Date(post.date).toLocaleDateString('en-US', { 
         year: 'numeric', 
@@ -1393,21 +1480,8 @@ function renderSinglePost(post) {
     });
     const readTime = Math.ceil(post.content.rendered.split(/\s+/).length / 200);
 
-    // Clean content - remove duplicate featured image and any comment sections
-    let tempDiv = document.createElement('div');
-    tempDiv.innerHTML = post.content.rendered;
-    
-    // Remove first image (duplicate featured image)
-    const firstImg = tempDiv.querySelector('img');
-    if (firstImg) {
-        firstImg.remove();
-    }
-    
-    // Remove comment sections if they exist in content
-    const commentSections = tempDiv.querySelectorAll('.comments-area, #comments, .wp-block-comments, #respond, .comment-respond, [class*="comment"]');
-    commentSections.forEach(el => el.remove());
-    
-    const cleanContent = tempDiv.innerHTML;
+    // AGGRESSIVE CONTENT CLEANING - Remove comments, taxonomies, and unwanted sections
+    let cleanContent = cleanPostContent(post.content.rendered);
 
     // Update DOM
     document.getElementById('spCategory').textContent = categoryName;
@@ -1425,6 +1499,160 @@ function renderSinglePost(post) {
     // Show content
     document.getElementById('singlePostLoading').style.display = 'none';
     document.getElementById('singlePostContent').style.display = 'block';
+}
+
+// AGGRESSIVE CONTENT CLEANING FUNCTION
+function cleanPostContent(content) {
+    let tempDiv = document.createElement('div');
+    tempDiv.innerHTML = content;
+    
+    // Remove ALL comment-related elements (comprehensive list)
+    const commentSelectors = [
+        '.comments-area',
+        '#comments',
+        '.wp-block-comments',
+        '.wp-block-comments-query-loop',
+        '#respond',
+        '.comment-respond',
+        '.commentlist',
+        '.comment-list',
+        '.comments-list',
+        '.comments-container',
+        '.comments-section',
+        '.comments-wrap',
+        '.comments-template',
+        '.discussion-section',
+        '.comment-form',
+        '.comment-navigation',
+        '.comment-reply-title',
+        '.comments-title',
+        '.no-comments',
+        '[class*="comment-section"]',
+        '[class*="comments-section"]',
+        '[class*="comment-area"]',
+        '[id*="comment"]',
+        '[id*="respond"]',
+        'section.comments',
+        'div.comments',
+        '.post-comments',
+        '.entry-comments',
+        '.article-comments',
+        '.blog-comments',
+        '.single-comments',
+        '.commentbox',
+        '.comment-box',
+        '.comment-wrapper',
+        '.comment-wrap',
+        '.comment-container',
+        '.comment-body',
+        '.comment-content',
+        '.comment-meta',
+        '.comment-metadata',
+        '.comment-author',
+        '.comment-awaiting-moderation',
+        '.pingback',
+        '.trackback',
+        '.comment-paging',
+        '.comment-pagination'
+    ];
+    
+    commentSelectors.forEach(selector => {
+        try {
+            const elements = tempDiv.querySelectorAll(selector);
+            elements.forEach(el => {
+                console.log('Removing comment element:', selector, el);
+                el.remove();
+            });
+        } catch (e) {
+            console.warn('Error removing selector:', selector, e);
+        }
+    });
+    
+    // Remove ALL taxonomy/category/tag elements
+    const taxonomySelectors = [
+        '.entry-terms',
+        '.entry-categories',
+        '.entry-tags',
+        '.taxonomy-category',
+        '.taxonomy-post_tag',
+        '.tags-links',
+        '.cat-links',
+        '.category-links',
+        '.tag-links',
+        '.post-categories',
+        '.post-tags',
+        '.meta-categories',
+        '.meta-tags',
+        '.article-categories',
+        '.article-tags',
+        '.blog-categories',
+        '.blog-tags',
+        '.single-categories',
+        '.single-tags',
+        '.entry-meta-categories',
+        '.entry-meta-tags',
+        '.posted-in',
+        '.posted-on',
+        '[class*="taxonomy-"]',
+        '[class*="category-"]',
+        '[class*="tag-"]',
+        '[rel="category"]',
+        '[rel="tag"]',
+        '.wp-block-post-terms',
+        '.wp-block-terms',
+        '.term-list',
+        '.category-list',
+        '.tag-list',
+        '.categories-list',
+        '.tags-list'
+    ];
+    
+    taxonomySelectors.forEach(selector => {
+        try {
+            const elements = tempDiv.querySelectorAll(selector);
+            elements.forEach(el => {
+                console.log('Removing taxonomy element:', selector, el);
+                el.remove();
+            });
+        } catch (e) {
+            console.warn('Error removing selector:', selector, e);
+        }
+    });
+    
+    // Remove "Leave a Comment" or "No Comments" text nodes and links
+    const allElements = tempDiv.querySelectorAll('*');
+    allElements.forEach(el => {
+        // Check text content for comment-related phrases
+        const text = el.textContent.toLowerCase().trim();
+        if (text.includes('leave a comment') || 
+            text.includes('no comments') || 
+            text.includes('comments are closed') ||
+            text.includes('add a comment') ||
+            text.includes('post a comment') ||
+            text.includes('reply') && el.closest('.comments-area, #comments, #respond')) {
+            el.remove();
+        }
+        
+        // Remove links that point to #respond or #comments
+        if (el.tagName === 'A') {
+            const href = el.getAttribute('href') || '';
+            if (href.includes('#respond') || href.includes('#comments') || href.includes('?replytocom=')) {
+                el.remove();
+            }
+        }
+    });
+    
+    // Remove empty paragraphs that might be left behind
+    const emptyParagraphs = tempDiv.querySelectorAll('p:empty, p:only-child:empty, br');
+    emptyParagraphs.forEach(el => el.remove());
+    
+    // Remove first image if it's a duplicate of featured image
+    const firstImg = tempDiv.querySelector('img');
+    if (firstImg) {
+        firstImg.remove();
+    }
+    
+    return tempDiv.innerHTML;
 }
 
 // Setup social share links
@@ -1469,7 +1697,7 @@ function copyBlogLink() {
 async function fetchRelatedPosts(currentPost) {
     try {
         let categoryId = currentPost.categories?.[0];
-        // REMOVED wp:term from _embed
+        // Don't embed terms to avoid taxonomy data
         let url = `${WP_API_URL}/posts?per_page=3&exclude=${currentPost.id}&_embed=wp:featuredmedia`;
         
         if (categoryId) {
@@ -1500,8 +1728,7 @@ function renderRelatedPosts(posts) {
             imageUrl = post._embedded['wp:featuredmedia'][0].source_url;
         }
 
-        // No category name since we removed wp:term
-        let categoryName = 'General';
+        let categoryName = 'Article';
 
         const date = new Date(post.date).toLocaleDateString('en-US', { 
             month: 'short', 
@@ -1555,7 +1782,7 @@ async function fetchPosts(reset = false) {
     }
 
     try {
-        // REMOVED wp:term from _embed
+        // Don't embed wp:term to avoid taxonomy data
         let url = `${WP_API_URL}/posts?per_page=9&page=${currentPage}&_embed=wp:featuredmedia,author`;
         
         if (currentCategory !== 'all' && categoryMap[currentCategory]) {
@@ -1621,8 +1848,7 @@ function createBlogCard(post) {
         imageUrl = post._embedded['wp:featuredmedia'][0].source_url;
     }
 
-    // No category name since we removed wp:term from embed
-    let categoryName = 'General';
+    let categoryName = 'Article';
 
     const date = new Date(post.date).toLocaleDateString('en-US', { 
         year: 'numeric', 
